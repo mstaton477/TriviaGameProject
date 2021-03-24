@@ -1,4 +1,5 @@
-
+package Trivia;
+import java.util.Scanner;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -82,6 +83,16 @@ public class API {
             _difficulty = "hard";
         }
         return _difficulty;
+    }
+    
+    public static int length(){
+        Scanner input = new Scanner(System.in);
+        if(input.nextInt() >= 1 && input.nextInt() <= 50){
+         _questions = input.nextInt();   
+        } else{
+            System.out.println("Enter a number from 1-50");
+        }
+        return _questions;
     }
 
     public static void createGame() {
