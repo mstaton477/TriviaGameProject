@@ -1,8 +1,5 @@
-package DataBasePrototype;
+package TriviaGameDatabase;
 
-import DataBasePrototype.DataStoreAdapter;
-
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -11,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-public class DataFactory {
+
+public abstract class DataFactory {
     protected final String dataTable = "";
 
     /**
@@ -206,7 +204,7 @@ public class DataFactory {
      * @param _data
      * @return
      */
-    public DataBasePrototype.DataObject loadByCondition(HashMap<String, String> _data) {
+    public TriviaGameDatabase.DataObject loadByCondition(HashMap<String, String> _data) {
         try {
             // Given an empty object, this method fills this object with data from the database.
             return DataStoreAdapter.readObject(_data, this.getDataTable(), this.getClassName());

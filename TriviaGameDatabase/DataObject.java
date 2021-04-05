@@ -1,15 +1,16 @@
-package DataBasePrototype;
+package TriviaGameDatabase;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
+/**
+ * @author Patrick
+ */
 public abstract class DataObject extends DataFactory {
+
     protected final String dataTable = "";
     protected int id = 0;
     protected String uuid;
@@ -43,28 +44,32 @@ public abstract class DataObject extends DataFactory {
         if (this.id == 0) {
             try {
                 return DataStoreAdapter.createObject(this);
-            } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException ex) {
+            } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException ex) {
                 Logger.getLogger(DataObject.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
                 // This is an exisitng object in the database, just update the object.
                 return DataStoreAdapter.updateObject(this);
-            } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException ex) {
+            } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException ex) {
                 Logger.getLogger(DataObject.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return false;
     }
 
-    public Boolean delete() {
+    public Boolean delete(String _uuid) {
         try {
-            return DataStoreAdapter.deleteObject(this);
-        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException ex) {
+            return DataStoreAdapter.deleteObject(_uuid, this.getDataTable());
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException ex) {
             Logger.getLogger(DataObject.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
+
+    /*public Boolean sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException {
+        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy);
+    }*/
 
     public void makeActive() {
         this.active = true;
@@ -105,4 +110,5 @@ public abstract class DataObject extends DataFactory {
     public void setId(int _id) {
         this.id = _id;
     }
+
 }
