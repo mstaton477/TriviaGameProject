@@ -1,6 +1,7 @@
 package TriviaGameDatabase;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -15,7 +16,7 @@ public abstract class DataObject extends DataFactory {
     protected int id = 0;
     protected String uuid;
     protected String name = "";
-    protected boolean active = true;
+    protected String active = "1";
 
     public DataObject() {
         this.setUuid(DataObject.generateUuid());
@@ -49,7 +50,7 @@ public abstract class DataObject extends DataFactory {
             }
         } else {
             try {
-                // This is an exisitng object in the database, just update the object.
+                // This is an existing object in the database, just update the object.
                 return DataStoreAdapter.updateObject(this);
             } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException ex) {
                 Logger.getLogger(DataObject.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,26 +59,20 @@ public abstract class DataObject extends DataFactory {
         return false;
     }
 
-    public Boolean delete(String _uuid) {
+    public int delete(String _id) {
         try {
-            return DataStoreAdapter.deleteObject(_uuid, this.getDataTable());
-        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException ex) {
+            return DataStoreAdapter.deleteObject(_id, this.getDataTable());
+        } catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | SQLException ex) {
             Logger.getLogger(DataObject.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return -1;
     }
 
-    /*public Boolean sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException {
-        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy);
-    }*/
-
-    public void makeActive() {
-        this.active = true;
+    public HashMap<String, Object> sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException, SQLException {
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy, data);
     }
 
-    public void makeInactive() {
-        this.active = false;
-    }
 
     protected static String generateUuid() {
         return UUID.randomUUID().toString();

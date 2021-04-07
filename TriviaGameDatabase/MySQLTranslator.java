@@ -13,9 +13,11 @@ public class MySQLTranslator implements DBTranslatorInterface {
     private static String db_Password = "750463832";
     Connection conn = null;
     Statement statement = null;
+    PreparedStatement pStatement = null;
+    ResultSet resultSet = null;
 
     // Change this to true to just print out the queries and not execute them.
-    private static final Boolean TEST_MODE = true;
+    private static final Boolean TEST_MODE = false;
 
     public MySQLTranslator() {
         // Initialize the connection at start-up.
@@ -130,28 +132,50 @@ public class MySQLTranslator implements DBTranslatorInterface {
         return (result > 0);
     }
 
+    /*public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table){
+        HashMap<String, Object> resultData = new HashMap<String,Object>();
 
-    /**
-     * Reads an object from the database given a set of conditionals in name-value
-     * pair format. This is an overloaded readObject method that, by default, doesn't load deleted objects.
-     * @TODO - Implement this method.
-     * @param _keyValuePairs
-     * @return
-     */
+        ResultSet rs = null;
+        String sql = "SELECT * FROM "+ _table + " WHERE id = 1";
+        try{
+            statement= conn.createStatement();
+            rs = statement.executeQuery(sql);
+            while(rs.next()){
+                ResultSetMetaData data = rs.getMetaData();
+                int count = data.getColumnCount();
+                for (int i = 1; i <= count; i++) {
+                    String columnName = data.getColumnName(i);
+                    resultData.put(columnName, rs.getObject(i));
+                }
+            }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return resultData;
+    }*/
+
+
+        /*
+         * Reads an object from the database given a set of conditionals in name-value
+         * pair format. This is an overloaded readObject method that, by default, doesn't load deleted objects.
+         * @TODO - Implement this method.
+         * @param _keyValuePairs
+         * @return
+         */
     @Override
     public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table) {
-        // By default we do not load deleted object.
-        return this.readObject(_keyValuePairs, _table, false);
+         return this.readObject(_keyValuePairs, _table, true);
     }
 
-    /**
+    /*
      * Same as above except allows the option of reading deleted objects from the database.
      * @param _keyValuePairs
      * @param _table
      * @param _deleted whether to load deleted objects.
      * @return
      */
-    public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table, boolean _deleted) {
+   public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table, boolean _deleted) {
         // Start the query.
         String query =  "SELECT * FROM " + _table + " WHERE ";
         // Initialize the condition string.
@@ -213,16 +237,42 @@ public class MySQLTranslator implements DBTranslatorInterface {
 
     //Soft Delete, make the active flag 0
     @Override
-    public Boolean deleteObject(String _uuid, String _table) {
-        String query = "UPDATE "+_table+" SET active=0 WHERE uuid="+_uuid;
-        return this.executeUpdate(query);
+    public int deleteObject(String _identifier, String _table) throws SQLException {
+        String query = "UPDATE " + _table + " SET active=0 WHERE id = " +_identifier;
+        pStatement = conn.prepareStatement(query);
+        int rowsDeleted = pStatement.executeUpdate();
+        if (rowsDeleted > 0) {
+            System.out.println("A user was deleted successfully!");
+        }
+        return 1;
     }
 
+    /**
+     * This method sorts a table in a database and returns an arraylist of maps with the objects from the table
+     * @param _table
+     * @param _orderByParameter
+     * @param _data
+     */
 
-    /*public Boolean sortTable(String _table, String _orderByParameter){
-        String query =  "SELECT * FROM " + _table + " ORDER BY " + _orderByParameter + " ASC";
-        return this.executeUpdate(query);
-    }*/
+    public HashMap<String, Object> sortTable(String _table, String _orderByParameter,HashMap<String, Object> _data) throws SQLException {
+        try {
+            statement = conn.createStatement();
+            String query = "SELECT * FROM " + _table + " ORDER BY " + _orderByParameter + " DESC ";
+            resultSet = statement.executeQuery(query);
+            //arraylist of objects
+            while (resultSet.next()) {
+                ResultSetMetaData data = resultSet.getMetaData();
+                int count = data.getColumnCount();
+                for (int j = 1; j <= count; j++) {
+                    String columnName = data.getColumnName(j);
+                    _data.put(columnName, resultSet.getObject(j));
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return _data;
+    }
 
     private void connect() {
         try {

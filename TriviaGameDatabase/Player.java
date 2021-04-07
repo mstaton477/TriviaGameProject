@@ -1,6 +1,9 @@
 package TriviaGameDatabase;
 
 
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Player extends DataObject{
 
@@ -9,6 +12,13 @@ public class Player extends DataObject{
     protected String category= "";
     protected int gameLength = 0;
     protected String gameDifficulty = "";
+
+    public void displayTop10Scores() throws NoSuchFieldException, IllegalAccessException, SQLException {
+        //returns hashmap of top 10 scores
+        HashMap<String,Object> top10Scores = new HashMap<>();
+        top10Scores=this.sortTable("playerScore");
+        System.out.println(Arrays.asList(top10Scores));
+    }
 
 
 
@@ -33,4 +43,19 @@ public class Player extends DataObject{
     public void setGameLength(int _gameLength) { this.gameLength = _gameLength; }
 
     public void setGameDifficulty(String _gameDifficulty) { this.gameDifficulty = _gameDifficulty; }
+
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                " id=" + id +
+                ", uuid='" + uuid + '\'' +
+                ", name='" + name + '\'' +
+                ", active='" + active + '\'' +
+                ", Category='" + category + '\'' +
+                ", PlayerScore='" + playerScore + '\'' +
+                ", GameLength='" + gameLength + '\'' +
+                ", gameDifficulty='" + gameDifficulty + '\'' +
+                '}';
+    }
 }
