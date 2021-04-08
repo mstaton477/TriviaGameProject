@@ -1,5 +1,12 @@
 package Trivia;
-import java.util.Scanner;
+
+/**
+ * This application performs the API call to create a trivia game.
+ * Updated 4-8-21
+ * @author Sengthida Lorvan
+ */
+
+import java.util.Scanner; //Temporary
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,14 +21,18 @@ import java.net.http.HttpResponse;
 import org.json.*;
 
 public class API {
+// Storage variables
+    protected static String _categoryName;
+    protected static String _difficulty;
+    protected static String _gameLength;
+    protected static int _category;
+    protected static int _catName;
+    protected static int _questions;
+    protected static int _diff;
+ // URL Base
+    public static final String _BASEURL = "https://opentdb.com/api.php?";
 
-    private static String _categoryName;
-    private static String _difficulty;
-    private static int _category;
-    private static int _catName;
-    private static int _questions;
-    private static int _diff;
-
+//Assigns category depending on user's choice
     public static String categoryName(String _categoryName, int _catName) {
         if (_catName == 1) {
             _categoryName = "General Knowledge";
@@ -72,6 +83,7 @@ public class API {
         return _category;
     }
 
+    // Assigns difficulty
     public static String difficulty(String _difficulty, int _diff) {
         if (_diff == 1) {
             _difficulty = "easy";
@@ -84,23 +96,28 @@ public class API {
         }
         return _difficulty;
     }
-    
-    public static int length(){
-        Scanner input = new Scanner(System.in);
-        if(input.nextInt() >= 1 && input.nextInt() <= 50){
-         _questions = input.nextInt();   
-        } else{
-            System.out.println("Enter a number from 1-50");
+
+    //Assigns how long the game will last
+    public static int length(String _gameLength) {
+        if (_gameLength.equals("Short")) {
+            _questions = 10;
+        }
+        if (_gameLength.equals("Medium")) {
+            _questions = 20;
+        }
+        if (_gameLength.equals("Long")) {
+            _questions = 30;
         }
         return _questions;
     }
 
+    //Creates API URL
     public static void createGame() {
-        String _baseUrl = "https://opentdb.com/api.php?";
+        
         String _callAction1 = "amount=";
         String _callAction2 = "&category=";
         String _callAction3 = "&difficulty=";
-        String _urlString = _baseUrl + _callAction1 + _questions + _callAction2 + _category + _callAction3 + _difficulty;
+        String _urlString = _BASEURL + _callAction1 + _questions + _callAction2 + _category + _callAction3 + _difficulty;
         URL _url;
         try {
             _url = new URL(_urlString);
@@ -118,15 +135,12 @@ public class API {
                 }
                 _input.close();
                 connect.disconnect();
+                //Prints out JSON query
                 System.out.println("Output: " + content.toString());
                 JSONObject _obj = new JSONObject(content.toString());
             }
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
         }
-    }
-
-    public static void main(String[] args) {
-        createGame();
     }
 }
