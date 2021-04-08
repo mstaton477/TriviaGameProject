@@ -8,6 +8,7 @@ package TriviaGameDatabase;
  * @author Patrick
  */
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,8 +21,8 @@ public interface DBTranslatorInterface {
 
     public abstract Boolean updateObject(Map<String,String> _keyValuePairs, String _uuid, String _table);
 
-    public abstract Boolean deleteObject(String uuid, String _table);
+    public abstract int deleteObject(String _id, String _table) throws SQLException;
 
-    //public abstract Boolean sortTable(String _table, String _sortingParameter);
+    public abstract HashMap<String, Object> sortTable(String _table, String _sortingParameter, HashMap<String, Object> _data) throws SQLException;
 
 }

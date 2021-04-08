@@ -103,9 +103,6 @@ public abstract class DataFactory {
                     } else if (type.toString().equals("double")) {
                         double fieldValue = (double)_pairs.get(fieldName);
                         f.setDouble(this, fieldValue);
-                    } else if (type.toString().equals("boolean")) {
-                        boolean fieldValue = (boolean)_pairs.get(fieldName);
-                        f.setBoolean(this, fieldValue);
                     }else if (type.toString().equals("float")) {
                         float fieldValue = (float)_pairs.get(fieldName);
                         f.setFloat(this, fieldValue);

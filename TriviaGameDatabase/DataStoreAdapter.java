@@ -7,6 +7,7 @@ package TriviaGameDatabase;
  */
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -83,20 +84,20 @@ public class DataStoreAdapter {
      * Since we never want to actually delete records, we'll need to add an "active"
      * property to the base DataObject class. This implementation will then set
      * the active value to 0.
-     * @param _uuid
+     * @param _id
      * @param _table
      * @return Boolean
      * @throws java.lang.IllegalAccessException
      * @throws java.lang.reflect.InvocationTargetException
      * @throws java.lang.NoSuchFieldException
      */
-    public static Boolean deleteObject(String _uuid, String _table) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
-        return connector.deleteObject(_uuid, _table);
+    public static int deleteObject(String _id, String _table) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, SQLException {
+        return connector.deleteObject(_id, _table);
     }
 
-    /*public static Boolean sortDataTable(String _table, String _parameterSortBy){
-        return connector.sortTable(_table, _parameterSortBy);
-    }*/
+    public static HashMap<String, Object> sortDataTable(String _table, String _parameterSortBy,HashMap<String, Object> _data) throws SQLException {
+        return connector.sortTable(_table, _parameterSortBy, _data);
+    }
 
 }
 
