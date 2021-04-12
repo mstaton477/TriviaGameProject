@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TriviaGameGUI.TriviaGameController">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
+        <Label alignment="CENTER" layoutX="219.0" layoutY="26.0" prefHeight="64.0" prefWidth="198.0" text="Game Settings">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+      <SplitPane dividerPositions="0.6246056782334385" layoutY="102.0" prefHeight="367.0" prefWidth="624.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <MenuButton layoutX="14.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Entertainment: Movies">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+                  <Label layoutX="67.0" layoutY="72.0" text="Categories" underline="true" />
+                  <MenuButton layoutX="197.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Easy">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                  </MenuButton>
+                  <Label layoutX="238.0" layoutY="72.0" text="Game Difficulty" underline="true" />
+                  <MenuButton layoutX="14.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="10">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                  </MenuButton>
+                  <Label layoutX="60.0" layoutY="183.0" text="Game Length" underline="true" />
+                  <TextField layoutX="204.0" layoutY="211.0" />
+                  <Label layoutX="244.0" layoutY="183.0" text="Enter Name" underline="true" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="334.0">
+               <children>
+                    <Button layoutX="42.0" layoutY="114.0" mnemonicParsing="false" onAction="#beginGameButton" prefHeight="138.0" prefWidth="151.0" text="Begin Game" />
+                    <Button layoutX="141.0" layoutY="299.0" mnemonicParsing="false" onAction="#backButton" prefHeight="52.0" prefWidth="80.0" text="Back" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+    </children>
+</AnchorPane>
