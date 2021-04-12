@@ -1,4 +1,4 @@
-package Trivia;
+package APICode;
 
 /**
  * This application performs the API call to create a trivia game.
