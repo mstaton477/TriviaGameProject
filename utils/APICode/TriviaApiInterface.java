@@ -1,4 +1,4 @@
-package Trivia;
+package APICode;
 
 /**
  * Interface for the Trivia API.

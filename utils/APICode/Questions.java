@@ -1,4 +1,4 @@
-package Trivia;
+package APICode;
 
 /**
  * Separates questions from query. Updated 4-8-21
