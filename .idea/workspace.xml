@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f837d800-880a-4f4d-972b-0e1b6fe055eb" name="Default Changelist" comment="" />
+    <list default="true" id="f837d800-880a-4f4d-972b-0e1b6fe055eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TriviaGameProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TriviaGameProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/GUI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/SetUpQuestions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/GUI/SetUpQuestions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/TriviaGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/GUI/TriviaGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/TriviaGameMainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/GUI/TriviaGameMainView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,17 +26,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/GUI" />
+    <property name="last_opened_file_path" value="$USER_HOME$/json parser/org.json.jar" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jtw54\OneDrive\Documents\GitHub\TriviaGameProject\GUI\GUI" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="TriviaGameGUI.Main" />
+      <option name="MAIN_CLASS_NAME" value="GUI.Main" />
+      <module name="TriviaGameProject" />
       <option name="VM_PARAMETERS" value="--module-path /Users/jtw54/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -45,6 +61,17 @@
       <updated>1618267277784</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
