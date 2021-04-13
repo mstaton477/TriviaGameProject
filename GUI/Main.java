@@ -1,4 +1,4 @@
-package GUI;
+package TriviaGameGUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
