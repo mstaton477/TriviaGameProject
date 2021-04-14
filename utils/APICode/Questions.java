@@ -1,6 +1,6 @@
 package APICode;
 
-/**
+/*
  * Separates questions from query. Updated
  * Updated 4-13-21
  *
