@@ -3,11 +3,14 @@ package APICode;
 /**
  * This application performs the API call to create a trivia game.
  * Updated 4-8-21
+ *
  * @author Sengthida Lorvan
  */
 
 import java.util.Scanner; //Temporary
+
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,21 +21,23 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
 import org.json.*;
 
 public class API {
-// Storage variables
-    protected static String _categoryName;
-    protected static String _difficulty;
-    protected static String _gameLength;
-    protected static int _category;
-    protected static int _catName;
-    protected static int _questions;
-    protected static int _diff;
- // URL Base
+    // Storage variables
+    public static String _categoryName;
+    public static String _difficulty = "easy";
+    public static String _gameLength;
+    public static int _category = 9;
+    public static int _catName;
+    public static int _questions = 10;
+    public static int _diff;
+
+    // URL Base
     public static final String _BASEURL = "https://opentdb.com/api.php?";
 
-//Assigns category depending on user's choice
+    //Assigns category depending on user's choice
     public static String categoryName(String _categoryName, int _catName) {
         if (_catName == 1) {
             _categoryName = "General Knowledge";
@@ -113,7 +118,7 @@ public class API {
 
     //Creates API URL
     public static void createGame() {
-        
+
         String _callAction1 = "amount=";
         String _callAction2 = "&category=";
         String _callAction3 = "&difficulty=";
