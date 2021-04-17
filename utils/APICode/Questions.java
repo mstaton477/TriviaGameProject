@@ -1,28 +1,29 @@
 package APICode;
 
-/**
- * Separates questions from query. Updated 4-8-21
+/*
+ * Separates questions from query. Updated
+ * Updated 4-13-21
  *
- * @author scarl
+ * @author Sengthida Lorvan
  */
+
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import org.json.*;
 
 public class Questions extends API {
 
     public static final String _BASEURL = "https://opentdb.com/api.php?";
+    public static String[] questions = new String[_questions];
+    public static String[] Question = new String[_questions];
+    public static String[] index = new String[_questions];
+    public static String[] temp = new String[_questions];
 
-    public static void Questions() {
+
+    public static String[] questions() {
         String _callAction1 = "amount=";
         String _callAction2 = "&category=";
         String _callAction3 = "&difficulty=";
@@ -38,35 +39,47 @@ public class Questions extends API {
             } else {
                 BufferedReader _input = new BufferedReader(new InputStreamReader(connect.getInputStream()));
                 String _inputLine;
-                StringBuffer content = new StringBuffer();
+                StringBuilder content = new StringBuilder();
                 while ((_inputLine = _input.readLine()) != null) {
                     content.append(_inputLine);
                 }
                 _input.close();
                 connect.disconnect();
-                
+
                 JSONObject _obj = new JSONObject(content.toString());
-                
+
                 // prints out questions
                 var question = _obj.getJSONArray("results").opt(0);
-                String questions[] = new String[10];
 
+
+                // Get questions
                 for (int i = 0; i < _questions; i++) {
                     question = _obj.getJSONArray("results").opt(i);
                     questions[i] = question.toString();
-                    System.out.println(question);
+                }
+                // Remove text in front of questions
+                for (int i = 0; i < _questions; i++) {
+                    Question[i] = questions[i].substring(33);
+                }
+                // Gets index of next quotation mark
+                for (int i = 0; i < _questions; i++) {
+                    index[i] = String.valueOf(Question[i].indexOf("\""));
+                }
+                //Copy to temp
+                for (int i = 0; i < _questions; i++){
+                    temp[i] = Question[i];
+                }
+                System.out.println();
+                // Assigns questions by itself to array
+                for (int i = 0; i < _questions; i++) {
+                    Question[i] = Question[i].substring(0, Integer.parseInt(index[i]));
+                    System.out.println("Question:" + Question[i]);
                     System.out.println();
                 }
             }
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
         }
-    }
-
-    public static void main(String[] args) {
-        _category = 9;
-        _difficulty = "easy";
-        _questions = 10;
-        Questions();
+        return Question;
     }
 }
