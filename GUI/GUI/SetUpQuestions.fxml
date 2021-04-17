@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TriviaGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SetUpQuestionsController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
         <Label alignment="CENTER" layoutX="219.0" layoutY="26.0" prefHeight="64.0" prefWidth="198.0" text="Game Settings">
@@ -17,29 +17,14 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <MenuButton layoutX="14.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Entertainment: Movies">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
                   <Label layoutX="67.0" layoutY="72.0" text="Categories" underline="true" />
-                  <MenuButton layoutX="197.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Easy">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
                   <Label layoutX="238.0" layoutY="72.0" text="Game Difficulty" underline="true" />
-                  <MenuButton layoutX="14.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="10">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
                   <Label layoutX="60.0" layoutY="183.0" text="Game Length" underline="true" />
                   <TextField layoutX="204.0" layoutY="211.0" />
                   <Label layoutX="244.0" layoutY="183.0" text="Enter Name" underline="true" />
+                  <ChoiceBox fx:id="categoryBox" layoutX="21.0" layoutY="99.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="difficultyBox" layoutX="201.0" layoutY="99.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="lengthBox" layoutX="21.0" layoutY="211.0" prefWidth="150.0" />
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="334.0">
                <children>

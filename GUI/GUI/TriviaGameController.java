@@ -6,27 +6,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class TriviaGameController {
+
+
+    /**
+     * This is for changing the scene to the view used for setting up the questions of the game.
+     * @param event
+     * @throws IOException
+     */
     public void setUpButton(ActionEvent event) throws IOException {
         Parent setUpQuestionsView = FXMLLoader.load(getClass().getResource("SetUpQuestions.fxml"));
         Scene setUpQuestionsViewScene = new Scene(setUpQuestionsView);
 
+        //Gets the stage information
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         window.setScene(setUpQuestionsViewScene);
-        window.show();
-    }
-
-    public void backButton(ActionEvent event) throws IOException {
-        Parent backButtonView = FXMLLoader.load(getClass().getResource("TriviaGameMainView.fxml"));
-        Scene backButtonViewScene = new Scene(backButtonView);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(backButtonViewScene);
         window.show();
     }
 
@@ -36,7 +33,5 @@ public class TriviaGameController {
     public void quitButton(ActionEvent event){
         System.out.println("Quit clicked, please click the X button in the corner for now.");
     }
-    public void beginGameButton(ActionEvent event){
-        System.out.println("Game still in development, please look forward to the finished product!");
-    }
+
 }
