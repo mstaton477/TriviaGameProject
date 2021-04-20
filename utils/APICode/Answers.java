@@ -2,76 +2,86 @@ package APICode;
 
 /**
  * Separates correct answers and incorrect answers from query.
- * Updated 4-19-21
+ * Updated 4-20-21
  *
  * @author Sengthida Lorvan
  */
 
 public class Answers extends Questions {
 
-    public static String[] correctAnswer;
-    public static String[] incorrectAnswer;
+    public static String[] _correctAnswer = new String[_questions];
+    public static String[] _incorrectAnswer = new String[_questions];
+    public static String[] _incorrectAnswerArray = new String[_questions * 3];
 
     public static String[] correctAnswers() {
         // Gets text after questions
         for (int i = 0; i < _questions; i++) {
-            correctAnswer[i] = temp[i].substring(Integer.parseInt(index[i]));
+            _correctAnswer[i] = _temp[i].substring(Integer.parseInt(_index[i]));
         }
 
         // Gets rid of text before
         for (int i = 0; i < _questions; i++) {
-            correctAnswer[i] = correctAnswer[i].substring(20);
+            _correctAnswer[i] = _correctAnswer[i].substring(20);
         }
 
-        // Gets index of next quotation mark
+        // Gets index of next comma
         for (int i = 0; i < _questions; i++) {
-            index[i] = String.valueOf(correctAnswer[i].indexOf("\""));
+            _index[i] = String.valueOf(_correctAnswer[i].indexOf("\""));
         }
 
         //Copy to temp
         for (int i = 0; i < _questions; i++) {
-            temp[i] = correctAnswer[i];
+            _temp[i] = _correctAnswer[i];
         }
 
         // Assigns correct answer by itself into array
-        for(int i = 0; i < _questions; i++){
-            correctAnswer[i] = correctAnswer[i].substring(0, Integer.parseInt(index[i]));
-            System.out.println("Correct Answer " + (i + 1) +": " + correctAnswer[i]);
+        for (int i = 0; i < _questions; i++) {
+            _correctAnswer[i] = _correctAnswer[i].substring(0, Integer.parseInt(_index[i]));
+            System.out.println("Correct Answer for Question " + (i + 1) + ": " + _correctAnswer[i]);
             System.out.println();
         }
         // Sets leftover substring into this array
-        for (int j = 0; j < _questions; j++) {
-            incorrectAnswer[j] = temp[j].substring(Integer.parseInt(index[j]));
+        for (int i = 0; i < _questions; i++) {
+            _incorrectAnswer[i] = _temp[i].substring(Integer.parseInt(_index[i]));
         }
 
-        return correctAnswer;
+        return _correctAnswer;
     }
 
     public static String[] incorrectAnswers() {
 
-        for(int i = 0; i < _questions; ++i) {
-            incorrectAnswer[i] = temp[i].substring(Integer.parseInt(index[i]));
+        // Set array equal to temp
+        for (int i = 0; i < _questions; i++) {
+            _incorrectAnswer[i] = _temp[i].substring(Integer.parseInt(_index[i]));
         }
 
-        for(int i = 0; i < _questions; ++i) {
-            incorrectAnswer[i] = incorrectAnswer[i].substring(23);
+        // Get rid of text in front
+        for (int i = 0; i < _questions; i++) {
+            _incorrectAnswer[i] = _incorrectAnswer[i].substring(23);
         }
 
-        for(int i = 0; i < _questions; ++i) {
-            index[i] = String.valueOf(incorrectAnswer[i].indexOf("]"));
+        // Find index of next bracket
+        for (int i = 0; i < _questions; i++) {
+            _index[i] = String.valueOf(_incorrectAnswer[i].indexOf("]"));
         }
 
-        for(int i = 0; i < _questions; ++i) {
-            incorrectAnswer[i] = incorrectAnswer[i].substring(0, Integer.parseInt(index[i]));
-            System.out.println("incorrect Answers for Question " + (i + 1) + ": " + incorrectAnswer[i]);
+        // Preliminary Array
+        for (int i = 0; i < _questions; i++) {
+            _incorrectAnswer[i] = _incorrectAnswer[i].substring(0, Integer.parseInt(_index[i]));
+        }
+
+        // Get rid of quotations surrounding the answers.
+        for (int i = 0; i < _questions; i++){
+            _incorrectAnswer[i] = _incorrectAnswer[i].replace("\"","");
+            System.out.println(_incorrectAnswer[i]);
             System.out.println();
         }
 
-        return incorrectAnswer;
+        return _incorrectAnswer;
     }
 
     public static void main(String[] args) {
-        questions();
+        question();
         correctAnswers();
         incorrectAnswers();
     }

@@ -1,8 +1,8 @@
 package APICode;
 
 /**
- * This performs the API Call.
- * Updated 4-19-21
+ * This class performs the API call
+ * Updated 4-20-21
  *
  * @author Sengthida Lorvan
  */
@@ -15,16 +15,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class API {
+
     // Storage variables
     public static String _categoryName;
-    public static String _difficulty = "easy";
+    public static String _difficulty = "medium";
     public static int _category = 9;
     public static int _questions = 10;
     public static JSONObject _obj;
 
-
-    // URL Base
+    // Url Base
     public static final String _BASEURL = "https://opentdb.com/api.php?";
+
+    // Url parts
+    public static final String _CALLACTION1 = "amount=";
+    public static final String _CALLACTION2 = "&category";
+    public static final String _CALLACTION3 = "&difficulty=";
+    public static final String _CALLACTION4 = "&type=multiple";
 
     public static int category() {
         switch (_categoryName) {
@@ -53,34 +59,28 @@ public class API {
         return _category;
     }
 
-    //Creates API URL
-    public static void makeAPICall() {
-        String _callAction1 = "amount=";
-        String _callAction2 = "&category=";
-        String _callAction3 = "&difficulty=";
-        String _urlString = _BASEURL + _callAction1 + _questions + _callAction2 + _category + _callAction3 + _difficulty + "&type=multiple";
-
+    public static void makeApiCall() {
+        String _urlString = _BASEURL + _CALLACTION1 + _questions + _CALLACTION2 + _category + _CALLACTION3 + _difficulty + _CALLACTION4;
         URL _url;
         try {
             _url = new URL(_urlString);
-            HttpURLConnection connect = (HttpURLConnection) _url.openConnection();
-            connect.setRequestMethod("GET");
-            int _status = connect.getResponseCode();
+            HttpURLConnection _connect = (HttpURLConnection) _url.openConnection();
+            _connect.setRequestMethod("GET");
+            int _status = _connect.getResponseCode();
             if (_status != 200) {
                 System.out.println("Error: Could not get questions: " + _status);
             } else {
-                BufferedReader _input = new BufferedReader(new InputStreamReader(connect.getInputStream()));
+                BufferedReader _input = new BufferedReader(new InputStreamReader(_connect.getInputStream()));
                 String _inputLine;
-                StringBuffer content = new StringBuffer();
+                StringBuffer _content = new StringBuffer();
                 while ((_inputLine = _input.readLine()) != null) {
-                    content.append(_inputLine);
+                    _content.append(_inputLine);
                 }
                 _input.close();
-                connect.disconnect();
+                _connect.disconnect();
 
-                //Initialize JSON object
-                _obj = new JSONObject(content.toString());
-
+                // Initialize JSON object
+                _obj = new JSONObject(_content.toString());
             }
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
