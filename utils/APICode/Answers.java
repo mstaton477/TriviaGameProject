@@ -8,36 +8,74 @@ package APICode;
  */
 
 public class Answers extends Questions {
-    public static String[] correctAnswer = new String[_questions];
+    public static String[] correctAnswer;
+    public static String[] incorrectAnswer;
+
+    public Answers() {
+    }
 
     public static String[] correctAnswers() {
-        // Gets text after questions
-        for (int i = 0; i < _questions; i++) {
-            correctAnswer[i] = temp[i].substring(Integer.parseInt(index[i]));
-            //    System.out.println(correctAnswers[i]);
+        int j;
+        for(j = 0; j < _questions; ++j) {
+            correctAnswer[j] = temp[j].substring(Integer.parseInt(index[j]));
         }
-        // Gets rid of text before
-        for (int i = 0; i < _questions; i++) {
-            correctAnswer[i] = correctAnswer[i].substring(20);
-            System.out.println(correctAnswer[i]);
+
+        for(j = 0; j < _questions; ++j) {
+            correctAnswer[j] = correctAnswer[j].substring(20);
+        }
+
+        for(j = 0; j < _questions; ++j) {
+            index[j] = String.valueOf(correctAnswer[j].indexOf("\""));
+        }
+
+        for(j = 0; j < _questions; ++j) {
+            temp[j] = correctAnswer[j];
+        }
+
+        for(j = 0; j < _questions; ++j) {
+            correctAnswer[j] = correctAnswer[j].substring(0, Integer.parseInt(index[j]));
+            System.out.println("Correct Answer " + (j + 1) + ": " + correctAnswer[j]);
             System.out.println();
         }
 
-        for (int i = 0; i < _questions; i++) {
-            index[i] = String.valueOf(correctAnswer[i].indexOf("\""));
+        for(j = 0; j < _questions; ++j) {
+            incorrectAnswer[j] = temp[j].substring(Integer.parseInt(index[j]));
         }
 
-        for(int j = 0; j < _questions; j++){
-            correctAnswer[j] = correctAnswer[j].substring(Integer.parseInt(index[j]));
-            //System.out.println(correctAnswer[j]);
-            //System.out.println();
-        }
         return correctAnswer;
+    }
+
+    public static String[] incorrectAnswers() {
+        int i;
+        for(i = 0; i < _questions; ++i) {
+            incorrectAnswer[i] = temp[i].substring(Integer.parseInt(index[i]));
+        }
+
+        for(i = 0; i < _questions; ++i) {
+            incorrectAnswer[i] = incorrectAnswer[i].substring(23);
+        }
+
+        for(i = 0; i < _questions; ++i) {
+            index[i] = String.valueOf(incorrectAnswer[i].indexOf("]"));
+        }
+
+        for(i = 0; i < _questions; ++i) {
+            incorrectAnswer[i] = incorrectAnswer[i].substring(0, Integer.parseInt(index[i]));
+            System.out.println("incorrect Answers for Question " + (i + 1) + ": " + incorrectAnswer[i]);
+            System.out.println();
+        }
+
+        return incorrectAnswer;
     }
 
     public static void main(String[] args) {
         questions();
         correctAnswers();
+        incorrectAnswers();
     }
 
+    static {
+        correctAnswer = new String[_questions];
+        incorrectAnswer = new String[_questions];
+    }
 }
