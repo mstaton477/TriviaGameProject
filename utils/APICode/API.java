@@ -1,37 +1,29 @@
 package APICode;
 
 /**
- * This application performs the API call to create a trivia game.
- * Updated 4-8-21
+ * This performs the API Call.
+ * Updated 4-19-21
  *
  * @author Sengthida Lorvan
  */
 
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-
-import org.json.*;
 
 public class API {
     // Storage variables
     public static String _categoryName;
     public static String _difficulty = "easy";
-    public static String _gameLength;
     public static int _category = 9;
-    public static int _catName;
     public static int _questions = 10;
     public static JSONObject _obj;
+<<<<<<< HEAD
     public static int _diff;
+=======
+>>>>>>> parent of aa1518b (Reduced code and parsed answers)
 
     // URL Base
     public static final String _BASEURL = "https://opentdb.com/api.php?";
@@ -58,6 +50,7 @@ public class API {
                 break;
             case "Entertainment: Japanese Anime & Manga":
                 _category = 31;
+<<<<<<< HEAD
                 //Assigns category depending on user's choice
                 public static String categoryName(String _categoryName, int _catName) {
                 if (_catName == 1) {
@@ -176,3 +169,41 @@ public class API {
                 }
             }
 
+=======
+        }
+        return _category;
+    }
+
+    //Creates API URL
+    public static void makeAPICall() {
+        String _callAction1 = "amount=";
+        String _callAction2 = "&category=";
+        String _callAction3 = "&difficulty=";
+        String _urlString = _BASEURL + _callAction1 + _questions + _callAction2 + _category + _callAction3 + _difficulty + "&type=multiple";
+        URL _url;
+        try {
+            _url = new URL(_urlString);
+            HttpURLConnection connect = (HttpURLConnection) _url.openConnection();
+            connect.setRequestMethod("GET");
+            int _status = connect.getResponseCode();
+            if (_status != 200) {
+                System.out.println("Error: Could not get questions: " + _status);
+            } else {
+                BufferedReader _input = new BufferedReader(new InputStreamReader(connect.getInputStream()));
+                String _inputLine;
+                StringBuffer content = new StringBuffer();
+                while ((_inputLine = _input.readLine()) != null) {
+                    content.append(_inputLine);
+                }
+                _input.close();
+                connect.disconnect();
+
+                //Initialize JSON object
+                _obj = new JSONObject(content.toString());
+            }
+        } catch (Exception _ex) {
+            System.out.println("Error: " + _ex);
+        }
+    }
+}
+>>>>>>> parent of aa1518b (Reduced code and parsed answers)
