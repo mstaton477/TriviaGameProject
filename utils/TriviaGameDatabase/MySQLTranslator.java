@@ -1,6 +1,7 @@
 package TriviaGameDatabase;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -131,32 +132,10 @@ public class MySQLTranslator implements DBTranslatorInterface {
         // the return false.
         return (result > 0);
     }
-
-    /*public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table){
-        HashMap<String, Object> resultData = new HashMap<String,Object>();
-
-        ResultSet rs = null;
-        String sql = "SELECT * FROM "+ _table + " WHERE id = 1";
-        try{
-            statement= conn.createStatement();
-            rs = statement.executeQuery(sql);
-            while(rs.next()){
-                ResultSetMetaData data = rs.getMetaData();
-                int count = data.getColumnCount();
-                for (int i = 1; i <= count; i++) {
-                    String columnName = data.getColumnName(i);
-                    resultData.put(columnName, rs.getObject(i));
-                }
-            }
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return resultData;
-    }*/
+    
 
 
-        /*
+        /**
          * Reads an object from the database given a set of conditionals in name-value
          * pair format. This is an overloaded readObject method that, by default, doesn't load deleted objects.
          * @TODO - Implement this method.
@@ -168,7 +147,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
          return this.readObject(_keyValuePairs, _table, true);
     }
 
-    /*
+    /**
      * Same as above except allows the option of reading deleted objects from the database.
      * @param _keyValuePairs
      * @param _table
@@ -235,7 +214,13 @@ public class MySQLTranslator implements DBTranslatorInterface {
         }
     }
 
-    //Soft Delete, make the active flag 0
+    /**
+     *
+     * @param _identifier
+     * @param _table
+     * @return
+     * @throws SQLException
+     */
     @Override
     public int deleteObject(String _identifier, String _table) throws SQLException {
         String query = "UPDATE " + _table + " SET active=0 WHERE id = " +_identifier;
@@ -251,27 +236,32 @@ public class MySQLTranslator implements DBTranslatorInterface {
      * This method sorts a table in a database and returns an arraylist of maps with the objects from the table
      * @param _table
      * @param _orderByParameter
-     * @param _data
+     * @param _sortedList
      */
 
-    public HashMap<String, Object> sortTable(String _table, String _orderByParameter,HashMap<String, Object> _data) throws SQLException {
+    public ArrayList sortTable(String _table, String _orderByParameter, ArrayList _sortedList) throws SQLException {
+
         try {
             statement = conn.createStatement();
-            String query = "SELECT * FROM " + _table + " ORDER BY " + _orderByParameter + " DESC ";
+            String query = "SELECT playerScore, name, id,gameDifficulty, gameLength,  category FROM " + _table + " ORDER BY " + _orderByParameter + " DESC ";
             resultSet = statement.executeQuery(query);
-            //arraylist of objects
+            //A loop that gets the properties of each row in the database and stores them in an Arraylist of Hashmaps in Descending order
             while (resultSet.next()) {
                 ResultSetMetaData data = resultSet.getMetaData();
                 int count = data.getColumnCount();
-                for (int j = 1; j <= count; j++) {
-                    String columnName = data.getColumnName(j);
-                    _data.put(columnName, resultSet.getObject(j));
+                for (int j = 1; j <= count-5; j++) {
+                    HashMap playerProperties = new HashMap();
+                    for(int i = 1; i <=6; i++){
+                        String columnName = data.getColumnName(i);
+                        playerProperties.put(columnName, resultSet.getObject(i));
+                    }
+                    _sortedList.add(playerProperties);
                 }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return _data;
+        return _sortedList;
     }
 
     private void connect() {

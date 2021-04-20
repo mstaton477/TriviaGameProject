@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3614b71c-551e-4198-906c-8d00a52c5b3d" name="Default Changelist" comment="" />
+    <list default="true" id="3614b71c-551e-4198-906c-8d00a52c5b3d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DBTranslatorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DBTranslatorInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataStoreAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataStoreAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/MySQLTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/MySQLTranslator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1r5h2YrjafB5dc2hl1Pkkznzi9X" />
   <component name="ProjectViewState">
@@ -44,6 +53,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,6 +76,7 @@
       <workItem from="1618271655420" duration="1677000" />
       <workItem from="1618273365861" duration="2050000" />
       <workItem from="1618275474299" duration="253000" />
+      <workItem from="1618878353832" duration="142000" />
     </task>
     <servers />
   </component>

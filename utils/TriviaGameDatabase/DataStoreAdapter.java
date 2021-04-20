@@ -8,6 +8,7 @@ package TriviaGameDatabase;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -95,8 +96,8 @@ public class DataStoreAdapter {
         return connector.deleteObject(_id, _table);
     }
 
-    public static HashMap<String, Object> sortDataTable(String _table, String _parameterSortBy,HashMap<String, Object> _data) throws SQLException {
-        return connector.sortTable(_table, _parameterSortBy, _data);
+    public static ArrayList sortDataTable(String _table, String _parameterSortBy, ArrayList _sortedList) throws SQLException {
+        return connector.sortTable(_table, _parameterSortBy, _sortedList);
     }
 
 }
