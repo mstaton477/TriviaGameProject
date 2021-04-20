@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3614b71c-551e-4198-906c-8d00a52c5b3d" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DBTranslatorInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DBTranslatorInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataStoreAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/DataStoreAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/TriviaGameDatabase/MySQLTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TriviaGameDatabase/MySQLTranslator.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/TriviaGameProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TriviaGameProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/API.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/Questions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/SetUpQuestions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/SetUpQuestions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/TriviaGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/TriviaGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/APICode/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/APICode/API.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/APICode/Answers.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/APICode/Answers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/APICode/Questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/APICode/Questions.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1r5h2YrjafB5dc2hl1Pkkznzi9X" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,7 +53,20 @@
       <recent name="C:\Users\nerdy\OneDrive - UNCG\Documents\GitHub\TriviaGameProject\GUI\GUI" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Answers">
+    <configuration name="Answers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="APICode.Answers" />
+      <module name="TriviaGameProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="APICode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Main" />
       <module name="TriviaGameProject" />
@@ -64,6 +92,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< Updated upstream
+=======
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Answers" />
+      </list>
+    </recent_temporary>
+>>>>>>> Stashed changes
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,5 +118,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

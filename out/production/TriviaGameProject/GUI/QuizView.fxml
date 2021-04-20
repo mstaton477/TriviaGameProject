@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.QuizViewController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
+      <VBox layoutX="85.0" layoutY="100.0" prefHeight="367.0" prefWidth="228.0" spacing="10.0">
+         <children>
+            <Label fx:id="answerALabel" text="Label" />
+              <Button mnemonicParsing="false" onAction="#answerAButton" prefHeight="108.0" prefWidth="119.0" text="A" />
+            <Label fx:id="answerCLabel" text="Label" />
+            <Button mnemonicParsing="false" onAction="#answerCButton" prefHeight="108.0" prefWidth="119.0" text="C" />
+         </children></VBox>
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="247.0" layoutY="26.0" prefHeight="64.0" prefWidth="143.0" text="Questions">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+      <VBox layoutX="390.0" layoutY="100.0" prefHeight="367.0" prefWidth="246.0" spacing="10.0">
+         <children>
+            <Label fx:id="answerBLabel" text="Label" />
+              <Button mnemonicParsing="false" onAction="#answerBButton" prefHeight="108.0" prefWidth="119.0" text="B" />
+            <Label fx:id="answerDLabel" text="Label">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
+            <Button mnemonicParsing="false" onAction="#answerDButton" prefHeight="108.0" prefWidth="119.0" text="D" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
