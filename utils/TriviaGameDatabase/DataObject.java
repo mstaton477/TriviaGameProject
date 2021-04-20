@@ -2,6 +2,7 @@ package TriviaGameDatabase;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -68,9 +69,9 @@ public abstract class DataObject extends DataFactory {
         return -1;
     }
 
-    public HashMap<String, Object> sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        HashMap<String, Object> data = new HashMap<String, Object>();
-        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy, data);
+    public ArrayList sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException, SQLException {
+        ArrayList _sortedList = new ArrayList();
+        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy, _sortedList);
     }
 
 
