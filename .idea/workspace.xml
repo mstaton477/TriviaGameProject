@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2597f6a9-6be2-40ef-83f5-28e00e8847d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/API.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/API.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/Answers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/Questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/APICode/Questions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/QuizView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/QuizViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/SetUpQuestions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/SetUpQuestions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/SetUpQuestionsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/TriviaGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TriviaGameProject/GUI/TriviaGameController.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
