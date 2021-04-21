@@ -23,7 +23,7 @@ public class Questions extends API {
         makeApiCall();
 
         try {
-            var _getQuestionJSONArray = _obj.getJSONArray("results").opt(0);
+            Object _getQuestionJSONArray;
 
             // Get questions
             for (int i = 0; i < _questions; i++) {
