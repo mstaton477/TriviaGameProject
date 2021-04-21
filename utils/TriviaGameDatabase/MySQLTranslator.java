@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MySQLTranslator implements DBTranslatorInterface {
-    private static String db_URL = "jdbc:mysql://localhost:3306/playerdata";
+    private static String db_URL = "jdbc:mysql://35.185.120.36:3306/Trivia-game";
     private static String db_Username = "root";
     private static String db_Password = "750463832";
     Connection conn = null;
@@ -243,7 +243,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
 
         try {
             statement = conn.createStatement();
-            String query = "SELECT playerScore, name, id,gameDifficulty, gameLength,  category FROM " + _table + " ORDER BY " + _orderByParameter + " DESC ";
+            String query = "SELECT playerScore, name, id,gameDifficulty, gameLength,  category FROM " + _table + " WHERE active = 1 ORDER BY " + _orderByParameter + " DESC ";
             resultSet = statement.executeQuery(query);
             //A loop that gets the properties of each row in the database and stores them in an Arraylist of Hashmaps in Descending order
             while (resultSet.next()) {
