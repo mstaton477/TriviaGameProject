@@ -5,34 +5,41 @@ import Models.Player;
 
 /*
  * Author @McKenzie
- * Last Updated: 4/14/21
+ * Last Updated: 4/21/21
  * This class holds all the information related to the quiz.
  */
 public class Quiz {
-    public void quiz(){
+
+    //to be used to calculate int score
+    public int numCorrect;
+
+    public void quiz() {
 
     }
 
-   public int getGameLength(){
-        return API._questions;
+    //checks if the answer choice exists in the correctAnswer array
+    public void checkIfCorrect(String[] correctAnswers, String _choice){
+        for(String s : correctAnswers){
+            if(_choice.equals(s)){
+                System.out.println("Correct Answer Chosen, Good Job!");
+                numCorrect++;
+            }
+        }
+    }
 
-        //set by the GUI
-   }
+    public int calculateScore(int _gameLength, int _numCorrect, int _playerScore){
+        _playerScore = _numCorrect/_gameLength;
 
-   public String chooseCategory(){
-        return API._categoryName;
+        return _playerScore;
+    }
 
-        //set by GUI
-   }
+    // ================================ GETTERS ====================================
+    public int getNumCorrect() {
+        return numCorrect;
+    }
+    // ================================ SETTERS ====================================
 
-   public String getDifficulty(){
-        return API._difficulty;
-   }
-
-//   public int getScore(){
-//         int gameLength = getGameLength();
-//         int correctAnswers; //figure
-//
-//       return Player.playerScore;
-//   }
+    public void setNumCorrect(int _numCorrect) {
+        this.numCorrect = _numCorrect;
+    }
 }
