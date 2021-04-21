@@ -1,5 +1,10 @@
 package GUI;
 
+/**
+ * @author Jayson Williamson
+ * Updated 4/21/21
+ * This class sets up the view for the settings page.
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,13 +21,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SetUpQuestions implements Initializable {
+
     //These items are for allowing users to choose the settings of the game.
     @FXML private ChoiceBox<String> categoryBox;
     @FXML private ChoiceBox<String> difficultyBox;
     @FXML private ChoiceBox<String> lengthBox;
 
     /**
-     * This sends the user back to the main view of the application.
+     * This sends the user back to the initial view of the application.
      * @param event
      * @throws IOException
      */
@@ -36,7 +43,8 @@ public class SetUpQuestions implements Initializable {
     }
 
     /**
-     * This sends the user to the next page and allows them to play the game.
+     * This sends the user to the next page and allows them to play the game. Will grab
+     * info from choiceBox for each setting and change the settings accordingly
      * @param event
      * @throws IOException
      */
@@ -53,12 +61,17 @@ public class SetUpQuestions implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Options for Categories
-        categoryBox.getItems().addAll("General Knowledge", "Entertainment: Music", "Entertainment: Video Games", "Science & Nature", "Science: Computers", "Science: Mathematics", "Entertainment: Japanese Anime & Manga");
+        categoryBox.getItems().addAll("General Knowledge", "Entertainment: Music", "Entertainment: Video Games",
+                "Science & Nature", "Science: Computers", "Science: Mathematics", "Entertainment: Japanese Anime & Manga");
 
         //Options for difficulty
         difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
         lengthBox.getItems().addAll("Short (10)", "Medium (20)", "Long (30)");
+
+        //Takes what is in the text field for the user's name and retrieves it for later use.
+        TextField nameField = new TextField();
+        String name = nameField.getText();
     }
 }

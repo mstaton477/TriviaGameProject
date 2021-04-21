@@ -16,7 +16,7 @@
             <Label fx:id="answerCLabel" text="Label" />
             <Button mnemonicParsing="false" onAction="#answerCButton" prefHeight="108.0" prefWidth="119.0" text="C" />
          </children></VBox>
-        <Label fx:id="questionLabel" alignment="CENTER" layoutX="247.0" layoutY="26.0" prefHeight="64.0" prefWidth="143.0" text="Questions">
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="18.0" layoutY="26.0" prefHeight="64.0" prefWidth="608.0" text="Question">
             <font>
                 <Font size="24.0" />
             </font>
