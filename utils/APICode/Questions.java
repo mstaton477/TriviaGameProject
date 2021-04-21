@@ -1,118 +1,64 @@
 package APICode;
 
-/*
- * Separates questions from query. Updated
- * Updated 4-13-21
+/**
+ * This class separates the questions from the query
+ * Updated 4-20-21
  *
  * @author Sengthida Lorvan
  */
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class Questions extends API {
-    //arrays to store parsed parts
-    public static String[] questions = new String[_questions];
-    public static String[] Question = new String[_questions];
-    public static String[] index = new String[_questions];
-    public static String[] temp = new String[_questions];
 
+    // Arrays to store parsed parts
+    public static String[] _questionArray = new String[_questions];
+    public static String[] _index = new String[_questions];
+    public static String[] _temp = new String[_questions];
 
-    public static String[] questions() {
-        makeAPICall();
+    // Final int for shifting through substring query
+    public static final int _FOURLETTERS = 33;
+    public static final int _MEDIUM = 35;
 
-        String _callAction1 = "amount=";
-        String _callAction2 = "&category=";
-        String _callAction3 = "&difficulty=";
-        String _urlString = _BASEURL + _callAction1 + _questions + _callAction2 + _category + _callAction3 + _difficulty;
-        URL _url;
+    public static String[] question() {
+        // Call method to get questions from API
+        makeApiCall();
+
         try {
-            // prints out questions
-            var question = _obj.getJSONArray("results").opt(0);
-            _url = new URL(_urlString);
-            HttpURLConnection connect = (HttpURLConnection) _url.openConnection();
-            connect.setRequestMethod("GET");
-            int _status = connect.getResponseCode();
-            if (_status != 200) {
-                System.out.println("Error: Could not get questions: " + _status);
-            } else {
-                BufferedReader _input = new BufferedReader(new InputStreamReader(connect.getInputStream()));
-                String _inputLine;
-                StringBuilder content = new StringBuilder();
-                while ((_inputLine = _input.readLine()) != null) {
-                    content.append(_inputLine);
-                }
-                _input.close();
-                connect.disconnect();
+            var _getQuestionJSONArray = _obj.getJSONArray("results").opt(0);
 
-                JSONObject _obj = new JSONObject(content.toString());
-
-                // prints out questions
-                var question = _obj.getJSONArray("results").opt(0);
-
-                // Get questions
-                for (int i = 0; i < _questions; i++) {
-                    question = _obj.getJSONArray("results").opt(i);
-                    questions[i] = question.toString();
-                }
-
-                // Remove text in front of questions
-                for (int i = 0; i < _questions; i++) {
-                    Question[i] = questions[i].substring(33);
-                }
-
-                // Gets index of next quotation mark
-                for (int i = 0; i < _questions; i++) {
-                    index[i] = String.valueOf(Question[i].indexOf("\""));
-                }
-
-                //Copy to temp
-                for (int i = 0; i < _questions; i++) {
-                    temp[i] = Question[i];
-                }
-
-                System.out.println();
-
-                // Assigns questions by itself to array
-                for (int i = 0; i < _questions; i++) {
-                    Question[i] = Question[i].substring(0, Integer.parseInt(index[i]));
-                    System.out.println("Question " + (i + 1) +": " + Question[i]);
-                    System.out.println();
-
-                    // Get questions
-                    for (int i = 0; i < _questions; i++) {
-                        question = _obj.getJSONArray("results").opt(i);
-                        questions[i] = question.toString();
-                    }
-                    // Remove text in front of questions
-                    for (int i = 0; i < _questions; i++) {
-                        Question[i] = questions[i].substring(33);
-                    }
-                    // Gets index of next quotation mark
-                    for (int i = 0; i < _questions; i++) {
-                        index[i] = String.valueOf(Question[i].indexOf("\""));
-                    }
-                    //Copy to temp
-                    for (int i = 0; i < _questions; i++){
-                        temp[i] = Question[i];
-                    }
-                    System.out.println();
-                    // Assigns questions by itself to array
-                    for (int i = 0; i < _questions; i++) {
-                        Question[i] = Question[i].substring(0, Integer.parseInt(index[i]));
-                        System.out.println("Question:" + Question[i]);
-                        System.out.println();
-                    }
-                }
-
-            } catch (Exception _ex) {
-                System.out.println("Error: " + _ex);
+            // Get questions
+            for (int i = 0; i < _questions; i++) {
+                _getQuestionJSONArray = _obj.getJSONArray("results").opt(i);
+                _questionArray[i] = _getQuestionJSONArray.toString();
             }
 
-            return Question;
+            // Removes text in front of question
+            for (int i = 0; i < _questions; i++) {
+                if (_difficulty.equals("easy") || _difficulty.equals("hard")) {
+                    _questionArray[i] = _questionArray[i].substring(_FOURLETTERS);
+                } else if (_difficulty.equals("medium")) {
+                    _questionArray[i] = _questionArray[i].substring(_MEDIUM);
+                }
+            }
+
+            // Gets index of next quotation mark
+            for (int i = 0; i < _questions; i++) {
+                _index[i] = String.valueOf(_questionArray[i].indexOf("\""));
+            }
+
+            // Copy array to temp array
+            for (int i = 0; i < _questions; i++) {
+                _temp[i] = _questionArray[i];
+            }
+
+            // Assign separated questions into array
+            for (int i = 0; i < _questions; i++) {
+                _questionArray[i] = _questionArray[i].substring(0, Integer.parseInt(_index[i]));
+                System.out.println("Question " + (i + 1) + ": " + _questionArray[i]);
+                System.out.println();
+            }
+        } catch (Exception _ex) {
+            System.out.println("Error: " + _ex);
         }
+        return _questionArray;
     }
+}
