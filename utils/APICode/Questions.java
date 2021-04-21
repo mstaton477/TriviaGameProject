@@ -1,12 +1,10 @@
 package APICode;
 
 /**
- * This class separates the questions from the query
- * Updated 4-20-21
+ * This class separates the questions from the query Updated 4-21-21
  *
  * @author Sengthida Lorvan
  */
-
 public class Questions extends API {
 
     // Arrays to store parsed parts
@@ -18,12 +16,12 @@ public class Questions extends API {
     public static final int _FOURLETTERS = 33;
     public static final int _MEDIUM = 35;
 
-    public static String[] question() {
+    protected static String[] question() {
         // Call method to get questions from API
         makeApiCall();
 
         try {
-            var _getQuestionJSONArray = _obj.getJSONArray("results").opt(0);
+            Object _getQuestionJSONArray;
 
             // Get questions
             for (int i = 0; i < _questions; i++) {
@@ -40,22 +38,16 @@ public class Questions extends API {
                 }
             }
 
+            _key = "\"";
             // Gets index of next quotation mark
-            for (int i = 0; i < _questions; i++) {
-                _index[i] = String.valueOf(_questionArray[i].indexOf("\""));
-            }
+            find(_questionArray, _index, _key);
 
             // Copy array to temp array
-            for (int i = 0; i < _questions; i++) {
-                _temp[i] = _questionArray[i];
-            }
+            store(_questionArray, _temp);
 
+            _message = "Question ";
             // Assign separated questions into array
-            for (int i = 0; i < _questions; i++) {
-                _questionArray[i] = _questionArray[i].substring(0, Integer.parseInt(_index[i]));
-                System.out.println("Question " + (i + 1) + ": " + _questionArray[i]);
-                System.out.println();
-            }
+            assign(_index, _questionArray, _message);
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
         }

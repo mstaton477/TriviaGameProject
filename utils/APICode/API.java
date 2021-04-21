@@ -1,12 +1,10 @@
 package APICode;
 
 /**
- * This class performs the API call
- * Updated 4-20-21
+ * This class performs the API call Updated 4-21-21
  *
  * @author Sengthida Lorvan
  */
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -18,7 +16,7 @@ public class API {
 
     // Storage variables
     public static String _categoryName;
-    public static String _difficulty = "medium";
+    public static String _difficulty = "hard";
     public static int _category = 9;
     public static int _questions = 10;
     public static JSONObject _obj;
@@ -32,7 +30,48 @@ public class API {
     public static final String _CALLACTION3 = "&difficulty=";
     public static final String _CALLACTION4 = "&type=multiple";
 
-    public static int category() {
+    // Variables for helper methods
+    public static String _key;
+    public static String _message;
+
+    // Helper method for finding given string indexes
+    public static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
+        for (int i = 0; i < _questions; i++) {
+            _arrayOutput[i] = String.valueOf(_arrayInput[i].indexOf(_key));
+        }
+        return _arrayOutput;
+    }
+
+    // Helper method for temporary storage
+    public static String[] store(String[] _arrayInput, String[] _arrayOutput) {
+        for (int i = 0; i < _questions; i++) {
+            _arrayOutput[i] = _arrayInput[i];
+        }
+        return _arrayOutput;
+    }
+
+    // Helper method for assigning wanted info into array
+    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message) {
+        for (int i = 0; i < _questions; i++) {
+            _arrayOutput[i] = _arrayOutput[i].substring(0, Integer.parseInt(_arrayInput[i]));
+            System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
+            System.out.println();
+        }
+    }
+    // Helper method for assigning substring to array
+    public static void setToSub(String[] _arrayOutput, String[] _arrayInput1, String[] _arrayInput2) {
+        for (int i = 0; i < _questions; i++) {
+            _arrayOutput[i] = _arrayInput1[i].substring(Integer.parseInt(_arrayInput2[i]));
+        }
+    }
+
+    public static void reduce(String[] _arrayOutput, int _index){
+        for (int i = 0; i < _questions; i++) {
+            _arrayOutput[i] = _arrayOutput[i].substring(_index);
+        }
+    }
+
+    private static int category() {
         switch (_categoryName) {
             case "General Knowledge":
                 _category = 9;
