@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SetUpQuestionsController implements Initializable {
+public class SetUpQuestions implements Initializable {
     //These items are for allowing users to choose the settings of the game.
-    @FXML private ChoiceBox categoryBox;
-    @FXML private ChoiceBox difficultyBox;
-    @FXML private ChoiceBox lengthBox;
+    @FXML private ChoiceBox<String> categoryBox;
+    @FXML private ChoiceBox<String> difficultyBox;
+    @FXML private ChoiceBox<String> lengthBox;
 
     /**
      * This sends the user back to the main view of the application.
@@ -53,22 +53,12 @@ public class SetUpQuestionsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Options for Categories
-        categoryBox.getItems().add("General Knowledge");
-        categoryBox.getItems().add("Entertainment: Music");
-        categoryBox.getItems().add("Entertainment: Video Games");
-        categoryBox.getItems().add("Science & Nature");
-        categoryBox.getItems().add("Science: Computers");
-        categoryBox.getItems().add("Science: Mathematics");
-        categoryBox.getItems().add("Entertainment: Japanese Anime & Manga");
+        categoryBox.getItems().addAll("General Knowledge", "Entertainment: Music", "Entertainment: Video Games", "Science & Nature", "Science: Computers", "Science: Mathematics", "Entertainment: Japanese Anime & Manga");
 
         //Options for difficulty
-        difficultyBox.getItems().add("Easy");
-        difficultyBox.getItems().add("Medium");
-        difficultyBox.getItems().add("Hard");
+        difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
-        lengthBox.getItems().add("Short (10)");
-        lengthBox.getItems().add("Medium (20)");
-        lengthBox.getItems().add("Long (30)");
+        lengthBox.getItems().addAll("Short (10)", "Medium (20)", "Long (30)");
     }
 }
