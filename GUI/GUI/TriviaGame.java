@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class TriviaGameController {
+public class TriviaGame {
 
 
     /**
