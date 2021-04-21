@@ -1,6 +1,13 @@
 package GUI;
 
+/**
+ * @author Jayson Williamson
+ * Updated 4/21/21
+ * This class sets up the initial view users see when launching the trivia game.
+ */
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -20,7 +27,6 @@ public class TriviaGame {
         Parent setUpQuestionsView = FXMLLoader.load(getClass().getResource("SetUpQuestions.fxml"));
         Scene setUpQuestionsViewScene = new Scene(setUpQuestionsView);
 
-        //Gets the stage information
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         window.setScene(setUpQuestionsViewScene);
@@ -30,8 +36,11 @@ public class TriviaGame {
     public void leaderboardButton(ActionEvent event){
         System.out.println("Leaderboard under construction...");
     }
+
+    //Closes the program.
+    @FXML
     public void quitButton(ActionEvent event){
-        System.out.println("Quit clicked, please click the X button in the corner for now.");
+        ((Stage)(((Node)event.getSource()).getScene().getWindow())).close();
     }
 
 }

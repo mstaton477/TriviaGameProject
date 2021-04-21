@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.QuizViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.QuizView">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
       <VBox layoutX="85.0" layoutY="100.0" prefHeight="367.0" prefWidth="228.0" spacing="10.0">
@@ -16,7 +16,7 @@
             <Label fx:id="answerCLabel" text="Label" />
             <Button mnemonicParsing="false" onAction="#answerCButton" prefHeight="108.0" prefWidth="119.0" text="C" />
          </children></VBox>
-        <Label fx:id="questionLabel" alignment="CENTER" layoutX="247.0" layoutY="26.0" prefHeight="64.0" prefWidth="143.0" text="Questions">
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="18.0" layoutY="26.0" prefHeight="64.0" prefWidth="608.0" text="Question">
             <font>
                 <Font size="24.0" />
             </font>
