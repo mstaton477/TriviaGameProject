@@ -16,12 +16,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class QuizViewController implements Initializable {
+public class QuizView implements Initializable {
+
     @FXML private Label questionLabel;
     @FXML private Label answerALabel;
     @FXML private Label answerBLabel;
     @FXML private Label answerCLabel;
     @FXML private Label answerDLabel;
+    public String _choice;
 
     public void answerAButton(ActionEvent event){
         System.out.println("Answer A Pressed");
