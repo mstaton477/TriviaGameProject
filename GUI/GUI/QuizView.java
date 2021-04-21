@@ -1,5 +1,11 @@
 package GUI;
 
+/**
+ * @author Jayson Williamson
+ * Last updated: 4/21/21
+ * This class sets up the quiz view and
+ */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +24,15 @@ import java.util.ResourceBundle;
 
 public class QuizView implements Initializable {
 
+    //Variables necessary for the quiz
     @FXML private Label questionLabel;
     @FXML private Label answerALabel;
     @FXML private Label answerBLabel;
     @FXML private Label answerCLabel;
     @FXML private Label answerDLabel;
-    public String _choice;
+    public static String _choice;
 
+    //Some method of looping same scene with new questions/answers to be added
     public void answerAButton(ActionEvent event){
         System.out.println("Answer A Pressed");
     }
@@ -43,11 +51,13 @@ public class QuizView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        questionLabel.setText("Question 1: ");
-        answerALabel.setText("This is an answer");
-        answerBLabel.setText("This is an answer");
-        answerCLabel.setText("This is an answer");
-        answerDLabel.setText("This is an answer");
+
+        //Made this way for testing purposes currently, questions/answers need to be grabbed from elsewhere
+        questionLabel.setText("Question 1: Choose any answer");
+        answerALabel.setText("This is the answer for A");
+        answerBLabel.setText("This is the answer for B");
+        answerCLabel.setText("This is the answer for C");
+        answerDLabel.setText("This is the answer for D");
 
 
     }
