@@ -1,7 +1,8 @@
 package APICode;
 
 /**
- * Separates correct answers and incorrect answers from query. Updated 4-21-21
+ * Separates correct answers and incorrect answers from query.
+ * Updated 4-24-21
  *
  * @author Sengthida Lorvan
  */
@@ -58,7 +59,12 @@ public class Answers extends Questions {
         // Get rid of quotations surrounding the answers.
         for (int i = 0; i < _questions; i++) {
             _incorrectAnswer[i] = _incorrectAnswer[i].replace("\"", "");
-            System.out.println(_incorrectAnswer[i]);
+        }
+
+        // Display incorrect answers
+        _message = "Incorrect Answers for Question ";
+        for (int i = 0; i < _questions; i++) {
+            System.out.println(_message + (i + 1) + ": " + _incorrectAnswer[i]);
             System.out.println();
         }
         return _incorrectAnswer;

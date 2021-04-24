@@ -1,10 +1,12 @@
 package APICode;
 
 /**
- * This class performs the API call Updated 4-21-21
+ * This class performs the API call.
+ * Updated 4-24-21
  *
  * @author Sengthida Lorvan
  */
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -15,9 +17,10 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    public static String _categoryName;
+    public static String _catName = "General Knowledge";
     public static String _difficulty = "hard";
-    public static int _category = 9;
+    public static Category cat;
+    public static int _category;
     public static int _questions = 10;
     public static JSONObject _obj;
 
@@ -33,6 +36,11 @@ public class API {
     // Variables for helper methods
     public static String _key;
     public static String _message;
+
+    // Enumeration of categories
+    enum Category {
+        NINE, TWELVE, FIFTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, THIRTYONE
+    }
 
     // Helper method for finding given string indexes
     public static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
@@ -58,6 +66,7 @@ public class API {
             System.out.println();
         }
     }
+
     // Helper method for assigning substring to array
     public static void setToSub(String[] _arrayOutput, String[] _arrayInput1, String[] _arrayInput2) {
         for (int i = 0; i < _questions; i++) {
@@ -65,33 +74,59 @@ public class API {
         }
     }
 
-    public static void reduce(String[] _arrayOutput, int _index){
+    public static void reduce(String[] _arrayOutput, int _index) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = _arrayOutput[i].substring(_index);
         }
     }
 
-    private static int category() {
-        switch (_categoryName) {
+    // Switches the category name with enumerated case
+    private static Category categoryName() {
+        switch (_catName) {
             case "General Knowledge":
-                _category = 9;
-                break;
-            case "Entertainment: Music":
-                _category = 12;
+                cat = Category.NINE;
                 break;
             case "Entertainment: Video Games":
-                _category = 15;
+                cat = Category.FIFTEEN;
                 break;
             case "Science & Nature":
-                _category = 17;
+                cat = Category.SEVENTEEN;
                 break;
             case "Science: Computers":
-                _category = 18;
+                cat = Category.EIGHTEEN;
                 break;
             case "Science: Mathematics":
-                _category = 19;
+                cat = Category.NINETEEN;
                 break;
             case "Entertainment: Japanese Anime & Manga":
+                cat = Category.THIRTYONE;
+                break;
+        }
+        return cat;
+    }
+
+    // Switches enumerated case with the integer version
+    private static int category() {
+        switch (cat) {
+            case NINE:
+                _category = 9;
+                break;
+            case TWELVE:
+                _category = 12;
+                break;
+            case FIFTEEN:
+                _category = 15;
+                break;
+            case SEVENTEEN:
+                _category = 17;
+                break;
+            case EIGHTEEN:
+                _category = 18;
+                break;
+            case NINETEEN:
+                _category = 19;
+                break;
+            case THIRTYONE:
                 _category = 31;
                 break;
         }
