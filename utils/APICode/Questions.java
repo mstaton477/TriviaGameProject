@@ -1,7 +1,8 @@
 package APICode;
 
 /**
- * This class separates the questions from the query Updated 4-21-21
+ * This class separates the questions from the query
+ * Updated 4-21-21
  *
  * @author Sengthida Lorvan
  */
