@@ -1,7 +1,8 @@
 package APICode;
 
 /**
- * Separates correct answers and incorrect answers from query. Updated 4-21-21
+ * Separates correct answers and incorrect answers from query.
+ * Updated 4-24-21
  *
  * @author Sengthida Lorvan
  */
@@ -27,8 +28,10 @@ public class Answers extends Questions {
         store(_correctAnswer, _temp);
 
         _message = "Correct Answer for Question ";
+        _num = _ONE;
         // Assigns correct answer by itself into array
-        assign(_index, _correctAnswer, _message);
+        assign(_index, _correctAnswer, _message,_num);
+
 
         // Sets leftover substring into this array
         for (int i = 0; i < _questions; i++) {
@@ -58,9 +61,8 @@ public class Answers extends Questions {
         // Get rid of quotations surrounding the answers.
         for (int i = 0; i < _questions; i++) {
             _incorrectAnswer[i] = _incorrectAnswer[i].replace("\"", "");
-            System.out.println(_incorrectAnswer[i]);
-            System.out.println();
         }
+
         return _incorrectAnswer;
     }
 }

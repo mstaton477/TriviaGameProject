@@ -10,12 +10,16 @@ import APICode.*;
 public class Player {
 
     public static int playerScore;
-    protected String categoryName;
+    protected static String categoryName;
     public static int category;
     public static int gameLength;
     public static String gameDifficulty;
     public static String playerName;
 
+
+    enum NamesOfCategory {
+        GENERAL_KNOWLEDGE, MUSIC, VIDEO_GAMES, SCIENCE, COMPUTERS, FILM, ANIME_AND_MANGA
+    }
 
     public Player(String playerName, String gameDifficulty, int gameLength, String categoryName, int playerScore) {
         this.playerName = playerName;
@@ -26,28 +30,28 @@ public class Player {
     }
 
     //When saving the data to the Database category will be saved as a String not an int.
-    public String getCategoryName(int _category) {
+    public static String getCategoryName(int _category) {
         switch (_category) {
             case 9:
-                categoryName = "General Knowledge";
+                categoryName = String.valueOf(NamesOfCategory.GENERAL_KNOWLEDGE);
                 break;
             case 12:
-                categoryName = "Entertainment: Music";
+                categoryName = String.valueOf(NamesOfCategory.MUSIC);
                 break;
             case 15:
-                categoryName = "Entertainment: Video Games";
+                categoryName =String.valueOf(NamesOfCategory.VIDEO_GAMES);
                 break;
             case 17:
-                categoryName = "Science & Nature";
+                categoryName = String.valueOf(NamesOfCategory.SCIENCE);
                 break;
             case 18:
-                categoryName = "Science: Computers";
+                categoryName = String.valueOf(NamesOfCategory.COMPUTERS);
                 break;
-            case 19:
-                categoryName = "Science: Mathematics";
+            case 11:
+                categoryName = String.valueOf(NamesOfCategory.FILM);
                 break;
             case 31:
-                categoryName = "Entertainment: Japanese Anime & Manga";
+                categoryName = String.valueOf(NamesOfCategory.ANIME_AND_MANGA);
                 break;
         }
         return categoryName;
@@ -55,8 +59,8 @@ public class Player {
 
     // ================================ GETTERS ====================================
 
-    public String getCategory() {
-        return API._categoryName;
+    public int getCategory() {
+        return API._category;
     }
 
     public int getPlayerScore() {

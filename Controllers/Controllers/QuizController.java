@@ -11,8 +11,19 @@ import GUI.QuizView;
 import GUI.SetUpQuestions;
 import Models.*;
 
+import static Models.Quiz.*;
+
 
 public class QuizController {
+
+    public void callCheckIfCorrect(){
+        Quiz.checkIfCorrect();
+    }
+
+    public void callCalculateScore(){
+        Quiz.calculateScore();
+    }
+
 
     // ================================ GETTERS ====================================
 

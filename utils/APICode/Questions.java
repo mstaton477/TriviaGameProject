@@ -1,7 +1,8 @@
 package APICode;
 
 /**
- * This class separates the questions from the query Updated 4-21-21
+ * This class separates the questions from the query
+ * Updated 4-26-21
  *
  * @author Sengthida Lorvan
  */
@@ -46,8 +47,10 @@ public class Questions extends API {
             store(_questionArray, _temp);
 
             _message = "Question ";
+            _num = _ONE;
             // Assign separated questions into array
-            assign(_index, _questionArray, _message);
+            assign(_index, _questionArray, _message, _num);
+
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
         }

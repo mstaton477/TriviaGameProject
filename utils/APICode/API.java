@@ -1,7 +1,7 @@
 package APICode;
 
 /**
- * This class performs the API call Updated 4-21-21
+ * This class performs the API call. Updated 4-26-21
  *
  * @author Sengthida Lorvan
  */
@@ -15,9 +15,10 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    public static String _categoryName;
-    public static String _difficulty = "hard";
-    public static int _category = 9;
+    protected static String _catName = "General Knowledge";
+    protected static String _difficulty = "easy";
+    private static Category cat;
+    public static int _category;
     public static int _questions = 10;
     public static JSONObject _obj;
 
@@ -26,13 +27,21 @@ public class API {
 
     // Url parts
     public static final String _CALLACTION1 = "amount=";
-    public static final String _CALLACTION2 = "&category";
+    public static final String _CALLACTION2 = "&category=";
     public static final String _CALLACTION3 = "&difficulty=";
     public static final String _CALLACTION4 = "&type=multiple";
 
     // Variables for helper methods
     public static String _key;
     public static String _message;
+    public static int _num;
+    public static final int _ONE = 1;
+    public static final int _TWO = 2;
+
+    // Enumeration of categories
+    enum Category {
+        NINE, ELEVEN, TWELVE, FIFTEEN, SEVENTEEN, EIGHTEEN, THIRTYONE
+    }
 
     // Helper method for finding given string indexes
     public static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
@@ -51,13 +60,23 @@ public class API {
     }
 
     // Helper method for assigning wanted info into array
-    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message) {
-        for (int i = 0; i < _questions; i++) {
-            _arrayOutput[i] = _arrayOutput[i].substring(0, Integer.parseInt(_arrayInput[i]));
-            System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
-            System.out.println();
+    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message, int _num) {
+        switch (_num) {
+            case 1:
+                for (int i = 0; i < _questions; i++) {
+                    _arrayOutput[i] = _arrayOutput[i].substring(0, Integer.parseInt(_arrayInput[i]));
+                }
+                break;
+            case 2:
+                for (int i = 0; i < _questions; i++) {
+                    _arrayOutput[i] = _arrayInput[i];
+                    System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
+                    System.out.println();
+                }
+                break;
         }
     }
+
     // Helper method for assigning substring to array
     public static void setToSub(String[] _arrayOutput, String[] _arrayInput1, String[] _arrayInput2) {
         for (int i = 0; i < _questions; i++) {
@@ -65,33 +84,62 @@ public class API {
         }
     }
 
-    public static void reduce(String[] _arrayOutput, int _index){
+    public static void reduce(String[] _arrayOutput, int _index) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = _arrayOutput[i].substring(_index);
         }
     }
 
-    private static int category() {
-        switch (_categoryName) {
+    // Switches the category name with enumerated case
+    private static Category categoryName() {
+        switch (_catName) {
             case "General Knowledge":
-                _category = 9;
+                cat = Category.NINE;
+                break;
+            case "Entertainment: Film":
+                cat = Category.ELEVEN;
                 break;
             case "Entertainment: Music":
-                _category = 12;
+                cat = Category.TWELVE;
                 break;
             case "Entertainment: Video Games":
-                _category = 15;
+                cat = Category.FIFTEEN;
                 break;
             case "Science & Nature":
-                _category = 17;
+                cat = Category.SEVENTEEN;
                 break;
             case "Science: Computers":
-                _category = 18;
-                break;
-            case "Science: Mathematics":
-                _category = 19;
+                cat = Category.EIGHTEEN;
                 break;
             case "Entertainment: Japanese Anime & Manga":
+                cat = Category.THIRTYONE;
+                break;
+        }
+        return cat;
+    }
+
+    // Switches enumerated case with the integer version
+    private static int category() {
+        switch (cat) {
+            case NINE:
+                _category = 9;
+                break;
+            case ELEVEN:
+                _category = 11;
+                break;
+            case TWELVE:
+                _category = 12;
+                break;
+            case FIFTEEN:
+                _category = 15;
+                break;
+            case SEVENTEEN:
+                _category = 17;
+                break;
+            case EIGHTEEN:
+                _category = 18;
+                break;
+            case THIRTYONE:
                 _category = 31;
                 break;
         }
@@ -99,6 +147,8 @@ public class API {
     }
 
     public static void makeApiCall() {
+        categoryName();
+        category();
         String _urlString = _BASEURL + _CALLACTION1 + _questions + _CALLACTION2 + _category + _CALLACTION3 + _difficulty + _CALLACTION4;
         URL _url;
         try {
