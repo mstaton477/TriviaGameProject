@@ -1,12 +1,10 @@
 package APICode;
 
 /**
- * This class performs the API call.
- * Updated 4-24-21
+ * This class performs the API call. Updated 4-26-21
  *
  * @author Sengthida Lorvan
  */
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -17,9 +15,9 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    public static String _catName = "General Knowledge";
-    public static String _difficulty = "hard";
-    public static Category cat;
+    protected static String _catName = "General Knowledge";
+    protected static String _difficulty = "easy";
+    private static Category cat;
     public static int _category;
     public static int _questions = 10;
     public static JSONObject _obj;
@@ -29,17 +27,20 @@ public class API {
 
     // Url parts
     public static final String _CALLACTION1 = "amount=";
-    public static final String _CALLACTION2 = "&category";
+    public static final String _CALLACTION2 = "&category=";
     public static final String _CALLACTION3 = "&difficulty=";
     public static final String _CALLACTION4 = "&type=multiple";
 
     // Variables for helper methods
     public static String _key;
     public static String _message;
+    public static int _num;
+    public static final int _ONE = 1;
+    public static final int _TWO = 2;
 
     // Enumeration of categories
     enum Category {
-        NINE, TWELVE, FIFTEEN, SEVENTEEN, EIGHTEEN, NINETEEN, THIRTYONE
+        NINE, ELEVEN, TWELVE, FIFTEEN, SEVENTEEN, EIGHTEEN, THIRTYONE
     }
 
     // Helper method for finding given string indexes
@@ -59,11 +60,20 @@ public class API {
     }
 
     // Helper method for assigning wanted info into array
-    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message) {
-        for (int i = 0; i < _questions; i++) {
-            _arrayOutput[i] = _arrayOutput[i].substring(0, Integer.parseInt(_arrayInput[i]));
-            System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
-            System.out.println();
+    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message, int _num) {
+        switch (_num) {
+            case 1:
+                for (int i = 0; i < _questions; i++) {
+                    _arrayOutput[i] = _arrayOutput[i].substring(0, Integer.parseInt(_arrayInput[i]));
+                }
+                break;
+            case 2:
+                for (int i = 0; i < _questions; i++) {
+                    _arrayOutput[i] = _arrayInput[i];
+                    System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
+                    System.out.println();
+                }
+                break;
         }
     }
 
@@ -86,6 +96,12 @@ public class API {
             case "General Knowledge":
                 cat = Category.NINE;
                 break;
+            case "Entertainment: Film":
+                cat = Category.ELEVEN;
+                break;
+            case "Entertainment: Music":
+                cat = Category.TWELVE;
+                break;
             case "Entertainment: Video Games":
                 cat = Category.FIFTEEN;
                 break;
@@ -94,9 +110,6 @@ public class API {
                 break;
             case "Science: Computers":
                 cat = Category.EIGHTEEN;
-                break;
-            case "Science: Mathematics":
-                cat = Category.NINETEEN;
                 break;
             case "Entertainment: Japanese Anime & Manga":
                 cat = Category.THIRTYONE;
@@ -111,6 +124,9 @@ public class API {
             case NINE:
                 _category = 9;
                 break;
+            case ELEVEN:
+                _category = 11;
+                break;
             case TWELVE:
                 _category = 12;
                 break;
@@ -123,9 +139,6 @@ public class API {
             case EIGHTEEN:
                 _category = 18;
                 break;
-            case NINETEEN:
-                _category = 19;
-                break;
             case THIRTYONE:
                 _category = 31;
                 break;
@@ -134,6 +147,8 @@ public class API {
     }
 
     public static void makeApiCall() {
+        categoryName();
+        category();
         String _urlString = _BASEURL + _CALLACTION1 + _questions + _CALLACTION2 + _category + _CALLACTION3 + _difficulty + _CALLACTION4;
         URL _url;
         try {

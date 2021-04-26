@@ -28,8 +28,10 @@ public class Answers extends Questions {
         store(_correctAnswer, _temp);
 
         _message = "Correct Answer for Question ";
+        _num = _ONE;
         // Assigns correct answer by itself into array
-        assign(_index, _correctAnswer, _message);
+        assign(_index, _correctAnswer, _message,_num);
+
 
         // Sets leftover substring into this array
         for (int i = 0; i < _questions; i++) {
@@ -61,12 +63,6 @@ public class Answers extends Questions {
             _incorrectAnswer[i] = _incorrectAnswer[i].replace("\"", "");
         }
 
-        // Display incorrect answers
-        _message = "Incorrect Answers for Question ";
-        for (int i = 0; i < _questions; i++) {
-            System.out.println(_message + (i + 1) + ": " + _incorrectAnswer[i]);
-            System.out.println();
-        }
         return _incorrectAnswer;
     }
 }
