@@ -33,8 +33,14 @@ public class TriviaGame {
         window.show();
     }
 
-    public void leaderboardButton(ActionEvent event){
-        System.out.println("Leaderboard under construction...");
+    public void leaderboardButton(ActionEvent event) throws IOException{
+        Parent leaderboardView = FXMLLoader.load(getClass().getResource("LeaderboardView.fxml"));
+        Scene leaderboardViewScene = new Scene(leaderboardView);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(leaderboardViewScene);
+        window.show();
     }
 
     //Closes the program.

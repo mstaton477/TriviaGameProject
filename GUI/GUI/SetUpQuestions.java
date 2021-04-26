@@ -48,7 +48,7 @@ public class SetUpQuestions implements Initializable {
      * @param event
      * @throws IOException
      */
-    public void beginGameButton(ActionEvent event)throws IOException{
+    public void beginGameButton(ActionEvent event) throws IOException{
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
         Scene beginGameViewScene = new Scene(beginGameView);
 
