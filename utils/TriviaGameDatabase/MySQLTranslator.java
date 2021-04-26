@@ -132,7 +132,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
         // the return false.
         return (result > 0);
     }
-    
+
 
 
         /**
@@ -243,15 +243,17 @@ public class MySQLTranslator implements DBTranslatorInterface {
 
         try {
             statement = conn.createStatement();
-            String query = "SELECT playerScore, name, id,gameDifficulty, gameLength,  category FROM " + _table + " WHERE active = 1 ORDER BY " + _orderByParameter + " DESC ";
+            //Initializes a query that retrieves playerScore, name, difficulty, length , and category in descending order
+            // the player properties must be active in order to be retrieved.
+            String query = "SELECT playerScore, name, gameDifficulty, gameLength, category FROM " + _table + " WHERE active = 1 ORDER BY " + _orderByParameter + " DESC ";
             resultSet = statement.executeQuery(query);
             //A loop that gets the properties of each row in the database and stores them in an Arraylist of Hashmaps in Descending order
             while (resultSet.next()) {
                 ResultSetMetaData data = resultSet.getMetaData();
                 int count = data.getColumnCount();
-                for (int j = 1; j <= count-5; j++) {
+                for (int j = 1; j <= count-4; j++) {
                     HashMap playerProperties = new HashMap();
-                    for(int i = 1; i <=6; i++){
+                    for(int i = 1; i <=5; i++){
                         String columnName = data.getColumnName(i);
                         playerProperties.put(columnName, resultSet.getObject(i));
                     }
