@@ -52,21 +52,21 @@ public class QuizController {
 
     // ================================ SETTERS ====================================
 
-    public void setGameLength(int _gameLength){
+    public static void setGameLength(int _gameLength){
       Player.gameLength = _gameLength;
     }
 
-    public void setCategory(int _category){
+    public static void setCategory(int _category){
         Player.category = _category;
     }
 
 
-    public void setGameDifficulty(String _gameDifficulty){
+    public static void setGameDifficulty(String _gameDifficulty){
         Player.gameDifficulty = _gameDifficulty;
     }
 
 
-    public void setPlayerName(String _playerName){
+    public static void setPlayerName(String _playerName){
         Player.playerName = _playerName;
     }
 }

@@ -1,5 +1,11 @@
 package GUI;
 
+/**
+ * @author Jayson Williamson
+ * Updated 4/21/21
+ * This class sets up the view for the leaderboard scene.
+ */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
