@@ -23,7 +23,7 @@ public class API {
 
     // Storage variables
     protected static String _catName = "General Knowledge";
-    protected static String _difficulty = "easy";
+    public static String _difficulty = "easy";
     private static Category cat;
     public static int _category;
     public static int _questions = 10;

@@ -8,7 +8,7 @@ package APICode;
  */
 public class Answers extends Questions {
 
-    protected static String[] _correctAnswer = new String[_questions];
+    public static String[] _correctAnswer = new String[_questions];
     protected static String[] _incorrectAnswer = new String[_questions];
 
     protected static final int _CANSSUB = 20;
