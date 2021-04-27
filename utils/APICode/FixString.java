@@ -1,18 +1,17 @@
 package APICode;
 
-import static APICode.SplitAndJoin.separate;
-
 /**
  * This class fix the formatting of questions and answers that includes
- * quotation marks and apostrophes Updated 4-26-21
+ * quotation marks and apostrophes Updated 4-27-21
  *
  * @author Sengthida Lorvan
  */
+
 public class FixString extends Answers {
 
-    public static String[] _tempArray = new String[_questions];
+    protected static String[] _tempArray = new String[_questions];
 
-    protected static String[] replaceHtml(String _key) {
+    private static String[] replaceHtml(String _key) {
         switch (_key) {
             case "&#039;":
                 for (int i = 0; i < _questions; i++) {
@@ -143,7 +142,7 @@ public class FixString extends Answers {
         return _tempArray;
     }
 
-    public static String[] fixQuestions() {
+    protected static String[] fixQuestions() {
         store(_questionArray, _tempArray);
 
         for (int i = 0; i < _questions; i++) {
@@ -200,7 +199,7 @@ public class FixString extends Answers {
         return _questionArray;
     }
 
-    public static String[] fixIncorrectAnswers() {
+    protected static String[] fixIncorrectAnswers() {
         store(_incorrectAnswer, _tempArray);
 
         for (int i = 0; i < _questions; i++) {
@@ -289,7 +288,7 @@ public class FixString extends Answers {
         return _incorrectAnswer;
     }
 
-    public static String[] fixCorrectAnswers() {
+    protected static String[] fixCorrectAnswers() {
         store(_correctAnswer, _tempArray);
 
         for (int i = 0; i < _questions; i++) {
@@ -348,15 +347,5 @@ public class FixString extends Answers {
         assign(_tempArray, _correctAnswer, _message, _num);
 
         return _correctAnswer;
-    }
-
-    public static void main(String[] args) {
-        question();
-        correctAnswers();
-        incorrectAnswers();
-        fixQuestions();
-        fixCorrectAnswers();
-        fixIncorrectAnswers();
-        separate();
     }
 }
