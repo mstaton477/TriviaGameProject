@@ -2,17 +2,17 @@ package APICode;
 
 /**
  * Separates correct answers and incorrect answers from query.
- * Updated 4-24-21
+ * Updated 4-27-21
  *
  * @author Sengthida Lorvan
  */
 public class Answers extends Questions {
 
-    public static String[] _correctAnswer = new String[_questions];
-    public static String[] _incorrectAnswer = new String[_questions];
+    protected static String[] _correctAnswer = new String[_questions];
+    protected static String[] _incorrectAnswer = new String[_questions];
 
-    public static final int _CANSSUB = 20;
-    public static final int _IANSSUB = 23;
+    protected static final int _CANSSUB = 20;
+    protected static final int _IANSSUB = 23;
 
     protected static String[] correctAnswers() {
         // Gets text after questions

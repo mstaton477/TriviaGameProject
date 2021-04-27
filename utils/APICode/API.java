@@ -1,10 +1,17 @@
 package APICode;
 
 /**
- * This class performs the API call. Updated 4-26-21
+ * This class performs the API call. Updated 4-27-21
  *
  * @author Sengthida Lorvan
  */
+import static APICode.Answers.correctAnswers;
+import static APICode.Answers.incorrectAnswers;
+import static APICode.FixString.fixCorrectAnswers;
+import static APICode.FixString.fixIncorrectAnswers;
+import static APICode.FixString.fixQuestions;
+import static APICode.Questions.question;
+import static APICode.SplitAndJoin.separate;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -44,7 +51,7 @@ public class API {
     }
 
     // Helper method for finding given string indexes
-    public static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
+    protected static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = String.valueOf(_arrayInput[i].indexOf(_key));
         }
@@ -52,7 +59,7 @@ public class API {
     }
 
     // Helper method for temporary storage
-    public static String[] store(String[] _arrayInput, String[] _arrayOutput) {
+    protected static String[] store(String[] _arrayInput, String[] _arrayOutput) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = _arrayInput[i];
         }
@@ -60,7 +67,7 @@ public class API {
     }
 
     // Helper method for assigning wanted info into array
-    public static void assign(String[] _arrayInput, String[] _arrayOutput, String _message, int _num) {
+    protected static void assign(String[] _arrayInput, String[] _arrayOutput, String _message, int _num) {
         switch (_num) {
             case 1:
                 for (int i = 0; i < _questions; i++) {
@@ -78,20 +85,20 @@ public class API {
     }
 
     // Helper method for assigning substring to array
-    public static void setToSub(String[] _arrayOutput, String[] _arrayInput1, String[] _arrayInput2) {
+    protected static void setToSub(String[] _arrayOutput, String[] _arrayInput1, String[] _arrayInput2) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = _arrayInput1[i].substring(Integer.parseInt(_arrayInput2[i]));
         }
     }
 
-    public static void reduce(String[] _arrayOutput, int _index) {
+    protected static void reduce(String[] _arrayOutput, int _index) {
         for (int i = 0; i < _questions; i++) {
             _arrayOutput[i] = _arrayOutput[i].substring(_index);
         }
     }
 
     // Switches the category name with enumerated case
-    private static Category categoryName() {
+    public static Category categoryName() {
         switch (_catName) {
             case "General Knowledge":
                 cat = Category.NINE;
@@ -174,5 +181,19 @@ public class API {
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
         }
+    }
+
+    public static void run(){
+        question();
+        correctAnswers();
+        incorrectAnswers();
+        fixQuestions();
+        fixCorrectAnswers();
+        fixIncorrectAnswers();
+        separate();
+    }
+
+    public static void main(String[] args) {
+        run();
     }
 }

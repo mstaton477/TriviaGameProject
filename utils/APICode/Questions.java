@@ -2,20 +2,20 @@ package APICode;
 
 /**
  * This class separates the questions from the query
- * Updated 4-26-21
+ * Updated 4-27-21
  *
  * @author Sengthida Lorvan
  */
 public class Questions extends API {
 
     // Arrays to store parsed parts
-    public static String[] _questionArray = new String[_questions];
-    public static String[] _index = new String[_questions];
-    public static String[] _temp = new String[_questions];
+    protected static String[] _questionArray = new String[_questions];
+    protected static String[] _index = new String[_questions];
+    protected static String[] _temp = new String[_questions];
 
     // Final int for shifting through substring query
-    public static final int _FOURLETTERS = 33;
-    public static final int _MEDIUM = 35;
+    protected static final int _FOURLETTERS = 33;
+    protected static final int _MEDIUM = 35;
 
     protected static String[] question() {
         // Call method to get questions from API
