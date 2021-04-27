@@ -20,12 +20,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Controllers.*;
+
 public class SetUpQuestions implements Initializable {
 
     //These items are for allowing users to choose the settings of the game.
-    @FXML private ChoiceBox<String> categoryBox;
-    @FXML private ChoiceBox<String> difficultyBox;
-    @FXML private ChoiceBox<String> lengthBox;
+    @FXML private ChoiceBox<String> _categoryBox;
+    @FXML private ChoiceBox<String> _difficultyBox;
+    @FXML private ChoiceBox<Integer> _lengthBox;
+    @FXML private TextField _nameTextField;
+
+    //
+    public String _categoryChoice;
+    private String _difficultyChoice;
+    private Integer _lengthChoice;
+    private String _name;
 
     /**
      * This sends the user back to the initial view of the application.
@@ -44,11 +53,26 @@ public class SetUpQuestions implements Initializable {
 
     /**
      * This sends the user to the next page and allows them to play the game. Will grab
-     * info from choiceBox for each setting and change the settings accordingly
+     * info from choice boxes for each setting to send to controller accordingly.
      * @param event
      * @throws IOException
      */
     public void beginGameButton(ActionEvent event) throws IOException{
+
+        //Gets the value from each different choice box for use later
+        _categoryChoice = _categoryBox.getValue();
+        _difficultyChoice = _difficultyBox.getValue();
+        _lengthChoice = _lengthBox.getValue();
+
+        //Gets the value from the name text area for use later
+        _name = _nameTextField.getText();
+
+        //QuizController.setCategory(_categoryChoice);
+        QuizController.setGameDifficulty(_difficultyChoice);
+        QuizController.setGameLength(_lengthChoice);
+        QuizController.setPlayerName(_name);
+
+        //Loads the QuizView scene
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
         Scene beginGameViewScene = new Scene(beginGameView);
 
@@ -56,22 +80,28 @@ public class SetUpQuestions implements Initializable {
 
         window.setScene(beginGameViewScene);
         window.show();
+
+
+        System.out.println(_categoryChoice);
+        System.out.println(_difficultyChoice);
+        System.out.println(_lengthChoice);
+        System.out.println(_name);
+
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Options for Categories
-        categoryBox.getItems().addAll("General Knowledge", "Entertainment: Music", "Entertainment: Video Games",
-                "Science & Nature", "Science: Computers", "Science: Mathematics", "Entertainment: Japanese Anime & Manga");
+        _categoryBox.getItems().addAll("General Knowledge", "Science & Nature", "Science: Computers",
+                "Entertainment: Music", "Entertainment: Video Games","Entertainment: Film",
+                "Entertainment: Japanese Anime & Manga");
 
         //Options for difficulty
-        difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
+        _difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
-        lengthBox.getItems().addAll("Short (10)", "Medium (20)", "Long (30)");
+        _lengthBox.getItems().addAll(10, 20, 30);
 
-        //Takes what is in the text field for the user's name and retrieves it for later use.
-        TextField nameField = new TextField();
-        String name = nameField.getText();
     }
 }

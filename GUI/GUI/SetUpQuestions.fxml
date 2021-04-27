@@ -20,11 +20,11 @@
                   <Label layoutX="67.0" layoutY="72.0" text="Categories" underline="true" />
                   <Label layoutX="238.0" layoutY="72.0" text="Game Difficulty" underline="true" />
                   <Label layoutX="60.0" layoutY="183.0" text="Game Length" underline="true" />
-                  <TextField layoutX="204.0" layoutY="211.0" />
+                  <TextField fx:id="_nameTextField" layoutX="204.0" layoutY="211.0" />
                   <Label layoutX="244.0" layoutY="183.0" text="Enter Name" underline="true" />
-                  <ChoiceBox fx:id="categoryBox" layoutX="21.0" layoutY="99.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="difficultyBox" layoutX="201.0" layoutY="99.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="lengthBox" layoutX="21.0" layoutY="211.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="_categoryBox" layoutX="21.0" layoutY="99.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="_difficultyBox" layoutX="201.0" layoutY="99.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="_lengthBox" layoutX="21.0" layoutY="211.0" prefWidth="150.0" />
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="334.0">
                <children>

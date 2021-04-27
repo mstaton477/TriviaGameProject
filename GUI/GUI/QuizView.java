@@ -3,7 +3,7 @@ package GUI;
 /**
  * @author Jayson Williamson
  * Last updated: 4/21/21
- * This class sets up the quiz view and
+ * This class sets up the quiz view and reloads the view again with different variables
  */
 
 import javafx.event.ActionEvent;
@@ -63,20 +63,20 @@ public class QuizView implements Initializable {
         System.out.println(labelDText);
     }
 
-    public void looper(){
 
-    }
-
+    /*
     public void displayQuestion(String _question, ArrayList<String> _choices){
 
         //Should have question object that contains information about question and answers
         questionLabel.setText(_question);
         answerALabel.setText(_choices.get(0));
-        answerBLabel.setText("This is the answer for B");
-        answerCLabel.setText("This is the answer for C");
-        answerDLabel.setText("This is the answer for D");
+        answerBLabel.setText(_choices.get(1));
+        answerCLabel.setText(_choices.get(2));
+        answerDLabel.setText(_choices.get(3));
 
     }
+
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
