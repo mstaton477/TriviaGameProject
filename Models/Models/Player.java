@@ -21,6 +21,10 @@ public class Player {
         GENERAL_KNOWLEDGE, MUSIC, VIDEO_GAMES, SCIENCE, COMPUTERS, FILM, ANIME_AND_MANGA
     }
 
+    public Player() {
+
+    }
+
     public Player(String playerName, String gameDifficulty, int gameLength, String categoryName, int playerScore) {
         this.playerName = playerName;
         this.gameDifficulty = gameDifficulty;
@@ -39,7 +43,7 @@ public class Player {
                 categoryName = String.valueOf(NamesOfCategory.MUSIC);
                 break;
             case 15:
-                categoryName =String.valueOf(NamesOfCategory.VIDEO_GAMES);
+                categoryName = String.valueOf(NamesOfCategory.VIDEO_GAMES);
                 break;
             case 17:
                 categoryName = String.valueOf(NamesOfCategory.SCIENCE);
@@ -59,45 +63,51 @@ public class Player {
 
     // ================================ GETTERS ====================================
 
-    public int getCategory() {
+    public static int getCategory() {
         return API._category;
     }
 
-    public int getPlayerScore() {
+
+    public static int getPlayerScore() {
         return playerScore;
     }
 
-    public int getGameLength() {
+    public static int getGameLength() {
         return API._questions;
     }
 
-    public String getGameDifficulty() {
+    public static String getGameDifficulty() {
         return API._difficulty;
     }
 
-    public String getName() {
+    public static String getName() {
         return playerName;
     }
 
     // ================================ SETTERS ====================================
 
-    public void setCategory(int _category) {
-        this.category = _category;
+    public static void setCategory(int _category) {
+        API._category = _category;
     }
 
-    public void setPlayerScore(int _playerScore) {
-        this.playerScore = _playerScore;
+    public static void setPlayerScore(int _playerScore) {
+        playerScore = _playerScore;
     }
 
-    public void setGameLength(int _gameLength) {
-        this.gameLength = _gameLength;
+    public static void setGameLength(int _gameLength) {
+        API._questions = _gameLength;
     }
 
-    public void setGameDifficulty(String _gameDifficulty) {
-        this.gameDifficulty = _gameDifficulty;
+    public static void setGameDifficulty(String _gameDifficulty) {
+        API._difficulty = _gameDifficulty;
     }
 
-    public void setName(String _name) {
-        this.playerName = _name;
+    public static void setName(String _name) {
+        playerName = _name;
     }
+    public static void setCategoryName(String categoryName){
+        categoryName = API._catName;
+    }
+
+
 }
