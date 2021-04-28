@@ -2,6 +2,7 @@ package TriviaGameDatabase;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public abstract class DataObject extends DataFactory {
     protected String uuid;
     protected String name = "";
     protected String active = "1";
+    protected Timestamp lastUpdated = null;
 
     public DataObject() {
         this.setUuid(DataObject.generateUuid());

@@ -12,10 +12,11 @@ public class MySQLTranslator implements DBTranslatorInterface {
     private static String db_URL = "jdbc:mysql://35.185.120.36:3306/Trivia-game";
     private static String db_Username = "root";
     private static String db_Password = "750463832";
-    Connection conn = null;
-    Statement statement = null;
-    PreparedStatement pStatement = null;
-    ResultSet resultSet = null;
+    private static final int NUMBEROFCOLUMNSRETRIEVED = 6;
+    private static Connection conn = null;
+    private static Statement statement = null;
+    private static PreparedStatement pStatement = null;
+    private static ResultSet resultSet = null;
 
     // Change this to true to just print out the queries and not execute them.
     private static final Boolean TEST_MODE = false;
@@ -245,20 +246,18 @@ public class MySQLTranslator implements DBTranslatorInterface {
             statement = conn.createStatement();
             //Initializes a query that retrieves playerScore,name, difficulty,length ,and category in descending order
             // the player properties must be active in order to be retrieved.
-            String query = "SELECT playerScore, name, gameDifficulty, gameLength, category FROM " + _table + " WHERE active = 1 ORDER BY " + _orderByParameter + " DESC ";
+            String query = "SELECT playerScore, name, gameDifficulty, gameLength, category, lastUpdated FROM " + _table +
+                    " WHERE active = 1 ORDER BY " + _orderByParameter + " DESC ";
             resultSet = statement.executeQuery(query);
             //A loop that gets the properties of each row in the database and stores them in an Arraylist of Hashmaps in Descending order
             while (resultSet.next()) {
                 ResultSetMetaData data = resultSet.getMetaData();
-                int count = data.getColumnCount();
-                for (int j = 1; j <= count-4; j++) {
-                    HashMap playerProperties = new HashMap();
-                    for(int i = 1; i <=5; i++){
-                        String columnName = data.getColumnName(i);
-                        playerProperties.put(columnName, resultSet.getObject(i));
-                    }
-                    _sortedList.add(playerProperties);
+                HashMap playerProperties = new HashMap();
+                for(int i = 1; i <=NUMBEROFCOLUMNSRETRIEVED; i++){
+                    String columnName = data.getColumnName(i);
+                    playerProperties.put(columnName, resultSet.getObject(i));
                 }
+                _sortedList.add(playerProperties);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
