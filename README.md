@@ -18,7 +18,7 @@ Questions come from the [OpenTriviaDatabase](https://opentdb.com/), an external 
 - Github Admin/Architect - McKenzie Staton 
 - API Connection - Sengthida Lorvan 
 - UI/Front End Developer - Jayson Williamson 
-- Persistant Data Storage - Patrick Ksor 
+- Persistent Data Storage - Patrick Ksor 
 
 
 
