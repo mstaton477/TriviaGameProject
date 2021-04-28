@@ -1,40 +1,44 @@
 package APICode;
 
 /**
- * This class creates the answer array
- * Updated 4-27-21
+ * This class creates the answer array Updated 4-27-21
  *
  * @author Sengthida Lorvan
  */
-
 public class SplitAndJoin extends FixString {
-    protected static String[] _answerArray = new String[_questions * 4];
-    protected static String _tempString;
-    protected static String _storeIndex;
+
+    public static String[] _answerArray = new String[_questions * 4];
+    protected static String[] _tempArray = new String[_questions];
+    protected static String[] _storeIndex = new String[_questions];
 
     protected static void separate() {
         store(_incorrectAnswer, _temp);
-        // Find index of next comma
-        _key = ",";
+        for (int i = 0; i < _questions; i++) {
+            _temp[i] = _temp[i].substring(1);
+        }
+        // Find index of next quotation mark
+        _key = "\"";
         find(_temp, _index, _key);
 
-        int i = 0;
-        // Split incorrect answers and add correct answers
-        do {
+        for (int i = 0; i < _questions; i++) {
+            _tempArray[i] = _temp[i].substring(Integer.parseInt(_index[i]));
+            _tempArray[i] = _tempArray[i].substring(2);
+        }
+        for (int i = 0; i < _questions; i++) {
             _answerArray[i] = _temp[i].substring(0, Integer.parseInt(_index[i]));
-            _tempString = _temp[i].substring(Integer.parseInt(_index[i]) + 1);
-            _storeIndex = String.valueOf(_tempString.indexOf(_key));
-            _answerArray[i + 1] = _tempString.substring(0, Integer.parseInt(_storeIndex));
-            _answerArray[i + 2] = _tempString.substring(Integer.parseInt(_storeIndex) + 1);
+            _storeIndex[i] = String.valueOf(_tempArray[i].indexOf(_key));
+            _answerArray[i + 1] = _tempArray[i].substring(0, Integer.parseInt(_storeIndex[i]));
+            _tempArray[i] = _tempArray[i].substring(Integer.parseInt(_storeIndex[i]));
+            _tempArray[i] = _tempArray[i].substring(2);
+            _tempArray[i] = _tempArray[i].replace(_key, "");
+            _answerArray[i + 2] = _tempArray[i];
             _answerArray[i + 3] = _correctAnswer[i];
-
-            // Print out to console
             System.out.println(_answerArray[i]);
-            System.out.println(_answerArray[i+1]);
-            System.out.println(_answerArray[i+2]);
-            System.out.println(_answerArray[i+3]);
+            System.out.println(_answerArray[i + 1]);
+            System.out.println(_answerArray[i + 2]);
+            System.out.println(_answerArray[i + 3]);
             System.out.println();
-            i++;
-        } while (i < _questions);
+
+        }
     }
 }

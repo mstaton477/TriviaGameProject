@@ -22,11 +22,11 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    protected static String _catName = "General Knowledge";
+    public static String _catName = "General Knowledge";
     public static String _difficulty = "easy";
     private static Category cat;
     public static int _category;
-    public static int _questions = 10;
+    public static int _questions = 20;
     public static JSONObject _obj;
 
     // Url Base
@@ -126,7 +126,7 @@ public class API {
     }
 
     // Switches enumerated case with the integer version
-    private static int category() {
+    public static int category() {
         switch (cat) {
             case NINE:
                 _category = 9;
