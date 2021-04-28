@@ -30,23 +30,27 @@ public class QuizController {
     //gets the player answer choice from the quiz view to use in the
     // check if correct method
 
-    public String getChoice(){
+    public static String getChoice(){
         return QuizView._choice;
     }
 
-    public int getGameLength(){
+    public static String getCategoryChoice(){
+        return SetUpQuestions._categoryChoice;
+    }
+
+    public static int getGameLength(){
         return Player.gameLength;
     }
 
-    public String getGameDifficulty(){
+    public static String getGameDifficulty(){
         return Player.gameDifficulty;
     }
 
-    public int getCategory(){
+    public static int getCategory(){
         return Player.category;
     }
 
-    public String getPlayerName(){
+    public static String getPlayerName(){
         return Player.playerName;
     }
 
