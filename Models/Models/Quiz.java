@@ -1,7 +1,13 @@
 package Models;
 
 import APICode.API;
+import APICode.Answers;
+import APICode.Questions;
+import APICode.SplitAndJoin;
 import Controllers.QuizController;
+import GUI.QuizView;
+
+import java.util.Locale;
 
 import static APICode.Answers._correctAnswer;
 import static GUI.QuizView._choice;
@@ -27,6 +33,29 @@ public class Quiz {
 
     private static final String specialPlayerName = "Ike";
     private static final int specialMulti = 1000;
+    public static String[] questionArray;
+    public static String[] answerArray;
+
+
+    private static final String generalKnowledge = "General Knowledge";
+    private static final String science = "Science & Nature";
+    private static final String computers = "Science: Computers";
+    private static final String music = "Entertainment: Music";
+    private static final String videoGames = "Entertainment: Video Games";
+    private static final String film = "Entertainment: Film";
+    private static final String anime = "Entertainment: Japanese Anime & Manga";
+
+    private static final int generalKnowledgeInt = 9;
+    private static final int scienceInt = 17;
+    private static final int computersInt = 18;
+    private static final int musicInt = 12;
+    private static final int videoGamesInt = 15;
+    private static final int filmInt = 11;
+    private static final int animeInt = 31;
+
+    private static final String shortGameLength = "10";
+    private static final String medGameLength = "20";
+    private static final String longGameLength = "30";
 
 
     public void quiz() {
@@ -34,17 +63,18 @@ public class Quiz {
     }
 
     //checks if the answer choice exists in the correctAnswer array
-    public static void checkIfCorrect(String[]  _correctAnswer, String _choice) {
-        for (String s :  _correctAnswer) {
+    public static void checkIfCorrect(String[] _correctAnswer, String _choice) {
+        for (String s : _correctAnswer) {
             if (_choice.equals(s)) {
                 System.out.println("Correct Answer Chosen, Good Job!");
                 numCorrect++;
             }
         }
     }
+
     //helper method for checkIfCorrect
-    public static void checkIfCorrect(){
-        checkIfCorrect( _correctAnswer, _choice);
+    public static void checkIfCorrect() {
+        checkIfCorrect(_correctAnswer, _choice);
     }
 
     //calculates the player Score based on number correct and game length
@@ -68,7 +98,7 @@ public class Quiz {
         return _playerScore;
     }
 
-    public static void calculateScore(){
+    public static void calculateScore() {
         calculateScore(Player.gameLength, Quiz.numCorrect, Player.playerScore);
     }
 
@@ -89,16 +119,57 @@ public class Quiz {
         return false;
     }
 
-    public static void convertCategoryStringToInt(){
+    public static void convertCategoryStringToIntAndSet() {
         String conversion = QuizController.getCategoryChoice();
-
+        if (conversion.equals(generalKnowledge)) {
+            QuizController.setCategory(generalKnowledgeInt);
+        } else if (conversion.equals(science)) {
+            QuizController.setCategory(scienceInt);
+        } else if (conversion.equals(computers)) {
+            QuizController.setCategory(computersInt);
+        } else if (conversion.equals(music)) {
+            QuizController.setCategory(musicInt);
+        } else if (conversion.equals(videoGames)) {
+            QuizController.setCategory(videoGamesInt);
+        } else if (conversion.equals(film)) {
+            QuizController.setCategory(filmInt);
+        } else if (conversion.equals(anime)) {
+            QuizController.setCategory(animeInt);
+        }
     }
 
+    public static void convertDifficultyToLowercaseAndSet() {
+        String difficulty = QuizController.getGameDifficulty();
+        difficulty.toLowerCase();
+        QuizController.setGameDifficulty(difficulty);
+    }
+
+    public static void convertGameLengthStringToIntAndSet() {
+        String length = QuizController.getGameLength();
+        if(length.equals(shortGameLength)){
+            QuizController.setGameLength(gameLengthShort);
+        }else if(length.equals(medGameLength)){
+            QuizController.setGameLength(gameLengthMedium);
+        }else if(length.equals(longGameLength)){
+            QuizController.setGameLength(gameLengthLong);
+        }
+    }
 
 
     // ================================ GETTERS ====================================
     public int getNumCorrect() {
         return numCorrect;
+    }
+
+    public static String[] getQuestionArray() {
+        Questions.question();
+        return questionArray = Questions._questionArray;
+    }
+
+    public static String[] getAnswerArray() {
+
+
+        return answerArray = SplitAndJoin._answerArray;
     }
     // ================================ SETTERS ====================================
 

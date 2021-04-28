@@ -11,6 +11,8 @@ import GUI.QuizView;
 import GUI.SetUpQuestions;
 import Models.*;
 
+import java.util.Set;
+
 import static Models.Quiz.*;
 
 
@@ -38,39 +40,43 @@ public class QuizController {
         return SetUpQuestions._categoryChoice;
     }
 
-    public static int getGameLength(){
-        return Player.gameLength;
+    public static String getGameLength(){
+        return SetUpQuestions._lengthChoice;
     }
 
     public static String getGameDifficulty(){
-        return Player.gameDifficulty;
+        return SetUpQuestions._difficultyChoice;
     }
 
     public static int getCategory(){
-        return Player.category;
+        return Player.getCategory();
     }
 
     public static String getPlayerName(){
-        return Player.playerName;
+            return Player.getName();
+    }
+
+    public static String[] getQuestionsArray(){
+        return questionArray;
     }
 
     // ================================ SETTERS ====================================
 
     public static void setGameLength(int _gameLength){
-      Player.gameLength = _gameLength;
+     Player.setGameLength(_gameLength);
     }
 
     public static void setCategory(int _category){
-        Player.category = _category;
+        Player.setCategory(_category);
     }
 
 
     public static void setGameDifficulty(String _gameDifficulty){
-        Player.gameDifficulty = _gameDifficulty;
+        Player.setGameDifficulty(_gameDifficulty);
     }
 
 
     public static void setPlayerName(String _playerName){
-        Player.playerName = _playerName;
+       Player.setName(_playerName);
     }
 }
