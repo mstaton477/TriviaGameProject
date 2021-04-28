@@ -2,7 +2,7 @@
 package Controllers;
 /*
  * Author @McKenzie
- * Last Updated: 04/21/21
+ * Last Updated: 04/28/21
  * This controller connects the views: QuizView and SetUpQuestions
  *  and the models: Player and Quiz.
  */
