@@ -9,7 +9,7 @@ package APICode;
 public class Questions extends API {
 
     // Arrays to store parsed parts
-    protected static String[] _questionArray = new String[_questions];
+    public static String[] _questionArray = new String[_questions];
     protected static String[] _index = new String[_questions];
     protected static String[] _temp = new String[_questions];
 
@@ -17,7 +17,7 @@ public class Questions extends API {
     protected static final int _FOURLETTERS = 33;
     protected static final int _MEDIUM = 35;
 
-    protected static String[] question() {
+    public static String[] question() {
         // Call method to get questions from API
         makeApiCall();
 

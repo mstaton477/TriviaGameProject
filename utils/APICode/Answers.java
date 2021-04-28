@@ -38,6 +38,10 @@ public class Answers extends Questions {
             _incorrectAnswer[i] = _temp[i].substring(Integer.parseInt(_index[i]));
         }
 
+        //  for (int i = 0; i < _questions; i++) {
+        //    System.out.println(_correctAnswer[i]);
+        // }
+
         return _correctAnswer;
     }
 
@@ -60,8 +64,12 @@ public class Answers extends Questions {
 
         // Get rid of quotations surrounding the answers.
         for (int i = 0; i < _questions; i++) {
-            _incorrectAnswer[i] = _incorrectAnswer[i].replace("\"", "");
+            _incorrectAnswer[i] = _incorrectAnswer[i].replace(",", "");
         }
+
+        //for (int i = 0; i < _questions; i++) {
+        //  System.out.println(_incorrectAnswer[i]);
+        //}
 
         return _incorrectAnswer;
     }
