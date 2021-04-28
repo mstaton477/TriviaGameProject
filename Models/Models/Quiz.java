@@ -1,5 +1,8 @@
 package Models;
 
+import APICode.API;
+import Controllers.QuizController;
+
 import static APICode.Answers._correctAnswer;
 import static GUI.QuizView._choice;
 
@@ -13,15 +16,17 @@ public class Quiz {
     //to be used to calculate int score
     public static int numCorrect;
 
-    private static int gameLengthShort = 10;
-    private static int gameLengthMedium = 20;
-    private static int gameLengthLong = 30;
-    private static int multiLong = 3;
-    private static int multiMedium = 2;
-    private static int multiShort = 1;
+    private static final int gameLengthShort = 10;
+    private static final int gameLengthMedium = 20;
+    private static final int gameLengthLong = 30;
 
-    private static String specialPlayerName = "Ike";
-    private static int specialMulti = 1000;
+    //multipliers for different game lengths
+    private static final int multiLong = 3;
+    private static final int multiMedium = 2;
+    private static final int multiShort = 1;
+
+    private static final String specialPlayerName = "Ike";
+    private static final int specialMulti = 1000;
 
 
     public void quiz() {
@@ -82,6 +87,11 @@ public class Quiz {
             return true;
         }
         return false;
+    }
+
+    public static void convertCategoryStringToInt(){
+        String conversion = QuizController.getCategoryChoice();
+
     }
 
 
