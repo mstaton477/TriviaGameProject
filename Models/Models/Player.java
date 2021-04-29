@@ -1,7 +1,7 @@
 package Models;
 /*
  * Author @McKenzie
- * Last Updated: 4/21/21
+ * Last Updated: 4/28/21
  * This class holds all the information related to the quiz player.
  */
 
