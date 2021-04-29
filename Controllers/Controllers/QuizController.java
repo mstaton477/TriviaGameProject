@@ -2,7 +2,7 @@
 package Controllers;
 /*
  * Author @McKenzie
- * Last Updated: 04/21/21
+ * Last Updated: 04/28/21
  * This controller connects the views: QuizView and SetUpQuestions
  *  and the models: Player and Quiz.
  */
@@ -53,7 +53,7 @@ public class QuizController {
     }
 
     public static String getPlayerName(){
-            return Player.getName();
+            return Player.getPlayerName();
     }
 
     public static String[] getQuestionsArray(){
@@ -62,21 +62,21 @@ public class QuizController {
 
     // ================================ SETTERS ====================================
 
-    public static void setGameLength(int _gameLength){
-     Player.setGameLength(_gameLength);
+    public static void setGameLength(String _gameLength) { Quiz.convertGameLengthStringToIntAndSet();
     }
 
-    public static void setCategory(int _category){
-        Player.setCategory(_category);
+    public static void setCategory(String _category){
+        Quiz.convertCategoryStringToIntAndSet();
     }
+
 
 
     public static void setGameDifficulty(String _gameDifficulty){
-        Player.setGameDifficulty(_gameDifficulty);
+        Quiz.convertDifficultyToLowercaseAndSet();
     }
 
 
     public static void setPlayerName(String _playerName){
-       Player.setName(_playerName);
+       Player.setPlayerName(_playerName);
     }
 }

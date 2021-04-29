@@ -22,11 +22,11 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    public static String _catName = "General Knowledge";
-    public static String _difficulty = "easy";
+    public static String _catName;
+    public static String _difficulty;
     private static Category cat;
     public static int _category;
-    public static int _questions = 10;
+    public static int _questions;
     public static JSONObject _obj;
 
     // Url Base
@@ -77,8 +77,7 @@ public class API {
             case 2:
                 for (int i = 0; i < _questions; i++) {
                     _arrayOutput[i] = _arrayInput[i];
-                    System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
-                    System.out.println();
+                   
                 }
                 break;
         }
@@ -154,8 +153,7 @@ public class API {
     }
 
     public static void makeApiCall() {
-        categoryName();
-        category();
+
         String _urlString = _BASEURL + _CALLACTION1 + _questions + _CALLACTION2 + _category + _CALLACTION3 + _difficulty + _CALLACTION4;
         URL _url;
         try {

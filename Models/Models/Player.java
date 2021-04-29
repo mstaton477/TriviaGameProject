@@ -1,7 +1,7 @@
 package Models;
 /*
  * Author @McKenzie
- * Last Updated: 4/21/21
+ * Last Updated: 4/28/21
  * This class holds all the information related to the quiz player.
  */
 
@@ -80,7 +80,7 @@ public class Player {
         return API._difficulty;
     }
 
-    public static String getName() {
+    public static String getPlayerName() {
         return playerName;
     }
 
@@ -102,7 +102,7 @@ public class Player {
         API._difficulty = _gameDifficulty;
     }
 
-    public static void setName(String _name) {
+    public static void setPlayerName(String _name) {
         playerName = _name;
     }
     public static void setCategoryName(String categoryName){

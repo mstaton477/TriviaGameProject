@@ -1,9 +1,6 @@
 package Models;
 
-import APICode.API;
-import APICode.Answers;
-import APICode.Questions;
-import APICode.SplitAndJoin;
+import APICode.*;
 import Controllers.QuizController;
 import GUI.QuizView;
 
@@ -14,7 +11,7 @@ import static GUI.QuizView._choice;
 
 /*
  * Author @McKenzie
- * Last Updated: 4/21/21
+ * Last Updated: 4/29/21
  * This class holds all the information related to the quiz.
  */
 public class Quiz {
@@ -122,19 +119,19 @@ public class Quiz {
     public static void convertCategoryStringToIntAndSet() {
         String conversion = QuizController.getCategoryChoice();
         if (conversion.equals(generalKnowledge)) {
-            QuizController.setCategory(generalKnowledgeInt);
+            Player.setCategory(generalKnowledgeInt);
         } else if (conversion.equals(science)) {
-            QuizController.setCategory(scienceInt);
+            Player.setCategory(scienceInt);
         } else if (conversion.equals(computers)) {
-            QuizController.setCategory(computersInt);
+            Player.setCategory(computersInt);
         } else if (conversion.equals(music)) {
-            QuizController.setCategory(musicInt);
+            Player.setCategory(musicInt);
         } else if (conversion.equals(videoGames)) {
-            QuizController.setCategory(videoGamesInt);
+            Player.setCategory(videoGamesInt);
         } else if (conversion.equals(film)) {
-            QuizController.setCategory(filmInt);
+            Player.setCategory(filmInt);
         } else if (conversion.equals(anime)) {
-            QuizController.setCategory(animeInt);
+            Player.setCategory(animeInt);
         }
     }
 
@@ -147,11 +144,11 @@ public class Quiz {
     public static void convertGameLengthStringToIntAndSet() {
         String length = QuizController.getGameLength();
         if(length.equals(shortGameLength)){
-            QuizController.setGameLength(gameLengthShort);
+            Player.setGameLength(gameLengthShort);
         }else if(length.equals(medGameLength)){
-            QuizController.setGameLength(gameLengthMedium);
+            Player.setGameLength(gameLengthMedium);
         }else if(length.equals(longGameLength)){
-            QuizController.setGameLength(gameLengthLong);
+            Player.setGameLength(gameLengthLong);
         }
     }
 
@@ -162,8 +159,8 @@ public class Quiz {
     }
 
     public static String[] getQuestionArray() {
-        Questions.question();
-        return questionArray = Questions._questionArray;
+
+        return questionArray = FixString._questionArray;
     }
 
     public static String[] getAnswerArray() {
@@ -176,4 +173,17 @@ public class Quiz {
     public void setNumCorrect(int _numCorrect) {
         this.numCorrect = _numCorrect;
     }
+    public static void setGameLength(int _gameLength){
+        Player.setGameLength(_gameLength);
+    }
+
+    public static void setCategory(int _category){
+        Player.setCategory(_category);
+    }
+
+
+    public static void setGameDifficulty(String _gameDifficulty){
+        Player.setGameDifficulty(_gameDifficulty);
+    }
+
 }
