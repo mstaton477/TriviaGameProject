@@ -116,38 +116,38 @@ public class Quiz {
         return false;
     }
 
-    public static void convertCategoryStringToIntAndSet() {
-        String conversion = QuizController.getCategoryChoice();
-        if (conversion.equals(generalKnowledge)) {
+    public static void convertCategoryStringToIntAndSet(String _conversion) {
+
+        if (_conversion.equals(generalKnowledge)) {
             Player.setCategory(generalKnowledgeInt);
-        } else if (conversion.equals(science)) {
+        } else if (_conversion.equals(science)) {
             Player.setCategory(scienceInt);
-        } else if (conversion.equals(computers)) {
+        } else if (_conversion.equals(computers)) {
             Player.setCategory(computersInt);
-        } else if (conversion.equals(music)) {
+        } else if (_conversion.equals(music)) {
             Player.setCategory(musicInt);
-        } else if (conversion.equals(videoGames)) {
+        } else if (_conversion.equals(videoGames)) {
             Player.setCategory(videoGamesInt);
-        } else if (conversion.equals(film)) {
+        } else if (_conversion.equals(film)) {
             Player.setCategory(filmInt);
-        } else if (conversion.equals(anime)) {
+        } else if (_conversion.equals(anime)) {
             Player.setCategory(animeInt);
         }
     }
 
-    public static void convertDifficultyToLowercaseAndSet() {
-        String difficulty = QuizController.getGameDifficulty();
-        difficulty.toLowerCase();
-        QuizController.setGameDifficulty(difficulty);
+    public static void convertDifficultyToLowercaseAndSet(String _difficulty) {
+
+        _difficulty.toLowerCase();
+        Player.setGameDifficulty(_difficulty);
     }
 
-    public static void convertGameLengthStringToIntAndSet() {
-        String length = QuizController.getGameLength();
-        if(length.equals(shortGameLength)){
+    public static void convertGameLengthStringToIntAndSet(String _length) {
+
+        if(_length.equals(shortGameLength)){
             Player.setGameLength(gameLengthShort);
-        }else if(length.equals(medGameLength)){
+        }else if(_length.equals(medGameLength)){
             Player.setGameLength(gameLengthMedium);
-        }else if(length.equals(longGameLength)){
+        }else if(_length.equals(longGameLength)){
             Player.setGameLength(gameLengthLong);
         }
     }
