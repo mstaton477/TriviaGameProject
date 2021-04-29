@@ -80,7 +80,7 @@ public class Player {
         return API._difficulty;
     }
 
-    public static String getName() {
+    public static String getPlayerName() {
         return playerName;
     }
 
@@ -102,7 +102,7 @@ public class Player {
         API._difficulty = _gameDifficulty;
     }
 
-    public static void setName(String _name) {
+    public static void setPlayerName(String _name) {
         playerName = _name;
     }
     public static void setCategoryName(String categoryName){
