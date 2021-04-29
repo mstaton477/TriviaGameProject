@@ -77,8 +77,7 @@ public class API {
             case 2:
                 for (int i = 0; i < _questions; i++) {
                     _arrayOutput[i] = _arrayInput[i];
-                    System.out.println(_message + (i + 1) + ": " + _arrayOutput[i]);
-                    System.out.println();
+                   
                 }
                 break;
         }
