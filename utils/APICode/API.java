@@ -26,7 +26,7 @@ public class API {
     public static String _difficulty = "easy";
     private static Category cat;
     public static int _category;
-    public static int _questions = 20;
+    public static int _questions = 10;
     public static JSONObject _obj;
 
     // Url Base
