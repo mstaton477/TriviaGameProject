@@ -17,7 +17,7 @@ public class SplitAndJoin extends FixString {
         }
     }
 
-    protected static String[] separate() {
+    public static String[] separate() {
         store(_incorrectAnswer, _temp);
         _num = 1;
         sub(_temp, _num);
