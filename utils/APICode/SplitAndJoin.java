@@ -27,7 +27,7 @@ public class SplitAndJoin extends FixString {
         } while (j < _arrayOutput1.length);
     }
 
-    protected static String[] separate() {
+    public static String[] separate() {
         store(_incorrectAnswer, _temp);
         _num = 1;
         sub(_temp, _num);
@@ -51,9 +51,9 @@ public class SplitAndJoin extends FixString {
             j += 4;
             i++;
         } while (j < _answerArray.length);
-        for (int k = 0; k <_answerArray.length; k++) {
+       /* for (int k = 0; k <_answerArray.length; k++) {
             System.out.println(_answerArray[k]);
-        }
+        }*/
         return _answerArray;
     }
 }

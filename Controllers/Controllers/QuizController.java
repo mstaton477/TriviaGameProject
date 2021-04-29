@@ -7,6 +7,7 @@ package Controllers;
  *  and the models: Player and Quiz.
  */
 
+import APICode.API;
 import GUI.QuizView;
 import GUI.SetUpQuestions;
 import Models.*;
@@ -17,14 +18,20 @@ import static Models.Quiz.*;
 
 
 public class QuizController {
+    public static String[] _questionArray;
+    public static  String[] _answerArray;
 
-    public void callCheckIfCorrect(){
+    public static void callCheckIfCorrect(){
         Quiz.checkIfCorrect();
     }
 
-    public void callCalculateScore(){
+    public static void callCalculateScore(){
         Quiz.calculateScore();
     }
+
+
+
+    public static void callAPIRun(){Quiz.APIRun();}
 
 
     // ================================ GETTERS ====================================
@@ -57,8 +64,16 @@ public class QuizController {
     }
 
     public static String[] getQuestionsArray(){
-        return questionArray;
+        Quiz.getQuestionArray();
+
+
+        return _questionArray = questionArray;
     }
+    public static String[] getAnswerArray(){
+        Quiz.getAnswerArray();
+
+
+        return _answerArray = answerArray;}
 
     // ================================ SETTERS ====================================
 

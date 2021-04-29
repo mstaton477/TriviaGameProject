@@ -152,11 +152,21 @@ public class Quiz {
         }
     }
 
+    public static void APIRun(){
+        API.makeApiCall();
+        Questions.question();
+        Answers.correctAnswers();
+        Answers.incorrectAnswers();
+        FixString.fixQuestions();
+        FixString.fixCorrectAnswers();
+        FixString.fixIncorrectAnswers();
+        SplitAndJoin.separate();}
 
     // ================================ GETTERS ====================================
     public int getNumCorrect() {
         return numCorrect;
     }
+
 
     public static String[] getQuestionArray() {
 
@@ -165,9 +175,10 @@ public class Quiz {
 
     public static String[] getAnswerArray() {
 
-
         return answerArray = SplitAndJoin._answerArray;
     }
+
+
     // ================================ SETTERS ====================================
 
     public void setNumCorrect(int _numCorrect) {
