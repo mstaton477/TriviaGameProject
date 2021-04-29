@@ -14,7 +14,7 @@ public class Answers extends Questions {
     protected static final int _CANSSUB = 20;
     protected static final int _IANSSUB = 23;
 
-    protected static String[] correctAnswers() {
+    public static String[] correctAnswers() {
         // Gets text after questions
         setToSub(_correctAnswer, _temp, _index);
 
@@ -45,7 +45,7 @@ public class Answers extends Questions {
         return _correctAnswer;
     }
 
-    protected static String[] incorrectAnswers() {
+    public static String[] incorrectAnswers() {
 
         // Set array equal to temp
         setToSub(_incorrectAnswer, _temp, _index);

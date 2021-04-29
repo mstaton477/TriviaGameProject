@@ -27,13 +27,13 @@ public class SetUpQuestions implements Initializable {
     //These items are for allowing users to choose the settings of the game.
     @FXML private ChoiceBox<String> _categoryBox;
     @FXML private ChoiceBox<String> _difficultyBox;
-    @FXML private ChoiceBox<Integer> _lengthBox;
+    @FXML private ChoiceBox<String> _lengthBox;
     @FXML private TextField _nameTextField;
 
     //
-    public String _categoryChoice;
-    private String _difficultyChoice;
-    private Integer _lengthChoice;
+    public static String _categoryChoice;
+    public static  String _difficultyChoice;
+    public static String _lengthChoice;
     private String _name;
 
     /**
@@ -67,10 +67,6 @@ public class SetUpQuestions implements Initializable {
         //Gets the value from the name text area for use later
         _name = _nameTextField.getText();
 
-        //QuizController.setCategory(_categoryChoice);
-        QuizController.setGameDifficulty(_difficultyChoice);
-        QuizController.setGameLength(_lengthChoice);
-        QuizController.setPlayerName(_name);
 
         //Loads the QuizView scene
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
@@ -101,7 +97,7 @@ public class SetUpQuestions implements Initializable {
         _difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
-        _lengthBox.getItems().addAll(10, 20, 30);
+        _lengthBox.getItems().addAll("10", "20", "30");
 
     }
 }

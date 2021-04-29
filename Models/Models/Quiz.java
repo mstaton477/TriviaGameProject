@@ -1,9 +1,6 @@
 package Models;
 
-import APICode.API;
-import APICode.Answers;
-import APICode.Questions;
-import APICode.SplitAndJoin;
+import APICode.*;
 import Controllers.QuizController;
 import GUI.QuizView;
 
@@ -146,11 +143,11 @@ public class Quiz {
 
     public static void convertGameLengthStringToIntAndSet() {
         String length = QuizController.getGameLength();
-        if(length.equals(shortGameLength)){
+        if (length.equals(shortGameLength)) {
             QuizController.setGameLength(gameLengthShort);
-        }else if(length.equals(medGameLength)){
+        } else if (length.equals(medGameLength)) {
             QuizController.setGameLength(gameLengthMedium);
-        }else if(length.equals(longGameLength)){
+        } else if (length.equals(longGameLength)) {
             QuizController.setGameLength(gameLengthLong);
         }
     }
@@ -162,8 +159,8 @@ public class Quiz {
     }
 
     public static String[] getQuestionArray() {
-        Questions.question();
-        return questionArray = Questions._questionArray;
+
+        return questionArray = FixString._questionArray;
     }
 
     public static String[] getAnswerArray() {
