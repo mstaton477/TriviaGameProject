@@ -1,9 +1,6 @@
 package Models;
 
-import APICode.API;
-import APICode.Answers;
-import APICode.Questions;
-import APICode.SplitAndJoin;
+import APICode.*;
 import Controllers.QuizController;
 import GUI.QuizView;
 
@@ -14,7 +11,7 @@ import static GUI.QuizView._choice;
 
 /*
  * Author @McKenzie
- * Last Updated: 4/28/21
+ * Last Updated: 4/29/21
  * This class holds all the information related to the quiz.
  */
 public class Quiz {
@@ -162,8 +159,8 @@ public class Quiz {
     }
 
     public static String[] getQuestionArray() {
-        Questions.question();
-        return questionArray = Questions._questionArray;
+
+        return questionArray = FixString._questionArray;
     }
 
     public static String[] getAnswerArray() {
