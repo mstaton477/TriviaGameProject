@@ -12,7 +12,7 @@ public class experimentalCode {
 
         QuizController.setGameDifficulty("easy");
         QuizController.setGameLength(10);
-        QuizController.setCategory(31);
+        QuizController.setCategory(9);
 
 
         Questions.question();
@@ -23,13 +23,14 @@ public class experimentalCode {
         FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
 
-        for (int i = 0; i < Quiz.getQuestionArray().length; i++) {
+      /*  for (int i = 0; i < Quiz.getQuestionArray().length; i++) {
             System.out.println(Quiz.questionArray[i]);
-        }
+        }*/
 
-
+        Quiz.getAnswerArray();
         for (int i = 0; i < Quiz.getAnswerArray().length; i++) {
             System.out.println(Quiz.answerArray[i]);
+
         }
     }
 }

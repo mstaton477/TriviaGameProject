@@ -52,7 +52,7 @@ public class FixString extends Answers {
         return _incorrectAnswer;
     }
 
-    public static String[] fixCorrectAnswers() {
+    protected static String[] fixCorrectAnswers() {
         store(_correctAnswer, _tempArray);
         check();
         store(_tempArray, _correctAnswer);
