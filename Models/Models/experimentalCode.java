@@ -10,11 +10,6 @@ public class experimentalCode {
 
     public static void main(String[] args) {
 
-        QuizController.setGameDifficulty("easy");
-        QuizController.setGameLength(10);
-        QuizController.setCategory(9);
-
-
         Questions.question();
         Answers.correctAnswers();
         Answers.incorrectAnswers();
