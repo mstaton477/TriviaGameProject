@@ -62,17 +62,17 @@ public class QuizController {
 
     // ================================ SETTERS ====================================
 
-    public static void setGameLength(String _gameLength) { Quiz.convertGameLengthStringToIntAndSet();
+    public static void setGameLength(String _gameLength) { Quiz.convertGameLengthStringToIntAndSet(_gameLength);
     }
 
     public static void setCategory(String _category){
-        Quiz.convertCategoryStringToIntAndSet();
+        Quiz.convertCategoryStringToIntAndSet(_category);
     }
 
 
 
     public static void setGameDifficulty(String _gameDifficulty){
-        Quiz.convertDifficultyToLowercaseAndSet();
+        Quiz.convertDifficultyToLowercaseAndSet(_gameDifficulty);
     }
 
 
