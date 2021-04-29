@@ -19,7 +19,7 @@ public class Questions extends API {
 
     public static String[] question() {
         // Call method to get questions from API
-        makeApiCall();
+
 
         try {
             Object _getQuestionJSONArray;

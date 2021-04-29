@@ -6,6 +6,8 @@ package GUI;
  * This class sets up the quiz view and reloads the view again with different variables
  */
 
+import Controllers.QuizController;
+import Models.experimentalCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,8 +80,11 @@ public class QuizView implements Initializable {
 
      */
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
         //Made this way for testing purposes currently, questions/answers need to be grabbed from elsewhere
         questionLabel.setText("Question 1: Choose any answer");
@@ -87,6 +92,7 @@ public class QuizView implements Initializable {
         answerBLabel.setText("This is the answer for B");
         answerCLabel.setText("This is the answer for C");
         answerDLabel.setText("This is the answer for D");
+
 
 
     }

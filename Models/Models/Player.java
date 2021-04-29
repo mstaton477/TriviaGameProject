@@ -105,9 +105,5 @@ public class Player {
     public static void setPlayerName(String _name) {
         playerName = _name;
     }
-    public static void setCategoryName(String categoryName){
-        categoryName = API._catName;
-    }
-
 
 }
