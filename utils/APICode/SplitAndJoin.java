@@ -1,7 +1,8 @@
 package APICode;
 
 /**
- * This class creates the answer array Updated 4-28-21
+ * This class creates the answer array.
+ * Updated 4-29-21
  *
  * @author Sengthida Lorvan
  */
@@ -17,50 +18,42 @@ public class SplitAndJoin extends FixString {
         }
     }
 
-    public static String[] separate() {
+    public static void assignAnswer(int i, int j, String[] _arrayInput1, String[] _arrayInput2, String[] _arrayOutput1, String[] _arrayOutput2){
+        do {
+            _arrayOutput1[j] = _arrayInput1[i].substring(0, Integer.parseInt(_arrayInput2[i]));
+            _arrayOutput2[i] = _arrayInput1[i].substring(Integer.parseInt(_arrayInput2[i]));
+            j += 4;
+            i++;
+        } while (j < _arrayOutput1.length);
+    }
+
+    protected static String[] separate() {
         store(_incorrectAnswer, _temp);
         _num = 1;
         sub(_temp, _num);
-        // Find index of next quotation mark
         _key = "\"";
         find(_temp, _index, _key);
         int i = 0;
         int j = 0;
-        do {
-            _answerArray[j] = _temp[i].substring(0, Integer.parseInt(_index[i]));
-            _tempArray[i] = _temp[i].substring(Integer.parseInt(_index[i]));
-            j += 4;
-            i++;
-        } while (j < _answerArray.length);
+        assignAnswer(i, j, _temp, _index, _answerArray, _tempArray);
         _num = 2;
         sub(_tempArray, _num);
         find(_tempArray, _storeIndex, _key);
-        i = 0;
         j = 1;
-        do {
-            _answerArray[j] = _tempArray[i].substring(0, Integer.parseInt(_storeIndex[i]));
-            _tempArray[i] = _tempArray[i].substring(Integer.parseInt(_storeIndex[i]));
-            j += 4;
-            i++;
-        } while (j < _answerArray.length);
+        assignAnswer(i, j, _tempArray, _storeIndex, _answerArray, _tempArray);
         sub(_tempArray, _num);
         find(_tempArray, _storeIndex, _key);
-        i = 0;
         j = 2;
-        do {
-            _answerArray[j] = _tempArray[i].substring(0, Integer.parseInt(_storeIndex[i]));
-            _tempArray[i] = _tempArray[i].substring(Integer.parseInt(_storeIndex[i]));
-            j += 4;
-            i++;
-        } while (j < _answerArray.length);
-        i = 0;
+        assignAnswer(i, j, _tempArray, _storeIndex, _answerArray, _tempArray);
         j = 3;
         do {
             _answerArray[j] = _correctAnswer[i];
             j += 4;
             i++;
         } while (j < _answerArray.length);
-
+        for (int k = 0; k <_answerArray.length; k++) {
+            System.out.println(_answerArray[k]);
+        }
         return _answerArray;
     }
 }
