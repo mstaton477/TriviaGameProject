@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.TriviaGame">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="608.0" />
+      <Button layoutX="14.0" layoutY="177.0" mnemonicParsing="false" onAction="#setUpButton" prefHeight="138.0" prefWidth="151.0" text="Set up Questions" />
+      <Button layoutX="471.0" layoutY="177.0" mnemonicParsing="false" onAction="#leaderboardButton" prefHeight="138.0" prefWidth="151.0" text="View Leaderboard" />
+      <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="64.0" prefWidth="608.0" text="Bananas Trivia Game">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="542.0" layoutY="402.0" mnemonicParsing="false" onAction="#quitButton" prefHeight="52.0" prefWidth="80.0" text="Quit" />
+   </children>
+</AnchorPane>
