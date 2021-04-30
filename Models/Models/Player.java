@@ -6,8 +6,9 @@ package Models;
  */
 
 import APICode.*;
+import TriviaGameDatabase.DataObject;
 
-public class Player {
+public class Player extends DataObject {
 
     public static int playerScore;
     protected static String categoryName;

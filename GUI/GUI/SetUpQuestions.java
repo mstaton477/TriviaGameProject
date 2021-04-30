@@ -2,8 +2,9 @@ package GUI;
 
 /**
  * @author Jayson Williamson
- * Updated 4/21/21
- * This class sets up the view for the settings page.
+ * Updated 4/28/21
+ * This class sets up the view for the settings page and allows users to choose different settings for the quiz to have
+ * and then sets those values accordingly.
  */
 
 import Models.experimentalCode;
@@ -17,11 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import Controllers.*;
 
 
@@ -37,11 +36,11 @@ public class SetUpQuestions implements Initializable {
     @FXML
     private TextField _nameTextField;
 
-    //
+    //Additional items for choices users make on this scene.
     public static String _categoryChoice;
     public static String _difficultyChoice;
     public static String _lengthChoice;
-    private String _name;
+    private static String _name;
 
     /**
      * This sends the user back to the initial view of the application.
@@ -76,6 +75,7 @@ public class SetUpQuestions implements Initializable {
         //Gets the value from the name text area for use later
         _name = _nameTextField.getText();
 
+
         QuizController.setGameDifficulty(_difficultyChoice);
         QuizController.setGameLength(_lengthChoice);
         QuizController.setCategory(_categoryChoice);
@@ -99,6 +99,12 @@ public class SetUpQuestions implements Initializable {
             System.out.println(QuizController._answerArray[i]);
         }
 
+        QuizController.setCategory(_categoryChoice);
+        QuizController.setGameDifficulty(_difficultyChoice);
+        QuizController.setGameLength(_lengthChoice);
+        QuizController.setPlayerName(_name);
+
+
 
         //Loads the QuizView scene
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
@@ -109,6 +115,14 @@ public class SetUpQuestions implements Initializable {
         window.setScene(beginGameViewScene);
         window.show();
 
+
+
+        /*
+        System.out.println(_categoryChoice);
+        System.out.println(_difficultyChoice);
+        System.out.println(_lengthChoice);
+        System.out.println(_name);
+         */
 
     }
 
