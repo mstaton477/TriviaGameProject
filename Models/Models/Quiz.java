@@ -180,8 +180,8 @@ public class Quiz {
         Answers.incorrectAnswers();
         FixString.fixQuestions();
         FixString.fixCorrectAnswers();
-        FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
+        FixString.fixAnswers();
     }
 
 

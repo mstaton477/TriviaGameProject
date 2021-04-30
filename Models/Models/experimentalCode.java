@@ -15,8 +15,8 @@ public class experimentalCode {
         Answers.incorrectAnswers();
         FixString.fixQuestions();
         FixString.fixCorrectAnswers();
-        FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
+        FixString.fixAnswers();
 
       /*  for (int i = 0; i < Quiz.getQuestionArray().length; i++) {
             System.out.println(Quiz.questionArray[i]);
