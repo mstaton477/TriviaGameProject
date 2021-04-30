@@ -6,6 +6,7 @@ import GUI.QuizView;
 import GUI.SetUpQuestions;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Locale;
 
 import static APICode.Answers._correctAnswer;
@@ -65,10 +66,10 @@ public class Quiz {
     private static void checkIfCorrect(String[] _correctAnswer, String _choice) {
 
         boolean found = Arrays.asList(_correctAnswer).contains(_choice);
-        if(found){
+        if (found) {
             System.out.println("Correct Answer Chosen, Good Job!");
             numCorrect++;
-        }else{
+        } else {
             System.out.println("Incorrect Answer Chose :(");
         }
     }
@@ -89,16 +90,16 @@ public class Quiz {
             _playerScore = numCorrect * multiLong;
 
         } else if (_gameLength == gameLengthMedium) {
-              _playerScore =  numCorrect * multiMedium;
+            _playerScore = numCorrect * multiMedium;
         } else if (_gameLength == gameLengthShort) {
-            _playerScore =  numCorrect * multiShort;
+            _playerScore = numCorrect * multiShort;
         }
 
         if (checkIfSpecialPlayer()) {
-             _playerScore = numCorrect * specialMulti;
+            _playerScore = numCorrect * specialMulti;
         }
 
-          Player.setPlayerScore(_playerScore);
+        Player.setPlayerScore(_playerScore);
     }
 
     //helper method for calculate score.
@@ -179,17 +180,25 @@ public class Quiz {
         Answers.incorrectAnswers();
         FixString.fixQuestions();
         FixString.fixCorrectAnswers();
-        FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
+        FixString.fixAnswers();
     }
 
 
 
+    public static void randomizeAnswerArray() {
+        String[] _answerArray = Quiz.getAnswerArray();
+        int gameLength = Player.getGameLength();
+        int k = 0;
+        int j = 4;
+        for (int i = 0; i < gameLength; i++) {
+            Collections.shuffle(Arrays.asList(_answerArray).subList(k, j));
+            k += 4;
+            j += 4;
+        }
+    }
 
     // ================================ GETTERS ====================================
-    public int getNumCorrect() {
-        return numCorrect;
-    }
 
 
     public static String[] getQuestionArray() {
@@ -200,13 +209,8 @@ public class Quiz {
         return answerArray = SplitAndJoin._answerArray;
     }
 
-    public static int getPlayerScore(){
-        return Player.playerScore;
-    }
 
     // ================================ SETTERS ====================================
 
-  /*  public void setNumCorrect(int _numCorrect) {
-        this.numCorrect = _numCorrect;
-    }*/
+
 }

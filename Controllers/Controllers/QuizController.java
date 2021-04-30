@@ -28,6 +28,10 @@ public class QuizController {
         Quiz.calculateScore();
     }
 
+    public static void callRandomizeArray(){
+        Quiz.randomizeAnswerArray();
+    }
+
 
     public static void callAPIRun() {
         Quiz.APIRun();

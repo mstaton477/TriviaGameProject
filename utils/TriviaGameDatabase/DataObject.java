@@ -20,7 +20,6 @@ public abstract class DataObject extends DataFactory {
     protected String uuid;
     protected String name = "";
     protected String active = "1";
-    protected Timestamp lastUpdated = null;
 
     public DataObject() {
         this.setUuid(DataObject.generateUuid());
@@ -72,11 +71,10 @@ public abstract class DataObject extends DataFactory {
         return -1;
     }
 
+
     public ArrayList selectAll(String _parametersToRetrieve) throws NoSuchFieldException, IllegalAccessException, SQLException {
         return DataStoreAdapter.selectAll( _parametersToRetrieve);
     }
-
-
     protected static String generateUuid() {
         return UUID.randomUUID().toString();
     }

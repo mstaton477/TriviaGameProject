@@ -42,12 +42,11 @@ public class Questions extends API {
             find(_questionArray, _index, _key);
 
             // Copy array to temp array
-            store(_questionArray, _temp);
+            store(_questionArray, _temp, _questions);
 
-            _message = "Question ";
             _num = _ONE;
             // Assign separated questions into array
-            assign(_index, _questionArray, _message, _num);
+            assign(_index, _questionArray, _num);
 
         } catch (Exception _ex) {
             System.out.println("Error: " + _ex);
