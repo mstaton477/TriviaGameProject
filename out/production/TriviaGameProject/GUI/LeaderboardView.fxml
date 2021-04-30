@@ -16,8 +16,6 @@
                 <Font size="24.0" />
             </font>
         </Label>
-
-
         <Button layoutX="542.0" layoutY="402.0" mnemonicParsing="false" onAction="#_goBackButton" prefHeight="52.0" prefWidth="80.0" text="Back" />
       <TableView fx:id="LeaderBoard" layoutX="15.0" layoutY="102.0" prefHeight="300.0" prefWidth="608.0">
         <columns>
