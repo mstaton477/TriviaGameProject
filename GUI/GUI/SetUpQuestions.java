@@ -26,7 +26,7 @@ import Controllers.*;
 
 public class SetUpQuestions implements Initializable {
 
-    //These items are for allowing users to choose the settings of the game.
+    //Sets up fx:ids to link to the fxml
     @FXML
     private ChoiceBox<String> _categoryBox;
     @FXML
@@ -99,10 +99,6 @@ public class SetUpQuestions implements Initializable {
             System.out.println(QuizController._answerArray[i]);
         }
 
-        QuizController.setCategory(_categoryChoice);
-        QuizController.setGameDifficulty(_difficultyChoice);
-        QuizController.setGameLength(_lengthChoice);
-        QuizController.setPlayerName(_name);
 
 
 
