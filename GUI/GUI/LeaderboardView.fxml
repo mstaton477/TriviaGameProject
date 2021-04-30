@@ -16,17 +16,8 @@
                 <Font size="24.0" />
             </font>
         </Label>
-<<<<<<< Updated upstream
-        <Button layoutX="498.0" layoutY="402.0" mnemonicParsing="false" onAction="#_goBackButton" prefHeight="52.0" prefWidth="124.0" text="Back to Main Menu" />
-      <TableView fx:id="_tableView" layoutX="15.0" layoutY="102.0" prefHeight="300.0" prefWidth="608.0">
-        <columns>
-          <TableColumn fx:id="_nameColumn" prefWidth="68.0" text="Name" />
-          <TableColumn fx:id="_scoreColumn" prefWidth="103.0" text="Score" />
-            <TableColumn fx:id="_categoryColumn" prefWidth="138.0" text="Category" />
-            <TableColumn fx:id="_difficultyColumn" prefWidth="123.0" text="Difficulty" />
-            <TableColumn fx:id="_lengthColumn" minWidth="0.0" prefWidth="82.0" text="Length" />
-            <TableColumn fx:id="_datePlayedColumn" prefWidth="93.0" text="Date Played" />
-=======
+
+
         <Button layoutX="542.0" layoutY="402.0" mnemonicParsing="false" onAction="#_goBackButton" prefHeight="52.0" prefWidth="80.0" text="Back" />
       <TableView fx:id="LeaderBoard" layoutX="15.0" layoutY="102.0" prefHeight="300.0" prefWidth="608.0">
         <columns>
@@ -36,7 +27,6 @@
             <TableColumn fx:id="col_gameDifficulty" prefWidth="99.0" text="Difficulty" />
             <TableColumn fx:id="col_gameLength" minWidth="0.0" prefWidth="70.0" text="Length" />
             <TableColumn fx:id="col_datePlayed" prefWidth="147.0" text="Date Played" />
->>>>>>> Stashed changes
         </columns>
       </TableView>
     </children>
