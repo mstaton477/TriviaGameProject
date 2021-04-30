@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,9 +72,8 @@ public abstract class DataObject extends DataFactory {
         return -1;
     }
 
-    public ArrayList sortTable(String _parameterSortedBy) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        ArrayList _sortedList = new ArrayList();
-        return DataStoreAdapter.sortDataTable(this.getDataTable(), _parameterSortedBy, _sortedList);
+    public ArrayList selectAll(String _parametersToRetrieve) throws NoSuchFieldException, IllegalAccessException, SQLException {
+        return DataStoreAdapter.selectAll( _parametersToRetrieve);
     }
 
 

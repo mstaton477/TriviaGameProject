@@ -19,32 +19,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+
 public class LeaderboardView implements Initializable {
-
-
-    //Sets up fx:ids to link to the fxml
-    @FXML private TableView<Leaderboard> _tableView;
-    @FXML private TableColumn<Leaderboard, String> _nameColumn;
-    @FXML private TableColumn<Leaderboard, Integer> _scoreColumn;
-    @FXML private TableColumn<Leaderboard, String> _categoryColumn;
-    @FXML private TableColumn<Leaderboard, String> _difficultyColumn;
-    @FXML private TableColumn<Leaderboard, Integer> _lengthColumn;
-    @FXML private TableColumn<Leaderboard, LocalDate> _datePlayedColumn;
-
-    ObservableList<Leaderboard> _observableList = FXCollections.observableArrayList();
-
-
-/**
+    /**
      * This sends the user back to the initial view of the application.
      * @param event
      * @throws IOException
@@ -60,17 +49,46 @@ public class LeaderboardView implements Initializable {
         window.show();
     }
 
+
+    @FXML
+    private Label label;
+    @FXML
+    private TableView<Leaderboard> LeaderBoard;
+    @FXML
+    private TableColumn<Leaderboard,String> col_name;
+    @FXML
+    private TableColumn<Leaderboard,Integer> col_playerScore;
+    @FXML
+    private TableColumn<Leaderboard,String> col_category;
+    @FXML
+    private TableColumn<Leaderboard,String> col_gameDifficulty;
+    @FXML
+    private TableColumn<Leaderboard,Integer> col_gameLength;
+    @FXML
+    private TableColumn<Leaderboard, Timestamp> col_datePlayed;
+
+    private ObservableList<Leaderboard> data;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        _nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        _scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
-        _categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        _difficultyColumn.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
-        _lengthColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
-        _datePlayedColumn.setCellValueFactory(new PropertyValueFactory<>("datePlayed"));
-
-        _tableView.setItems(_observableList);
+        try {
+            data= FXCollections.observableArrayList(Leaderboard.populateLeaderboard());
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        col_name.setCellValueFactory((new PropertyValueFactory<>("name")));
+        col_playerScore.setCellValueFactory((new PropertyValueFactory<>("score")));
+        col_category.setCellValueFactory((new PropertyValueFactory<>("category")));
+        col_gameDifficulty.setCellValueFactory((new PropertyValueFactory<>("difficulty")));
+        col_gameLength.setCellValueFactory((new PropertyValueFactory<>("length")));
+        col_datePlayed.setCellValueFactory((new PropertyValueFactory<>("timestamp")));
+        LeaderBoard.setItems(null);
+        LeaderBoard.setItems(data);
     }
-
 }
 
