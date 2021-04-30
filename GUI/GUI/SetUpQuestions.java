@@ -99,11 +99,11 @@ public class SetUpQuestions implements Initializable {
             System.out.println(QuizController._answerArray[i]);
         }
 
-        QuizController.setCategory(_categoryChoice);
+       /* QuizController.setCategory(_categoryChoice);
         QuizController.setGameDifficulty(_difficultyChoice);
         QuizController.setGameLength(_lengthChoice);
         QuizController.setPlayerName(_name);
-
+*/
 
 
         //Loads the QuizView scene
@@ -134,7 +134,7 @@ public class SetUpQuestions implements Initializable {
                 "Entertainment: Japanese Anime & Manga");
 
         //Options for difficulty
-        _difficultyBox.getItems().addAll("easy", "medium", "hard");
+        _difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
         _lengthBox.getItems().addAll("10", "20", "30");

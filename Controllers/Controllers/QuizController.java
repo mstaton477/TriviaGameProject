@@ -2,17 +2,16 @@
 package Controllers;
 /*
  * Author @McKenzie
- * Last Updated: 04/28/21
+ * Last Updated: 04/30/21
  * This controller connects the views: QuizView and SetUpQuestions
  *  and the models: Player and Quiz.
  */
 
-import APICode.API;
+
 import GUI.QuizView;
 import GUI.SetUpQuestions;
 import Models.*;
 
-import java.util.Set;
 
 import static Models.Quiz.*;
 
@@ -66,7 +65,6 @@ public class QuizController {
 
     public static String[] getQuestionsArray() {
         Quiz.getQuestionArray();
-
         return _questionArray = questionArray;
     }
 
@@ -76,6 +74,7 @@ public class QuizController {
     }
 
     // ================================ SETTERS ====================================
+
 
     public static void setGameLength(String _gameLength) {
         Quiz.convertGameLengthStringToIntAndSet(_gameLength);
@@ -87,7 +86,9 @@ public class QuizController {
 
 
     public static void setGameDifficulty(String _gameDifficulty) {
-        Quiz.setGameDifficulty(_gameDifficulty);
+      /* Quiz.setGameDifficulty(_gameDifficulty);*/
+
+        Quiz.convertDifficultyToLowercaseAndSet();
     }
 
 
