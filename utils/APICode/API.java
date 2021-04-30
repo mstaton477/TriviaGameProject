@@ -7,9 +7,8 @@ package APICode;
  */
 import static APICode.Answers.correctAnswers;
 import static APICode.Answers.incorrectAnswers;
-import static APICode.FixString.fixCorrectAnswers;
-import static APICode.FixString.fixIncorrectAnswers;
 import static APICode.FixString.fixQuestions;
+import static APICode.FixString.fixAnswers;
 import static APICode.Questions.question;
 import static APICode.SplitAndJoin.separate;
 import org.json.JSONObject;
@@ -55,15 +54,15 @@ public class API {
     }
 
     // Helper method for temporary storage
-    protected static String[] store(String[] _arrayInput, String[] _arrayOutput) {
-        for (int i = 0; i < _questions; i++) {
+    protected static String[] store(String[] _arrayInput, String[] _arrayOutput, int _loop) {
+        for (int i = 0; i < _loop; i++) {
             _arrayOutput[i] = _arrayInput[i];
         }
         return _arrayOutput;
     }
 
     // Helper method for assigning wanted info into array
-    protected static void assign(String[] _arrayInput, String[] _arrayOutput, String _message, int _num) {
+    protected static void assign(String[] _arrayInput, String[] _arrayOutput, int _num) {
         switch (_num) {
             case 1:
                 for (int i = 0; i < _questions; i++) {
@@ -73,7 +72,6 @@ public class API {
             case 2:
                 for (int i = 0; i < _questions; i++) {
                     _arrayOutput[i] = _arrayInput[i];
-
                 }
                 break;
         }
@@ -86,9 +84,9 @@ public class API {
         }
     }
 
-    protected static void reduce(String[] _arrayOutput, int _index) {
-        for (int i = 0; i < _questions; i++) {
-            _arrayOutput[i] = _arrayOutput[i].substring(_index);
+    protected static void reduce(String[] _array,int _loop,int _index) {
+        for (int i = 0; i < _loop; i++) {
+            _array[i] = _array[i].substring(_index);
         }
     }
 
@@ -129,8 +127,8 @@ public class API {
         Answers.incorrectAnswers();
         FixString.fixQuestions();
         FixString.fixCorrectAnswers();
-        FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
+        FixString.fixAnswers();
     }
 
     public static void main(String[] args) {

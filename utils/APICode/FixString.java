@@ -7,58 +7,58 @@ package APICode;
  *
  * @author Sengthida Lorvan
  */
-public class FixString extends Answers {
+public class FixString extends SplitAndJoin {
+    // Reference Arrays and a temporary array
+    private static String[] _tempArray1 = new String[_questions];
+    private static String[] _tempArray2 = new String[_answerArray.length];
+    private static final String[] _replaceChar = {"\'", "\"", "é", "²", "&", "ô", "ó", "á", "Á", "ñ", "<", "“", "”", "…", "‎", "É", "í", "­", "ä", "ö", "å", "°", ">", "è", "\'","ë"};
+    private static final String[] _html = {"&#039;", "&quot;", "eacute;", "&sup2;", "&amp;", "&ocirc;", "&oacute;", "&aacute;", "&Aacute;", "&ntilde;", "&lt;", "&ldquo;", "&rdquo;", "&hellip;", "&lrm;", "&Eacute;", "&iacute;", "&shy;", "&auml;", "&ouml;", "&aring;", "&deg;", "&gt;", "&egrave;", "&rsquo;","&euml;"};
 
-    private static String[] _tempArray = new String[_questions];
-    private static String[] _replaceChar = {"\'", "\"", "é", "²", "&", "ô", "ó", "á", "Á", "ñ", "<", "“", "”", "…", "‎", "É", "í", "­", "ä", "ö", "å", "°", ">", "è", "\'"};
-    private static String[] _messageArray = {"Question ", "Incorrect Answers for Question ", "Correct Answers for Question "};
-    private static String[] _html = {"&#039;", "&quot;", "eacute;", "&sup2;", "&amp;", "&ocirc;", "&oacute;", "&aacute;", "&Aacute;", "&ntilde;", "&lt;", "&ldquo;", "&rdquo;", "&hellip;", "&lrm;", "&Eacute;", "&iacute;", "&shy;", "&auml;", "&ouml;", "&aring;", "&deg;", "&gt;", "&egrave;", "&rsquo;"};
-
-    public static void check() {
-        for (int i = 0; i < _html.length; i++) {
-            _key = _html[i];
-            for (int j = 0; j < _questions; j++) {
-                if (_tempArray[j].contains(_key)) {
-                    replaceHtml(_tempArray, _key, _replaceChar[i]);
+    // Helper method that sets the key and then calls the helper method for replacing html
+    private static void check(int _loop1, int _loop2, String _key, String[] _arrayInput1, String[]_array, String[] _arrayInput2){
+        for (int i = 0; i < _loop1; i++) {
+            _key = _arrayInput1[i];
+            for (int j = 0; j < _loop2; j++) {
+                if (_array[j].contains(_key)) {
+                    replaceHtml(_array, _key, _arrayInput2[i], _loop2);
                 }
             }
         }
     }
 
-    public static String[] replaceHtml(String[] _array, String _key, String _replace) {
-        for (int i = 0; i < _questions; i++) {
+    // Helper method that replaces html
+    private static String[] replaceHtml(String[] _array, String _key, String _replace,int  loopNum) {
+        int _loop = loopNum;
+        for (int i = 0; i < _loop; i++) {
             _array[i] = _array[i].replace(_key, _replace);
         }
-        return _tempArray;
+        return _array;
     }
 
     public static String[] fixQuestions() {
-        store(_questionArray, _tempArray);
-        check();
-        store(_tempArray, _questionArray);
-        _message = _messageArray[0];
+        store(_questionArray, _tempArray1, _questions);
+        check(_html.length, _questions, _key, _html,_tempArray1, _replaceChar);
+        store(_tempArray1, _questionArray, _questions);
         _num = _TWO;
-        assign(_tempArray, _questionArray, _message, _num);
+        assign(_tempArray1, _questionArray, _num);
         return _questionArray;
     }
 
-    public static String[] fixIncorrectAnswers() {
-        store(_incorrectAnswer, _tempArray);
-        check();
-        store(_tempArray, _incorrectAnswer);
-        _message = _messageArray[1];
+    public static String[] fixCorrectAnswers() {
+        store(_correctAnswer, _tempArray1, _questions);
+        check(_html.length, _questions, _key, _html,_tempArray1, _replaceChar);
+        store(_tempArray1, _correctAnswer, _questions);
         _num = _TWO;
-        assign(_tempArray, _incorrectAnswer, _message, _num);
-        return _incorrectAnswer;
+        assign(_tempArray1, _correctAnswer, _num);
+        return _correctAnswer;
     }
 
-    public static String[] fixCorrectAnswers() {
-        store(_correctAnswer, _tempArray);
-        check();
-        store(_tempArray, _correctAnswer);
-        _message = _messageArray[2];
+    public static String[] fixAnswers() {
+        store(_answerArray, _tempArray2, _answerArray.length);
+        check(_html.length, _answerArray.length, _key, _html,_tempArray2, _replaceChar);
+        store(_tempArray2, _answerArray, _answerArray.length);
         _num = _TWO;
-        assign(_tempArray, _correctAnswer, _message, _num);
-        return _correctAnswer;
+        assign(_tempArray2, _correctAnswer, _num);
+        return _answerArray;
     }
 }
