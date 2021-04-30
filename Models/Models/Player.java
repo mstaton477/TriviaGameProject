@@ -15,6 +15,7 @@ public class Player extends DataObject {
     public static int gameLength;
     public static String gameDifficulty;
     public static String playerName;
+    public final  String dataTable = "player_data";
 
 
     enum NamesOfCategory {
