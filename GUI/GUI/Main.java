@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("TriviaGameMainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainMenuView.fxml"));
         primaryStage.setTitle("Trivia Game");
         primaryStage.setScene(new Scene(root, 636.0, 468.0));
         primaryStage.show();

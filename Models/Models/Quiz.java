@@ -2,8 +2,7 @@ package Models;
 
 import APICode.*;
 import Controllers.QuizController;
-import GUI.QuizView;
-import GUI.SetUpQuestions;
+import GUI.SettingsView;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -154,7 +153,7 @@ public class Quiz {
     //Coverts the difficulty string received from the GUI to lower case, because
     //of API call format.
     public static void convertDifficultyToLowercaseAndSet() {
-        String _difficulty = SetUpQuestions._difficultyChoice;
+        String _difficulty = SettingsView._difficultyChoice;
         Player.setGameDifficulty(_difficulty.toLowerCase(Locale.ENGLISH));
     }
 
