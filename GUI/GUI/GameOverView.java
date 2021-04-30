@@ -1,8 +1,6 @@
 package GUI;
 
 import Controllers.QuizController;
-import Controllers.StatsController;
-import Models.Player;
 import Models.Quiz;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +42,6 @@ public class GameOverView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         QuizController.callCalculateScore();
-        StatsController.savePlayerData(Player.getPlayerName(),Player.getGameDifficulty(),Player.getGameLength(),Player.getCategoryName(),Player.getPlayerScore());
         yourScore.setText(QuizController.callConvertPlayerScore());
 
     }

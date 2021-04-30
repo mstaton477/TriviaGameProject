@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class MySQLTranslator implements DBTranslatorInterface {
     private static String db_URL = "jdbc:mysql://35.185.120.36:3306/Trivia-game";
     private static String db_Username = "root";
     private static String db_Password = "750463832";
+    private static final int NUMBEROFCOLUMNSRETRIEVED = 6;
     private Connection conn = null;
     private Statement statement = null;
     private PreparedStatement pStatement = null;
@@ -234,7 +234,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
 
     /**
      * a method that selects a specified number of parameters from all rows in a database
-     * @param _parametersToRetrieve
+     * @param _table
      * @return
      * @throws SQLException
      */
