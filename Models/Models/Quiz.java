@@ -5,6 +5,7 @@ import Controllers.QuizController;
 import GUI.QuizView;
 import GUI.SetUpQuestions;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 import static APICode.Answers._correctAnswer;
@@ -19,6 +20,7 @@ public class Quiz {
 
     //to be used to calculate int score
     public static int numCorrect;
+    public static String stringPlayerScore;
 
     private static final int gameLengthShort = 10;
     private static final int gameLengthMedium = 20;
@@ -61,14 +63,13 @@ public class Quiz {
 
     //checks if the answer choice exists in the correctAnswer array
     private static void checkIfCorrect(String[] _correctAnswer, String _choice) {
-        for (int i = 0; i < _correctAnswer.length; i++) {
-            for (String s : _correctAnswer) {
-                if (_choice.equals(s)) {
-                    System.out.println("Correct Answer Chosen, Good Job!");
-                    numCorrect++;
-                }
-                break;
-            }
+
+        boolean found = Arrays.asList(_correctAnswer).contains(_choice);
+        if(found){
+            System.out.println("Correct Answer Chosen, Good Job!");
+            numCorrect++;
+        }else{
+            System.out.println("Incorrect Answer Chose :(");
         }
     }
 
@@ -81,23 +82,23 @@ public class Quiz {
 
     // each game length has its own multiplier.
 
-    public static int calculateScore(int _gameLength, int _numCorrect, int _playerScore) {
-        _playerScore = _numCorrect / _gameLength;
+    public static void calculateScore(int _gameLength, int _numCorrect, int _playerScore) {
+        _gameLength = QuizController.getGameLength();
 
         if (_gameLength == gameLengthLong) {
-            return _playerScore * multiLong;
+            _playerScore = numCorrect * multiLong;
 
         } else if (_gameLength == gameLengthMedium) {
-            return _playerScore * multiMedium;
+              _playerScore =  numCorrect * multiMedium;
         } else if (_gameLength == gameLengthShort) {
-            return _playerScore * multiShort;
+            _playerScore =  numCorrect * multiShort;
         }
 
         if (checkIfSpecialPlayer()) {
-            return _playerScore * specialMulti;
+             _playerScore = numCorrect * specialMulti;
         }
 
-        return _playerScore;
+          Player.setPlayerScore(_playerScore);
     }
 
     //helper method for calculate score.
@@ -143,13 +144,11 @@ public class Quiz {
     }
 
 
-    public static String convertPlayerScoreToString(){
-        int _playerScore = calculateScore(Player.gameLength, Quiz.numCorrect, Player.playerScore);
-        String stringPlayerScore = String.valueOf(_playerScore);
+    public static String convertPlayerScoreToString() {
+        String stringPlayerScore = String.valueOf(Player.playerScore);
         return stringPlayerScore;
     }
 
-  
 
     //Coverts the difficulty string received from the GUI to lower case, because
     //of API call format.
@@ -184,13 +183,8 @@ public class Quiz {
         SplitAndJoin.separate();
     }
 
-    @Override
-    public boolean equals(Object o){
-        if(o == this){
-            return true;
-        }
-        return false;
-    }
+
+
 
     // ================================ GETTERS ====================================
     public int getNumCorrect() {
@@ -206,6 +200,9 @@ public class Quiz {
         return answerArray = SplitAndJoin._answerArray;
     }
 
+    public static int getPlayerScore(){
+        return Player.playerScore;
+    }
 
     // ================================ SETTERS ====================================
 
