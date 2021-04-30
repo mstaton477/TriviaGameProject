@@ -32,6 +32,10 @@ public class QuizController {
     public static void callAPIRun() {
         Quiz.APIRun();
     }
+    public static String callConvertPlayerScore(){
+        String playerScoreString = Quiz.convertPlayerScoreToString();
+        return playerScoreString;
+    }
 
 
     // ================================ GETTERS ====================================

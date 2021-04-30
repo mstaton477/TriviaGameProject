@@ -41,7 +41,8 @@ public class GameOverView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        yourScore.setText(Quiz.convertPlayerScoreToString());
+        QuizController.callCalculateScore();
+        yourScore.setText(QuizController.callConvertPlayerScore());
 
     }
 }
