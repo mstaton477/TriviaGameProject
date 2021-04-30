@@ -47,13 +47,6 @@ public class QuizController {
     //gets the player answer choice from the quiz view to use in the
     // check if correct method
 
-    public static String getChoice() {
-        return QuizView._choice;
-    }
-
-    public static String getCategoryChoice() {
-        return SetUpQuestions._categoryChoice;
-    }
 
     public static int getGameLength() {
         return Player.getGameLength();
