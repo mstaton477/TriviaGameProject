@@ -199,9 +199,6 @@ public class Quiz {
     }
 
     // ================================ GETTERS ====================================
-    public int getNumCorrect() {
-        return numCorrect;
-    }
 
 
     public static String[] getQuestionArray() {
@@ -212,13 +209,8 @@ public class Quiz {
         return answerArray = SplitAndJoin._answerArray;
     }
 
-    public static int getPlayerScore() {
-        return Player.playerScore;
-    }
 
     // ================================ SETTERS ====================================
 
-  /*  public void setNumCorrect(int _numCorrect) {
-        this.numCorrect = _numCorrect;
-    }*/
+
 }

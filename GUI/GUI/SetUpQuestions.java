@@ -91,22 +91,10 @@ public class SetUpQuestions implements Initializable {
 
         QuizController.callAPIRun();
         QuizController.getQuestionsArray();
-        for (int i = 0; i < QuizController._questionArray.length; i++) {
-            System.out.println(QuizController._questionArray[i]);
-        }
 
-        QuizController.getAnswerArray();
-        for (int i = 0; i < QuizController._answerArray.length; i++) {
-            System.out.println(QuizController._answerArray[i]);
-        }
 
-        System.out.println("randomize answer array");
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         QuizController.callRandomizeArray();
         QuizController.getAnswerArray();
-        for (int i = 0; i < QuizController._answerArray.length; i++) {
-            System.out.println(QuizController._answerArray[i]);
-        }
 
 
 
@@ -119,14 +107,6 @@ public class SetUpQuestions implements Initializable {
         window.setScene(beginGameViewScene);
         window.show();
 
-
-
-        /*
-        System.out.println(_categoryChoice);
-        System.out.println(_difficultyChoice);
-        System.out.println(_lengthChoice);
-        System.out.println(_name);
-         */
 
     }
 

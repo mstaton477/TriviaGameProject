@@ -11,8 +11,7 @@ import TriviaGameDatabase.DataObject;
 public class Player extends DataObject {
 
     public static int playerScore;
-    protected static String categoryName;
-    public static int category;
+    public static String categoryName;
     public static int gameLength;
     public static String gameDifficulty;
     public static String playerName;
@@ -26,12 +25,12 @@ public class Player extends DataObject {
 
     }
 
-    public Player(String playerName, String gameDifficulty, int gameLength, String categoryName, int playerScore) {
-        this.playerName = playerName;
-        this.gameDifficulty = gameDifficulty;
-        this.gameLength = gameLength;
-        this.categoryName = categoryName;
-        this.playerScore = playerScore;
+    public Player(String _playerName, String _gameDifficulty, int _gameLength, String _categoryName, int _playerScore) {
+        playerName = _playerName;
+        gameDifficulty = _gameDifficulty;
+        gameLength = _gameLength;
+        categoryName = _categoryName;
+        playerScore = _playerScore;
     }
 
     //When saving the data to the Database category will be saved as a String not an int.
