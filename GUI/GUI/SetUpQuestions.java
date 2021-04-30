@@ -7,6 +7,7 @@ package GUI;
  * and then sets those values accordingly.
  */
 
+import Models.Quiz;
 import Models.experimentalCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,6 +95,14 @@ public class SetUpQuestions implements Initializable {
             System.out.println(QuizController._questionArray[i]);
         }
 
+        QuizController.getAnswerArray();
+        for (int i = 0; i < QuizController._answerArray.length; i++) {
+            System.out.println(QuizController._answerArray[i]);
+        }
+
+        System.out.println("randomize answer array");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Quiz.randomizeAnswerArray();
         QuizController.getAnswerArray();
         for (int i = 0; i < QuizController._answerArray.length; i++) {
             System.out.println(QuizController._answerArray[i]);
