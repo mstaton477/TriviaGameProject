@@ -2,12 +2,11 @@ package GUI;
 
 /**
  * @author Jayson Williamson
- * Updated 4/21/21
+ * Updated 4/30/21
  * This class sets up the initial view users see when launching the trivia game.
  */
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,16 +14,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class TriviaGame {
-
+public class MainMenuView {
 
     /**
-     * This is for changing the scene to the view used for setting up the questions of the game.
+     * Creates an action event that happens when the settings button is pressed that loads the leaderboard view.
      * @param event
      * @throws IOException
      */
     public void setUpButton(ActionEvent event) throws IOException {
-        Parent setUpQuestionsView = FXMLLoader.load(getClass().getResource("SetUpQuestions.fxml"));
+        Parent setUpQuestionsView = FXMLLoader.load(getClass().getResource("SettingsView.fxml"));
         Scene setUpQuestionsViewScene = new Scene(setUpQuestionsView);
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -33,6 +31,11 @@ public class TriviaGame {
         window.show();
     }
 
+    /**
+     * Creates an action event that happens when the leaderboard button is pressed that loads the leaderboard view.
+     * @param event
+     * @throws IOException
+     */
     public void leaderboardButton(ActionEvent event) throws IOException{
         Parent leaderboardView = FXMLLoader.load(getClass().getResource("LeaderboardView.fxml"));
         Scene leaderboardViewScene = new Scene(leaderboardView);
@@ -43,8 +46,10 @@ public class TriviaGame {
         window.show();
     }
 
-    //Closes the program.
-    @FXML
+    /**
+     * Creates an action event that happens when the quit button is pressed that closes the program.
+     * @param event
+     */
     public void quitButton(ActionEvent event){
         ((Stage)(((Node)event.getSource()).getScene().getWindow())).close();
     }

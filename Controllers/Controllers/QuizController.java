@@ -8,8 +8,6 @@ package Controllers;
  */
 
 
-import GUI.QuizView;
-import GUI.SetUpQuestions;
 import Models.*;
 
 

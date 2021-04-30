@@ -2,13 +2,11 @@ package GUI;
 
 /**
  * @author Jayson Williamson
- * Updated 4/28/21
+ * Updated 4/30/21
  * This class sets up the view for the settings page and allows users to choose different settings for the quiz to have
  * and then sets those values accordingly.
  */
 
-import Models.Quiz;
-import Models.experimentalCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import Controllers.*;
 
-
-public class SetUpQuestions implements Initializable {
+public class SettingsView implements Initializable {
 
     //Sets up fx:ids to link to the fxml
     @FXML
@@ -37,20 +34,19 @@ public class SetUpQuestions implements Initializable {
     @FXML
     private TextField _nameTextField;
 
-    //Additional items for choices users make on this scene.
+    //Creates variables to be used later in code.
     public static String _categoryChoice;
     public static String _difficultyChoice;
     public static String _lengthChoice;
     private static String _name;
 
     /**
-     * This sends the user back to the initial view of the application.
-     *
+     * This causes the back button to fire an event that sends the user back to the main menu of the application.
      * @param event
      * @throws IOException
      */
     public void backButton(ActionEvent event) throws IOException {
-        Parent backButton = FXMLLoader.load(getClass().getResource("TriviaGameMainView.fxml"));
+        Parent backButton = FXMLLoader.load(getClass().getResource("MainMenuView.fxml"));
         Scene backButtonScene = new Scene(backButton);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -60,9 +56,8 @@ public class SetUpQuestions implements Initializable {
     }
 
     /**
-     * This sends the user to the next page and allows them to play the game. Will grab
-     * info from choice boxes for each setting to send to controller accordingly.
-     *
+     * This causes the begin game button to fire an event that loads the settings view and allows the user to
+     * choose how they play the game. Grabs info from choice boxes for each setting to send to controller.
      * @param event
      * @throws IOException
      */
@@ -76,27 +71,21 @@ public class SetUpQuestions implements Initializable {
         //Gets the value from the name text area for use later
         _name = _nameTextField.getText();
 
-
+        //Sets each of the player's choices by calling the quiz controller.
         QuizController.setGameDifficulty(_difficultyChoice);
         QuizController.setGameLength(_lengthChoice);
         QuizController.setCategory(_categoryChoice);
         QuizController.setPlayerName(_name);
 
-
+        //Displays the choices the player has made.
         System.out.println(QuizController.getCategory());
         System.out.println(QuizController.getGameDifficulty());
         System.out.println(QuizController.getGameLength());
         System.out.println(QuizController.getPlayerName());
 
-
+        //Calls a method to set up the API and also calls a method that randomizes the array of answers.
         QuizController.callAPIRun();
-        QuizController.getQuestionsArray();
-
-
         QuizController.callRandomizeArray();
-        QuizController.getAnswerArray();
-
-
 
         //Loads the QuizView scene
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
@@ -106,10 +95,13 @@ public class SetUpQuestions implements Initializable {
 
         window.setScene(beginGameViewScene);
         window.show();
-
-
     }
 
+    /**
+     * Sets up what goes into each choice box when this view is loaded.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Options for Categories
