@@ -2,7 +2,7 @@ package GUI;
 
 /**
  * @author Jayson Williamson
- * Last updated: 4/21/21
+ * Last updated: 4/30/21
  * This class sets up the quiz view and reloads the view again with different variables
  */
 
@@ -62,14 +62,7 @@ public class QuizView implements Initializable {
                 window.show();
         }
         else {
-            QuizController.callCheckIfCorrect();
-        _iIndex++;
-        questionLabel.setText(questionArray[_iIndex]);
-        _jIndex = _jIndex + 4;
-        answerALabel.setText(answerArray[_jIndex]);
-        answerBLabel.setText(answerArray[_jIndex+1]);
-        answerCLabel.setText(answerArray[_jIndex+2]);
-        answerDLabel.setText(answerArray[_jIndex+3]);
+            moveToNextQuestion();
         }
     }
 
@@ -94,14 +87,7 @@ public class QuizView implements Initializable {
             window.show();
         }
         else {
-            QuizController.callCheckIfCorrect();
-            _iIndex++;
-            questionLabel.setText(questionArray[_iIndex]);
-            _jIndex = _jIndex + 4;
-            answerALabel.setText(answerArray[_jIndex]);
-            answerBLabel.setText(answerArray[_jIndex + 1]);
-            answerCLabel.setText(answerArray[_jIndex + 2]);
-            answerDLabel.setText(answerArray[_jIndex + 3]);
+           moveToNextQuestion();
         }
     }
 
@@ -126,14 +112,7 @@ public class QuizView implements Initializable {
             window.show();
         }
         else {
-            QuizController.callCheckIfCorrect();
-            _iIndex++;
-            questionLabel.setText(questionArray[_iIndex]);
-            _jIndex = _jIndex + 4;
-            answerALabel.setText(answerArray[_jIndex]);
-            answerBLabel.setText(answerArray[_jIndex + 1]);
-            answerCLabel.setText(answerArray[_jIndex + 2]);
-            answerDLabel.setText(answerArray[_jIndex + 3]);
+            moveToNextQuestion();
         }
     }
 
@@ -158,17 +137,21 @@ public class QuizView implements Initializable {
             window.show();
         }
         else {
-            QuizController.callCheckIfCorrect();
-            _iIndex++;
-            questionLabel.setText(questionArray[_iIndex]);
-            _jIndex = _jIndex + 4;
-            answerALabel.setText(answerArray[_jIndex]);
-            answerBLabel.setText(answerArray[_jIndex + 1]);
-            answerCLabel.setText(answerArray[_jIndex + 2]);
-            answerDLabel.setText(answerArray[_jIndex + 3]);
+           moveToNextQuestion();
         }
     }
 
+
+    private void moveToNextQuestion(){
+        QuizController.callCheckIfCorrect();
+        _iIndex++;
+        questionLabel.setText(questionArray[_iIndex]);
+        _jIndex = _jIndex + 4;
+        answerALabel.setText(answerArray[_jIndex]);
+        answerBLabel.setText(answerArray[_jIndex + 1]);
+        answerCLabel.setText(answerArray[_jIndex + 2]);
+        answerDLabel.setText(answerArray[_jIndex + 3]);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
