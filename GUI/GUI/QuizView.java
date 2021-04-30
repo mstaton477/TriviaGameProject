@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class QuizView implements Initializable {
 
-    //Variables necessary for the quiz
+    //Sets up fx:ids to link to the fxml
     @FXML private Label questionLabel;
     @FXML private Label answerALabel;
     @FXML private Label answerBLabel;
@@ -34,70 +34,139 @@ public class QuizView implements Initializable {
     private String labelCText;
     private String labelDText;
 
-    String questionArray[] = {"Question 1: ", "Question 2: ", "Question 3: ", "Question 4: ", "Question 5: ",
-            "Question 6: ", "Question 7: ","Question 8: ", "Question 9: ", "Question 10: "};
-
-    String answerArray[] = {"Answer 1a", "Answer 1b", "Answer 1c", "Answer 1d", "Answer 2a", "Answer 2b", "Answer 2c", "Answer 2d",
-            "Answer 3a", "Answer 3b", "Answer 3c", "Answer 3d", "Answer 4a", "Answer 4b", "Answer 4c", "Answer 4d",
-            "Answer 5a", "Answer 5b", "Answer 5c", "Answer 5d","Answer 6a", "Answer 6b", "Answer 6c", "Answer 6d",
-            "Answer 7a", "Answer 7b", "Answer 7c", "Answer 7d","Answer 8a", "Answer 8b", "Answer 8c", "Answer 8d",
-            "Answer 9a", "Answer 9b", "Answer 9c", "Answer 9d","Answer 10a", "Answer 10b", "Answer 10c", "Answer 10d"};
-    int i;
-    int j;
+    String questionArray[] = QuizController.getQuestionsArray();
+    String answerArray[] = QuizController.getAnswerArray();
+    int _iIndex;
+    int _jIndex;
 
     public static String _choice;
 
-    //Some method of looping same scene with new questions/answers to be added
-    public void answerAButton(ActionEvent event){
+    /**
+     * Button methods check what the user has chosen for their answer, check if it is the correct answer, and then sets
+     * text of the labels to the ones used in the next question.
+     * @param event
+     * @throws IOException
+     */
+    public void answerAButton(ActionEvent event) throws IOException{
         labelAText = answerALabel.getText();
         _choice = labelAText;
-        i++;
-        questionLabel.setText(questionArray[i]);
-        j = j + 4;
-        answerALabel.setText(answerArray[j]);
-        answerBLabel.setText(answerArray[j+1]);
-        answerCLabel.setText(answerArray[j+2]);
-        answerDLabel.setText(answerArray[j+3]);
         System.out.println("You chose: " + _choice);
+        if (_iIndex + 2 > questionArray.length){
+            QuizController.callCheckIfCorrect();
+                Parent endGameLeaderboardView = FXMLLoader.load(getClass().getResource("GameOverView.fxml"));
+                Scene endGameLeaderboardViewScene = new Scene(endGameLeaderboardView);
+
+                Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+                window.setScene(endGameLeaderboardViewScene);
+                window.show();
+        }
+        else {
+            QuizController.callCheckIfCorrect();
+        _iIndex++;
+        questionLabel.setText(questionArray[_iIndex]);
+        _jIndex = _jIndex + 4;
+        answerALabel.setText(answerArray[_jIndex]);
+        answerBLabel.setText(answerArray[_jIndex+1]);
+        answerCLabel.setText(answerArray[_jIndex+2]);
+        answerDLabel.setText(answerArray[_jIndex+3]);
+        }
     }
 
-    public void answerBButton(ActionEvent event){
+    /**
+     * Button method that checks what the user has chosen for their answer, checks if it is the correct answer, and
+     * then sets text of the labels to the ones used in the next question.
+     * @param event
+     * @throws IOException
+     */
+    public void answerBButton(ActionEvent event) throws IOException{
         labelBText = answerBLabel.getText();
         _choice = labelBText;
-        i++;
-        questionLabel.setText(questionArray[i]);
-        j = j + 4;
-        answerALabel.setText(answerArray[j]);
-        answerBLabel.setText(answerArray[j+1]);
-        answerCLabel.setText(answerArray[j+2]);
-        answerDLabel.setText(answerArray[j+3]);
         System.out.println("You chose: " + _choice);
+        if (_iIndex + 2 > questionArray.length){
+            QuizController.callCheckIfCorrect();
+            Parent endGameLeaderboardView = FXMLLoader.load(getClass().getResource("GameOverView.fxml"));
+            Scene endGameLeaderboardViewScene = new Scene(endGameLeaderboardView);
+
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+            window.setScene(endGameLeaderboardViewScene);
+            window.show();
+        }
+        else {
+            QuizController.callCheckIfCorrect();
+            _iIndex++;
+            questionLabel.setText(questionArray[_iIndex]);
+            _jIndex = _jIndex + 4;
+            answerALabel.setText(answerArray[_jIndex]);
+            answerBLabel.setText(answerArray[_jIndex + 1]);
+            answerCLabel.setText(answerArray[_jIndex + 2]);
+            answerDLabel.setText(answerArray[_jIndex + 3]);
+        }
     }
 
-    public void answerCButton(ActionEvent event){
+    /**
+     * Button method that checks what the user has chosen for their answer, checks if it is the correct answer, and
+     * then sets text of the labels to the ones used in the next question.
+     * @param event
+     * @throws IOException
+     */
+    public void answerCButton(ActionEvent event) throws IOException{
         labelCText = answerCLabel.getText();
         _choice = labelCText;
-        i++;
-        questionLabel.setText(questionArray[i]);
-        j = j + 4;
-        answerALabel.setText(answerArray[j]);
-        answerBLabel.setText(answerArray[j+1]);
-        answerCLabel.setText(answerArray[j+2]);
-        answerDLabel.setText(answerArray[j+3]);
         System.out.println("You chose: " + _choice);
+        if (_iIndex + 2 > questionArray.length){
+            QuizController.callCheckIfCorrect();
+            Parent endGameLeaderboardView = FXMLLoader.load(getClass().getResource("GameOverView.fxml"));
+            Scene endGameLeaderboardViewScene = new Scene(endGameLeaderboardView);
+
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+            window.setScene(endGameLeaderboardViewScene);
+            window.show();
+        }
+        else {
+            QuizController.callCheckIfCorrect();
+            _iIndex++;
+            questionLabel.setText(questionArray[_iIndex]);
+            _jIndex = _jIndex + 4;
+            answerALabel.setText(answerArray[_jIndex]);
+            answerBLabel.setText(answerArray[_jIndex + 1]);
+            answerCLabel.setText(answerArray[_jIndex + 2]);
+            answerDLabel.setText(answerArray[_jIndex + 3]);
+        }
     }
 
-    public void answerDButton(ActionEvent event){
+    /**
+     * Button method that checks what the user has chosen for their answer, checks if it is the correct answer, and
+     * then sets text of the labels to the ones used in the next question.
+     * @param event
+     * @throws IOException
+     */
+    public void answerDButton(ActionEvent event) throws IOException{
         labelDText = answerDLabel.getText();
         _choice = labelDText;
-        i++;
-        questionLabel.setText(questionArray[i]);
-        j = j + 4;
-        answerALabel.setText(answerArray[j]);
-        answerBLabel.setText(answerArray[j+1]);
-        answerCLabel.setText(answerArray[j+2]);
-        answerDLabel.setText(answerArray[j+3]);
         System.out.println("You chose: " + _choice);
+        if (_iIndex + 2 > questionArray.length){
+            QuizController.callCheckIfCorrect();
+            Parent endGameLeaderboardView = FXMLLoader.load(getClass().getResource("GameOverView.fxml"));
+            Scene endGameLeaderboardViewScene = new Scene(endGameLeaderboardView);
+
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+            window.setScene(endGameLeaderboardViewScene);
+            window.show();
+        }
+        else {
+            QuizController.callCheckIfCorrect();
+            _iIndex++;
+            questionLabel.setText(questionArray[_iIndex]);
+            _jIndex = _jIndex + 4;
+            answerALabel.setText(answerArray[_jIndex]);
+            answerBLabel.setText(answerArray[_jIndex + 1]);
+            answerCLabel.setText(answerArray[_jIndex + 2]);
+            answerDLabel.setText(answerArray[_jIndex + 3]);
+        }
     }
 
 
@@ -105,11 +174,11 @@ public class QuizView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //Made this way for testing purposes currently, questions/answers need to be grabbed from elsewhere
-        questionLabel.setText(questionArray[i]);
-        answerALabel.setText(answerArray[j]);
-        answerBLabel.setText(answerArray[j+1]);
-        answerCLabel.setText(answerArray[j+2]);
-        answerDLabel.setText(answerArray[j+3]);
+        questionLabel.setText(questionArray[_iIndex]);
+        answerALabel.setText(answerArray[_jIndex]);
+        answerBLabel.setText(answerArray[_jIndex+1]);
+        answerCLabel.setText(answerArray[_jIndex+2]);
+        answerDLabel.setText(answerArray[_jIndex+3]);
 
 
     }

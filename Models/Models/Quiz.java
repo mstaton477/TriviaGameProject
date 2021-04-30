@@ -60,11 +60,14 @@ public class Quiz {
 
 
     //checks if the answer choice exists in the correctAnswer array
-    public static void checkIfCorrect(String[] _correctAnswer, String _choice) {
-        for (String s : _correctAnswer) {
-            if (_choice.equals(s)) {
-                System.out.println("Correct Answer Chosen, Good Job!");
-                numCorrect++;
+    private static void checkIfCorrect(String[] _correctAnswer, String _choice) {
+        for (int i = 0; i < _correctAnswer.length; i++) {
+            for (String s : _correctAnswer) {
+                if (_choice.equals(s)) {
+                    System.out.println("Correct Answer Chosen, Good Job!");
+                    numCorrect++;
+                }
+                break;
             }
         }
     }
@@ -75,7 +78,9 @@ public class Quiz {
     }
 
     //calculates the player Score based on number correct and game length
+
     // each game length has its own multiplier.
+
     public static int calculateScore(int _gameLength, int _numCorrect, int _playerScore) {
         _playerScore = _numCorrect / _gameLength;
 
@@ -137,6 +142,15 @@ public class Quiz {
         }
     }
 
+
+    public static String convertPlayerScoreToString(){
+        int _playerScore = calculateScore(Player.gameLength, Quiz.numCorrect, Player.playerScore);
+        String stringPlayerScore = String.valueOf(_playerScore);
+        return stringPlayerScore;
+    }
+
+  
+
     //Coverts the difficulty string received from the GUI to lower case, because
     //of API call format.
     public static void convertDifficultyToLowercaseAndSet() {
@@ -168,6 +182,14 @@ public class Quiz {
         FixString.fixCorrectAnswers();
         FixString.fixIncorrectAnswers();
         SplitAndJoin.separate();
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this){
+            return true;
+        }
+        return false;
     }
 
     // ================================ GETTERS ====================================
