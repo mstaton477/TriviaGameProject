@@ -1,6 +1,13 @@
 
 package Models;
 
+/*
+ * Author @Patrick
+ * Last Updated: 04/30/21
+ * Models the Leaderboard for use.
+ */
+
+
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;

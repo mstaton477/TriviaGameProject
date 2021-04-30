@@ -101,7 +101,6 @@ public class SetUpQuestions implements Initializable {
 
 
 
-
         //Loads the QuizView scene
         Parent beginGameView = FXMLLoader.load(getClass().getResource("QuizView.fxml"));
         Scene beginGameViewScene = new Scene(beginGameView);
@@ -130,7 +129,7 @@ public class SetUpQuestions implements Initializable {
                 "Entertainment: Japanese Anime & Manga");
 
         //Options for difficulty
-        _difficultyBox.getItems().addAll("easy", "medium", "hard");
+        _difficultyBox.getItems().addAll("Easy", "Medium", "Hard");
 
         //Options for game length
         _lengthBox.getItems().addAll("10", "20", "30");

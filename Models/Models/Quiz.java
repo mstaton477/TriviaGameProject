@@ -12,7 +12,7 @@ import static GUI.QuizView._choice;
 
 /*
  * Author @McKenzie
- * Last Updated: 4/29/21
+ * Last Updated: 4/30/21
  * This class holds all the information related to the quiz.
  */
 public class Quiz {
@@ -31,10 +31,12 @@ public class Quiz {
 
     private static final String specialPlayerName = "Ike";
     private static final int specialMulti = 1000;
+
+    //stores the question and answer arrays in the quiz model to use in the Quiz Controller.
     public static String[] questionArray;
     public static String[] answerArray;
 
-
+    //enumeration for categories and the integers used to call them in the API.
     private static final String generalKnowledge = "General Knowledge";
     private static final String science = "Science & Nature";
     private static final String computers = "Science: Computers";
@@ -51,14 +53,11 @@ public class Quiz {
     private static final int filmInt = 11;
     private static final int animeInt = 31;
 
+    //enumeration of game lengths
     private static final String shortGameLength = "10";
     private static final String medGameLength = "20";
     private static final String longGameLength = "30";
 
-
-    public void quiz() {
-
-    }
 
     //checks if the answer choice exists in the correctAnswer array
     private static void checkIfCorrect(String[] _correctAnswer, String _choice) {
@@ -79,7 +78,9 @@ public class Quiz {
     }
 
     //calculates the player Score based on number correct and game length
-    // each game length has its own multiplayer.
+
+    // each game length has its own multiplier.
+
     public static int calculateScore(int _gameLength, int _numCorrect, int _playerScore) {
         _playerScore = _numCorrect / _gameLength;
 
@@ -99,6 +100,7 @@ public class Quiz {
         return _playerScore;
     }
 
+    //helper method for calculate score.
     public static void calculateScore() {
         calculateScore(Player.gameLength, Quiz.numCorrect, Player.playerScore);
     }
@@ -120,8 +122,9 @@ public class Quiz {
         return false;
     }
 
+    //Gets the category string from the Set Up Questions View,
+    //and then converts to its associated integer for the API call.
     public static void convertCategoryStringToIntAndSet(String _conversion) {
-
         if (_conversion.equals(generalKnowledge)) {
             Player.setCategory(generalKnowledgeInt);
         } else if (_conversion.equals(science)) {
@@ -139,29 +142,38 @@ public class Quiz {
         }
     }
 
+
     public static String convertPlayerScoreToString(){
         int _playerScore = calculateScore(Player.gameLength, Quiz.numCorrect, Player.playerScore);
         String stringPlayerScore = String.valueOf(_playerScore);
         return stringPlayerScore;
     }
 
-   /* public static void convertDifficultyToLowercaseAndSet() {
-        String _difficulty = SetUpQuestions._difficultyChoice;
-        Player.setGameDifficulty(_difficulty);
-    }*/
+  
 
+    //Coverts the difficulty string received from the GUI to lower case, because
+    //of API call format.
+    public static void convertDifficultyToLowercaseAndSet() {
+        String _difficulty = SetUpQuestions._difficultyChoice;
+        Player.setGameDifficulty(_difficulty.toLowerCase(Locale.ENGLISH));
+    }
+
+    //Converts the length string received from the GUI, and converts it to its
+    //associated integer.
     public static void convertGameLengthStringToIntAndSet(String _length) {
 
-        if(_length.equals(shortGameLength)){
+        if (_length.equals(shortGameLength)) {
             Player.setGameLength(gameLengthShort);
-        }else if(_length.equals(medGameLength)){
+        } else if (_length.equals(medGameLength)) {
             Player.setGameLength(gameLengthMedium);
-        }else if(_length.equals(longGameLength)){
+        } else if (_length.equals(longGameLength)) {
             Player.setGameLength(gameLengthLong);
         }
     }
 
-    public static void APIRun(){
+    //Calls all the necessary methods from the APICode package to make the API call, and format the
+    //questions and answers accordingly.
+    public static void APIRun() {
         API.makeApiCall();
         Questions.question();
         Answers.correctAnswers();
@@ -169,7 +181,8 @@ public class Quiz {
         FixString.fixQuestions();
         FixString.fixCorrectAnswers();
         FixString.fixIncorrectAnswers();
-        SplitAndJoin.separate();}
+        SplitAndJoin.separate();
+    }
 
     @Override
     public boolean equals(Object o){
@@ -186,32 +199,17 @@ public class Quiz {
 
 
     public static String[] getQuestionArray() {
-
         return questionArray = FixString._questionArray;
     }
 
     public static String[] getAnswerArray() {
-
         return answerArray = SplitAndJoin._answerArray;
     }
 
 
     // ================================ SETTERS ====================================
 
-    public void setNumCorrect(int _numCorrect) {
+  /*  public void setNumCorrect(int _numCorrect) {
         this.numCorrect = _numCorrect;
-    }
-    public static void setGameLength(int _gameLength){
-        Player.setGameLength(_gameLength);
-    }
-
-    public static void setCategory(int _category){
-        Player.setCategory(_category);
-    }
-
-
-    public static void setGameDifficulty(String _gameDifficulty){
-        Player.setGameDifficulty(_gameDifficulty);
-    }
-
+    }*/
 }

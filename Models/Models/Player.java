@@ -1,7 +1,7 @@
 package Models;
 /*
  * Author @McKenzie
- * Last Updated: 4/28/21
+ * Last Updated: 4/30/21
  * This class holds all the information related to the quiz player.
  */
 
@@ -35,7 +35,8 @@ public class Player extends DataObject {
     }
 
     //When saving the data to the Database category will be saved as a String not an int.
-    public static String getCategoryName(int _category) {
+    public static String getCategoryName() {
+        int _category = getCategory();
         switch (_category) {
             case 9:
                 categoryName = String.valueOf(NamesOfCategory.GENERAL_KNOWLEDGE);
