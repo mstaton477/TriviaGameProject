@@ -26,5 +26,4 @@ public interface DBTranslatorInterface {
     public abstract int deleteObject(String _id, String _table) throws SQLException;
 
     public abstract ArrayList selectAll(String _parametersToRetrieve) throws SQLException;
-
 }

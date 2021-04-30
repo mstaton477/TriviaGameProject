@@ -10,11 +10,13 @@ import TriviaGameDatabase.DataObject;
 
 public class Player extends DataObject {
 
-    public static int playerScore;
-    public static String categoryName;
-    public static int gameLength;
-    public static String gameDifficulty;
-    public static String playerName;
+    public static int playerScore=0;
+    public static String categoryName="";
+    public static int gameLength=0;
+    public static String gameDifficulty="";
+    public static String playerName = "";
+    public final  String dataTable = "player_data";
+
 
 
     enum NamesOfCategory {
@@ -61,7 +63,6 @@ public class Player extends DataObject {
         }
         return categoryName;
     }
-
     // ================================ GETTERS ====================================
 
     public static int getCategory() {

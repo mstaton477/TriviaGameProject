@@ -10,6 +10,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  * @author Patrick
  */
@@ -18,7 +19,6 @@ public abstract class DataObject extends DataFactory {
     protected final String dataTable = "";
     protected int id = 0;
     protected String uuid;
-    protected String name = "";
     protected String active = "1";
 
     public DataObject() {
@@ -81,9 +81,6 @@ public abstract class DataObject extends DataFactory {
 
 // ================================ GETTERS ====================================
 
-    public String getName() {
-        return this.name;
-    }
 
     public String getUuid() {
         return this.uuid;
@@ -95,9 +92,6 @@ public abstract class DataObject extends DataFactory {
 
 // ================================ SETTERS ====================================
 
-    public void setName(String _name) {
-        this.name = _name;
-    }
 
     public void setUuid(String _uuid) {
         this.uuid = _uuid;

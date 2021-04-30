@@ -22,7 +22,6 @@ public class DataStoreAdapter {
     /**
      * Given a DataObject, this method translates that DataObject into primitive
      * name-value pairs that can be used by a DBConnectorInterface class.
-     *
      * @param obj
      * @return
      * @throws IllegalArgumentException
@@ -44,8 +43,7 @@ public class DataStoreAdapter {
     /**
      * Given a map of conditional statements, this method returns a single generic
      * DataObject instance with properties set to the returned data.
-     *
-     * @param _map   : The conditional name-value pairs (ie. name='John');
+     * @param _map : The conditional name-value pairs (ie. name='John');
      * @param _table
      * @param _class
      * @return DataObject
@@ -54,7 +52,7 @@ public class DataStoreAdapter {
      * @throws java.lang.IllegalAccessException
      * @throws java.lang.NoSuchMethodException
      */
-    public static DataObject readObject(Map<String, String> _map, String _table, String _class) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static DataObject readObject(Map <String, String> _map, String _table, String _class) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         // The Connector object returns a Hashmap of name-value pairs.
         HashMap<String, Object> results = connector.readObject(_map, _table);
         if (results == null) {
@@ -62,7 +60,7 @@ public class DataStoreAdapter {
         }
         try {
             // Here we create an object (cast as a generic DataObject) and return it.
-            return (DataObject) DataFactory.objectFactory(_class, results);
+            return (DataObject)DataFactory.objectFactory(_class, results);
         } catch (IllegalArgumentException ex) {
             Logger.getLogger(DataStoreAdapter.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,7 +70,6 @@ public class DataStoreAdapter {
 
     /**
      * Updates an object already recorded in the database with new property values.
-     *
      * @param obj
      * @return Boolean
      * @throws java.lang.IllegalAccessException
@@ -89,7 +86,6 @@ public class DataStoreAdapter {
      * Since we never want to actually delete records, we'll need to add an "active"
      * property to the base DataObject class. This implementation will then set
      * the active value to 0.
-     *
      * @param _id
      * @param _table
      * @return Boolean
@@ -103,7 +99,8 @@ public class DataStoreAdapter {
 
 
     public static ArrayList selectAll(String _parametersToRetrieve) throws SQLException {
-        return connector.selectAll(_parametersToRetrieve);
+        return connector.selectAll( _parametersToRetrieve);
     }
+
 }
 
