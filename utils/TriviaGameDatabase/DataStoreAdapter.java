@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,8 +97,8 @@ public class DataStoreAdapter {
         return connector.deleteObject(_id, _table);
     }
 
-    public static ArrayList sortDataTable(String _table, String _parameterSortBy, ArrayList _sortedList) throws SQLException {
-        return connector.sortTable(_table, _parameterSortBy, _sortedList);
+    public static ArrayList selectAll(String _parametersToRetrieve) throws SQLException {
+        return connector.selectAll( _parametersToRetrieve);
     }
 
 }

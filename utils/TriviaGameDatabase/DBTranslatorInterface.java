@@ -11,6 +11,7 @@ package TriviaGameDatabase;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,6 +25,6 @@ public interface DBTranslatorInterface {
 
     public abstract int deleteObject(String _id, String _table) throws SQLException;
 
-    public abstract ArrayList sortTable(String _table, String _orderByParameter, ArrayList sortedList) throws SQLException;
+    public abstract ArrayList selectAll(String _parametersToRetrieve) throws SQLException;
 
 }
