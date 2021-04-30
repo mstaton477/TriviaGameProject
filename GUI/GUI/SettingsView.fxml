@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0"
             prefWidth="636.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="GUI.SetUpQuestions">
+            fx:controller="GUI.SettingsView">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="88.0" layoutX="14.0" layoutY="14.0"
                  stroke="BLACK" strokeType="INSIDE" width="608.0" />

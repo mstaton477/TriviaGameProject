@@ -3,7 +3,7 @@ package GUI;
 /**
  * @author Jayson Williamson
  * Last updated: 4/30/21
- * This class sets up the quiz view and reloads the view again with different variables
+ * This class sets up the quiz view and sets the label for each answer to the next one.
  */
 
 import Controllers.QuizController;
@@ -23,22 +23,32 @@ import java.util.ResourceBundle;
 public class QuizView implements Initializable {
 
     //Sets up fx:ids to link to the fxml
-    @FXML private Label questionLabel;
-    @FXML private Label answerALabel;
-    @FXML private Label answerBLabel;
-    @FXML private Label answerCLabel;
-    @FXML private Label answerDLabel;
+    @FXML
+    private Label questionLabel;
+    @FXML
+    private Label answerALabel;
+    @FXML
+    private Label answerBLabel;
+    @FXML
+    private Label answerCLabel;
+    @FXML
+    private Label answerDLabel;
 
     private String labelAText;
     private String labelBText;
     private String labelCText;
     private String labelDText;
 
+    /*
+     * Sets up arrays and indexes for the questions and answers in this class so they can be
+     * iterated through and displayed.
+    */
     String questionArray[] = QuizController.getQuestionsArray();
     String answerArray[] = QuizController.getAnswerArray();
     int _iIndex;
     int _jIndex;
 
+    //Variable for user's choice to be sent out.
     public static String _choice;
 
     /**
@@ -142,6 +152,10 @@ public class QuizView implements Initializable {
     }
 
 
+    /**
+     * Method for checking if the user's answer is correct and sets the question and answer
+     * labels to the next questions.
+     */
     private void moveToNextQuestion(){
         QuizController.callCheckIfCorrect();
         _iIndex++;
@@ -153,9 +167,14 @@ public class QuizView implements Initializable {
         answerDLabel.setText(answerArray[_jIndex + 3]);
     }
 
+    /**
+     * Initializes the quiz view and places information from both question and answer arrays into labels placed above
+     * each button.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         //Made this way for testing purposes currently, questions/answers need to be grabbed from elsewhere
         questionLabel.setText(questionArray[_iIndex]);
         answerALabel.setText(answerArray[_jIndex]);

@@ -1,13 +1,10 @@
-
 package GUI;
 
-
 /**
- * @author Jayson Williamson
- * Updated 4/21/21
+ * @author Jayson Williamson and Patrick Ksor
+ * Updated 4/30/21
  * This class sets up the view for the leaderboard scene.
  */
-
 
 import Models.Leaderboard;
 import javafx.collections.FXCollections;
@@ -19,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,30 +24,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-
 public class LeaderboardView implements Initializable {
-    /**
-     * This sends the user back to the initial view of the application.
-     * @param event
-     * @throws IOException
-     */
 
-    public void _goBackButton(ActionEvent event) throws IOException {
-        Parent backButton = FXMLLoader.load(getClass().getResource("TriviaGameMainView.fxml"));
-        Scene backButtonScene = new Scene(backButton);
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(backButtonScene);
-        window.show();
-    }
-
-
-    @FXML
-    private Label label;
+    //Sets up fx:ids to link to the fxml
     @FXML
     private TableView<Leaderboard> LeaderBoard;
     @FXML
@@ -69,7 +46,26 @@ public class LeaderboardView implements Initializable {
 
     private ObservableList<Leaderboard> data;
 
+    /**
+     * This sends the user back to the initial view of the application.
+     * @param event
+     * @throws IOException
+     */
+    public void _goBackButton(ActionEvent event) throws IOException {
+        Parent backButton = FXMLLoader.load(getClass().getResource("MainMenuView.fxml"));
+        Scene backButtonScene = new Scene(backButton);
 
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(backButtonScene);
+        window.show();
+    }
+
+    /**
+     * Initializes items into the table view and displays them when the scene is loaded.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
