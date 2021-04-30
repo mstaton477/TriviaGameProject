@@ -20,10 +20,8 @@ public class Questions extends API {
     public static String[] question() {
         // Call method to get questions from API
 
-
         try {
             Object _getQuestionJSONArray;
-
             // Get questions
             for (int i = 0; i < _questions; i++) {
                 _getQuestionJSONArray = _obj.getJSONArray("results").opt(i);

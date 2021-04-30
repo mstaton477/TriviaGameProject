@@ -1,6 +1,6 @@
 package APICode;
 
-/**
+/*
  * This class performs the API call. Updated 4-27-21
  *
  * @author Sengthida Lorvan
@@ -22,9 +22,8 @@ import java.net.URL;
 public class API {
 
     // Storage variables
-    public static String _catName;
+
     public static String _difficulty;
-    private static Category cat;
     public static int _category;
     public static int _questions;
     public static JSONObject _obj;
@@ -45,10 +44,7 @@ public class API {
     public static final int _ONE = 1;
     public static final int _TWO = 2;
 
-    // Enumeration of categories
-    enum Category {
-        NINE, ELEVEN, TWELVE, FIFTEEN, SEVENTEEN, EIGHTEEN, THIRTYONE
-    }
+
 
     // Helper method for finding given string indexes
     protected static String[] find(String[] _arrayInput, String[] _arrayOutput, String _key) {
@@ -77,7 +73,7 @@ public class API {
             case 2:
                 for (int i = 0; i < _questions; i++) {
                     _arrayOutput[i] = _arrayInput[i];
-                   
+
                 }
                 break;
         }
@@ -96,61 +92,7 @@ public class API {
         }
     }
 
-    // Switches the category name with enumerated case
-    public static Category categoryName() {
-        switch (_catName) {
-            case "General Knowledge":
-                cat = Category.NINE;
-                break;
-            case "Entertainment: Film":
-                cat = Category.ELEVEN;
-                break;
-            case "Entertainment: Music":
-                cat = Category.TWELVE;
-                break;
-            case "Entertainment: Video Games":
-                cat = Category.FIFTEEN;
-                break;
-            case "Science & Nature":
-                cat = Category.SEVENTEEN;
-                break;
-            case "Science: Computers":
-                cat = Category.EIGHTEEN;
-                break;
-            case "Entertainment: Japanese Anime & Manga":
-                cat = Category.THIRTYONE;
-                break;
-        }
-        return cat;
-    }
 
-    // Switches enumerated case with the integer version
-    public static int category() {
-        switch (cat) {
-            case NINE:
-                _category = 9;
-                break;
-            case ELEVEN:
-                _category = 11;
-                break;
-            case TWELVE:
-                _category = 12;
-                break;
-            case FIFTEEN:
-                _category = 15;
-                break;
-            case SEVENTEEN:
-                _category = 17;
-                break;
-            case EIGHTEEN:
-                _category = 18;
-                break;
-            case THIRTYONE:
-                _category = 31;
-                break;
-        }
-        return _category;
-    }
 
     public static void makeApiCall() {
 
@@ -182,13 +124,13 @@ public class API {
     }
 
     public static void run(){
-        question();
-        correctAnswers();
-        incorrectAnswers();
-        fixQuestions();
-        fixCorrectAnswers();
-        fixIncorrectAnswers();
-        separate();
+        Questions.question();
+        Answers.correctAnswers();
+        Answers.incorrectAnswers();
+        FixString.fixQuestions();
+        FixString.fixCorrectAnswers();
+        FixString.fixIncorrectAnswers();
+        SplitAndJoin.separate();
     }
 
     public static void main(String[] args) {

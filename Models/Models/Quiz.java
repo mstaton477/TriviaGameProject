@@ -3,6 +3,7 @@ package Models;
 import APICode.*;
 import Controllers.QuizController;
 import GUI.QuizView;
+import GUI.SetUpQuestions;
 
 import java.util.Locale;
 
@@ -135,11 +136,10 @@ public class Quiz {
         }
     }
 
-    public static void convertDifficultyToLowercaseAndSet(String _difficulty) {
-
-        _difficulty.toLowerCase();
+   /* public static void convertDifficultyToLowercaseAndSet() {
+        String _difficulty = SetUpQuestions._difficultyChoice;
         Player.setGameDifficulty(_difficulty);
-    }
+    }*/
 
     public static void convertGameLengthStringToIntAndSet(String _length) {
 
