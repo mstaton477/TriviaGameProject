@@ -13,10 +13,11 @@ public class MySQLTranslator implements DBTranslatorInterface {
     private static String db_Username = "root";
     private static String db_Password = "750463832";
     private static final int NUMBEROFCOLUMNSRETRIEVED = 6;
-    private static Connection conn = null;
-    private static Statement statement = null;
-    private static PreparedStatement pStatement = null;
-    private static ResultSet resultSet = null;
+    private Connection conn = null;
+    private Statement statement = null;
+    private PreparedStatement pStatement = null;
+    private ResultSet resultSet = null;
+    private static ArrayList data;
 
     // Change this to true to just print out the queries and not execute them.
     private static final Boolean TEST_MODE = false;
@@ -133,19 +134,17 @@ public class MySQLTranslator implements DBTranslatorInterface {
         // the return false.
         return (result > 0);
     }
-    
 
-
-        /**
-         * Reads an object from the database given a set of conditionals in name-value
-         * pair format. This is an overloaded readObject method that, by default, doesn't load deleted objects.
-         * @TODO - Implement this method.
-         * @param _keyValuePairs
-         * @return
-         */
+    /**
+     * Reads an object from the database given a set of conditionals in name-value
+     * pair format. This is an overloaded readObject method that, by default, doesn't load deleted objects.
+     * @TODO - Implement this method.
+     * @param _keyValuePairs
+     * @return
+     */
     @Override
     public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table) {
-         return this.readObject(_keyValuePairs, _table, true);
+        return this.readObject(_keyValuePairs, _table, true);
     }
 
     /**
@@ -155,7 +154,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
      * @param _deleted whether to load deleted objects.
      * @return
      */
-   public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table, boolean _deleted) {
+    public HashMap<String, Object> readObject(Map<String,String> _keyValuePairs, String _table, boolean _deleted) {
         // Start the query.
         String query =  "SELECT * FROM " + _table + " WHERE ";
         // Initialize the condition string.
@@ -215,7 +214,7 @@ public class MySQLTranslator implements DBTranslatorInterface {
         }
     }
 
-    /**
+    /**Soft Delete, makes the active flag 0 for a given object that is identified by the passed identifier.
      *
      * @param _identifier
      * @param _table
@@ -234,19 +233,18 @@ public class MySQLTranslator implements DBTranslatorInterface {
     }
 
     /**
-     * This method sorts a table in a database and returns an arraylist of maps with the objects from the table
+     * a method that selects a specified number of parameters from all rows in a database
      * @param _table
-     * @param _orderByParameter
-     * @param _sortedList
+     * @return
+     * @throws SQLException
      */
-
-    public ArrayList selectAll(String _parametersToRetrieve) throws SQLException {
+    public  ArrayList selectAll( String _parametersToRetrieve) throws SQLException {
         ArrayList _sortedList = new ArrayList();
         try {
             statement = conn.createStatement();
             //Initializes a query that retrieves playerScore,name, difficulty,length ,and category in descending order
             // the player properties must be active in order to be retrieved.
-            String query = "SELECT "+_parametersToRetrieve+" FROM  player_data";
+            String query = "SELECT " + _parametersToRetrieve+ " FROM player_data ";
             resultSet = statement.executeQuery(query);
             //A loop that gets the properties of each row in the database and stores them in an Arraylist of Hashmaps in Descending order
             while (resultSet.next()) {

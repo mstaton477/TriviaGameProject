@@ -97,9 +97,8 @@ public class DataStoreAdapter {
         return connector.deleteObject(_id, _table);
     }
 
+
     public static ArrayList selectAll(String _parametersToRetrieve) throws SQLException {
         return connector.selectAll( _parametersToRetrieve);
     }
-
-}
 

@@ -131,7 +131,7 @@ public abstract class DataFactory {
     }
 
     /**
-     * This game factory method generates blank objects based on the class type given.
+     * This object factory method generates blank objects based on the class type given.
      * @param _class
      * @return
      * @throws ClassNotFoundException
@@ -146,7 +146,7 @@ public abstract class DataFactory {
     }
 
     /**
-     * This game factory overloaded method generates new blank objects of the given type,
+     * This object factory overloaded method generates new blank objects of the given type,
      * and then populates this object with the given name-value pairs loaded from the database.
      * @param _class
      * @param _data
